@@ -3,7 +3,7 @@ import React from 'react'
 const TopStuff = () => {
   return (
     <div>
-      <h1> Header</h1>
+      <h1> How will you become the person you want to be?</h1>
     </div>
   )
 }

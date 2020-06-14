@@ -1,12 +1,19 @@
 import React from 'react'
 
 const TableThing = () => {
+
+  /*api call to get data
+    goals, etc
+  
+  */
   return (
     <table>
-      <tr>
-      <th>Today</th>
-      <th>Today</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Things for today</th>
+          <th>Things for tomorrow</th>
+        </tr>
+      </thead>
     </table>
   )
 }
