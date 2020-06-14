@@ -1,10 +1,20 @@
 import React from 'react'
 
+import LifeBlocks from './LifeBlocks'
+import { Side } from '../styles'
+
 const SideBar = () => {
   return (
-    <div style={{background:'blue'}}>
-      SideBar
-    </div>
+    <Side>
+      <div>
+        above nav things
+      </div>
+      <nav>
+      nav stuff
+      </nav>
+
+      <LifeBlocks />
+    </Side>
   )
 }
 
