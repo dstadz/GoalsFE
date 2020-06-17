@@ -12,29 +12,71 @@ export const Side = styled.div `
 
 
 export const MonthBox = styled.div `
-  border: 1px solid black;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   margin: 1px;
-  margin-top: 6px;
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+  :hover{ background:grey; }
+  
+
+  span {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    width: 120px;
+    position: absolute;
+    top: 15px;
+    right:-50px;
+    z-index: 1;
+  }
+
+  :hover span {
+    visibility: visible;
+  }
 `
 export const YearRow = styled.li `
   display:flex;
-
-  span{
-    font-size:16px;
-  }
 `
 export const LifeContainer = styled.div `
   height:90%;
+  width:90%;
+  margin:auto;
+
+  background:white;
+  border: 1px solid black;
   overflow-y: auto;
   ::-webkit-scrollbar { display: none; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  h3{
+    margin:0;
+  }
 
   ol{
-    display: flex;
     padding-left: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: 0;
+    justify-content: flex-end;
+    align-items: flex-end;
+    li:nth-of-type(-n+18) div {
+      border: 2px solid red;
+    }
+    li: nth-child(n+18):nth-child(-n+40) div {
+      border: 2px solid orange;
+    }
+    li: nth-child(n+41):nth-child(-n+60) div {
+      border: 2px solid green;
+    }
+    li: nth-child(n+61) div {
+      border: 2px solid grey;
+    }
+    li: nth-child(${props => props.age}) {
+    }
   }
 `

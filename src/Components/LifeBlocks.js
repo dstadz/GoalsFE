@@ -3,38 +3,49 @@ import { MonthBox, YearRow, LifeContainer } from '../styles'
 
 
 const birthYear = 1994 //get from api
+const birthMonth = 7 //get from api
 
-const Month = () => {
+const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','August','September','October','November', 'December']
 
-  return( <MonthBox /> )
+const today = new Date()
+const thisYear = today.getFullYear()
+const thisMonth = today.getMonth()
+
+const lifeTime = 81
+const life = Array(lifeTime).fill().map((_, i) => i);
+console.log(thisMonth, thisYear)
+
+const currentMonth =''
+
+const Month = ({month, year}) => {
+
+  return(
+    <MonthBox style={
+      (month==thisMonth && year==thisYear)
+      ? {background:'blue'}
+      : {}
+    }>
+      <span> {months[month]} {year} </span>
+    </MonthBox>
+  )
 }
 
-const Year = ({ date }) => {
+const Year = ({ year }) => {
 
-  const monthsInYear = 12
-  const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','August','September','October','November', 'December']
-  const year = Array(monthsInYear).fill().map((_, i) => months[i]);
   return(
     <YearRow>
-      {date%10
-        ?<span>-----</span>
-        :<span>{date+birthYear}</span>}
-      {year.map( m => ( <Month key={m} m={m}/> ))}
+      {/*date%10 ? '' : <span> {date + birthYear} </span>*/}
+      {months.map((m, i)=> ( <Month key={m} month={i} year={year}/> ))}
     </YearRow>
   )
 }
 
 const LifeBlocks = () => {
 
-  const lifeTime = 81
-  const life = Array(lifeTime).fill().map((_, i) => i);
-
   return (
-    <LifeContainer>
+    <LifeContainer age={thisYear - birthYear + 1} bmth={8} >
       <h3> Your Life Here:</h3>
-      <ol>
-        {life.map( y => (<Year key={y+birthYear}  date={y}/>))}
-      </ol>
+      <ol> {life.map( y => (<Year key={y}  year = {y + birthYear}/>))} </ol>
     </LifeContainer>
   )
 }
