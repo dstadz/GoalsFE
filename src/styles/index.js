@@ -64,19 +64,13 @@ export const LifeContainer = styled.div `
     margin-top: 0;
     justify-content: flex-end;
     align-items: flex-end;
-    li:nth-of-type(-n+18) div {
-      border: 2px solid red;
-    }
-    li: nth-child(n+18):nth-child(-n+40) div {
-      border: 2px solid orange;
-    }
-    li: nth-child(n+41):nth-child(-n+60) div {
-      border: 2px solid green;
-    }
-    li: nth-child(n+61) div {
-      border: 2px solid grey;
-    }
-    li: nth-child(${props => props.age}) {
-    }
+    li:first-child div{
+      ${({ birthMonth }) => birthMonth > 7 && `
+      background: blue;
+    `}    }
+
+    li:nth-child(-n+18) div { border: 2px solid red; }
+    li:nth-child(n+18):nth-child(-n+40) div { border: 2px solid green; }
+    li:nth-child(n+41) div { border: 2px solid grey; }
   }
 `

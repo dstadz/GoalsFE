@@ -13,39 +13,41 @@ const thisMonth = today.getMonth()
 
 const lifeTime = 81
 const life = Array(lifeTime).fill().map((_, i) => i);
-console.log(thisMonth, thisYear)
-
-const currentMonth =''
 
 const Month = ({month, year}) => {
 
   return(
-    <MonthBox style={
-      (month==thisMonth && year==thisYear)
+    <MonthBox
+      style={
+      (year===thisYear && month===thisMonth)
       ? {background:'blue'}
-      : {}
+      : (year ===birthYear && month < birthMonth)
+        ? {visibility:'hidden'}
+        : {}
     }>
       <span> {months[month]} {year} </span>
     </MonthBox>
   )
 }
 
+
 const Year = ({ year }) => {
 
   return(
     <YearRow>
-      {/*date%10 ? '' : <span> {date + birthYear} </span>*/}
-      {months.map((m, i)=> ( <Month key={m} month={i} year={year}/> ))}
+      {months.map((_, i)=> ( <Month key={i} month={i} year={year}/> ))}
     </YearRow>
   )
 }
 
+
 const LifeBlocks = () => {
 
   return (
-    <LifeContainer age={thisYear - birthYear + 1} bmth={8} >
+    <LifeContainer birthMonth={birthMonth}>
       <h3> Your Life Here:</h3>
-      <ol> {life.map( y => (<Year key={y}  year = {y + birthYear}/>))} </ol>
+
+      <ol> {life.map( y => (<Year key={y}  year={y + birthYear}/>))} </ol>
     </LifeContainer>
   )
 }
