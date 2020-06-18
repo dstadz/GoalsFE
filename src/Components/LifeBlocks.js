@@ -19,9 +19,9 @@ const Month = ({month, year}) => {
   return(
     <MonthBox
       style={
-      (year===thisYear && month===thisMonth)
+      (year === thisYear && month === thisMonth)
       ? {background:'blue'}
-      : (year ===birthYear && month < birthMonth)
+      : (year === birthYear && month < birthMonth)
         ? {visibility:'hidden'}
         : {}
     }>
@@ -46,7 +46,6 @@ const LifeBlocks = () => {
   return (
     <LifeContainer birthMonth={birthMonth}>
       <h3> Your Life Here:</h3>
-
       <ol> {life.map( y => (<Year key={y}  year={y + birthYear}/>))} </ol>
     </LifeContainer>
   )
