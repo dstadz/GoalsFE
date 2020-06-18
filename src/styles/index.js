@@ -9,8 +9,6 @@ export const Side = styled.div `
   width: 300px;
   height: 100vh;
 `
-
-
 export const MonthBox = styled.div `
   width: 8px;
   height: 8px;
@@ -19,7 +17,6 @@ export const MonthBox = styled.div `
   position: relative;
   display: inline-block;
   :hover{ background:grey; }
-  
 
   span {
     visibility: hidden;
@@ -64,13 +61,34 @@ export const LifeContainer = styled.div `
     margin-top: 0;
     justify-content: flex-end;
     align-items: flex-end;
-    li:first-child div{
-      ${({ birthMonth }) => birthMonth > 7 && `
-      background: blue;
-    `}    }
+  }
 
     li:nth-child(-n+18) div { border: 2px solid red; }
     li:nth-child(n+18):nth-child(-n+40) div { border: 2px solid green; }
     li:nth-child(n+41) div { border: 2px solid grey; }
   }
+`
+
+
+export const TopStuff = styled.div`
+  background:gray;
+  div{
+    display:flex;
+    justify-content: space-around;
+  }
+
+
+`
+
+export const AddNewBTN = styled.button`
+  background: blue;
+  border-radius: 1em;
+`
+
+export const AddFormContainer = styled.div`
+  background:green;
+  width: 300px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
 `
