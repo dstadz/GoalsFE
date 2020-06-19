@@ -1,5 +1,5 @@
 import React from 'react'
-import { MonthBox, YearRow, LifeContainer } from '../styles'
+import { MonthBox, YearRow, LifeContainer } from '../../styles'
 
 
 const birthYear = 1994 //get from api

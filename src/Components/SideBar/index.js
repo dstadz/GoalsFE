@@ -1,7 +1,7 @@
 import React from 'react'
 
 import LifeBlocks from './LifeBlocks'
-import { Side } from '../styles'
+import { Side } from '../../styles'
 
 const SideBar = () => {
   return (

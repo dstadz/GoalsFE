@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 
-import { activeFormState } from '../utils/store'
-import { TopStuff, AddNewBTN } from '../styles'
+import { activeFormState } from '../../utils/store'
+import { TopStuff, AddNewBTN } from '../../styles'
 
 import AddForm from './AddForm'
 
@@ -28,7 +28,7 @@ const Header = () => {
         <AddNewBTN> 4th thing </AddNewBTN>
       </div>
 
-      {activeForm && <AddForm type={activeForm} />}
+      {activeForm && <AddForm />}
     </TopStuff>
   )
 }

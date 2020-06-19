@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const AppBody = styled.div `
-display: flex;
+  display: flex;
 `
-
 export const Side = styled.div `
   background: blue;
   width: 300px;
@@ -68,8 +67,6 @@ export const LifeContainer = styled.div `
     li:nth-child(n+41) div { border: 2px solid grey; }
   }
 `
-
-
 export const TopStuff = styled.div`
   background:gray;
   div{
@@ -79,13 +76,18 @@ export const TopStuff = styled.div`
 
 
 `
-
 export const AddNewBTN = styled.button`
   background: blue;
   border-radius: 1em;
 `
-
 export const AddFormContainer = styled.div`
+  button {
+    margin-left:auto;
+  }
+
+  h5{
+    margin: 0;
+  }
   background:green;
   width: 300px;
   display:flex;
