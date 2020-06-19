@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SideBar from './SideBar'
+import SideBar from './SideBar/'
 import LandingPage from './LandingPage'
-import Header from './Header'
-import TableThing from './TableThing'
+import Header from './Header/'
+import TableThing from './Table/'
 
 import { AppBody } from '../styles'
 
