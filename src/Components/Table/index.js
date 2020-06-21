@@ -8,28 +8,58 @@ const TableThing = () => {
     goals, etc
   */
 
-  const goals = [{
-    id: '1',
-    user_id:'1',
-    goal:'Get a New Job',
-    ongoing: false,
-    start_date:'04/20/2020',
-    goal_date:'ASAP'
-  },{
-    id: '2',
-    user_id:'1',
-    goal:'Get a 6-pack',
-    ongoing: true,
-    start_date:'06/01/2020',
-    goal_date:'06/30/2020'
-  },{
-    id: '3',
-    user_id:'1',
-    goal:'Die happy',
-    ongoing: '',
-    start_date:'06/15/2020',
-    goal_date:'01/01/2100'
-  }]
+const goals = [{
+  id: 1,
+  user_id:1,
+  goal:'Get a New Job',
+  ongoing: false,
+  start_date:'04/20/2020',
+  goal_date:'ASAP'
+},{
+  id: 2,
+  user_id:1,
+  goal:'Get a 6-pack',
+  ongoing: true,
+  start_date:'06/01/2020',
+  goal_date:'06/30/2020'
+},{
+  id: 3,
+  user_id:1,
+  goal:'Die happy',
+  ongoing: '',
+  start_date:'06/15/2020',
+  goal_date:'01/01/2100'
+}]
+
+const habits = [{
+  id: 1,
+  goal_id:1,
+  habit:'Apply to jobs',
+  history: false,
+
+},{
+  id: 2,
+  user_id:1,
+  goal_id:2,
+  ongoing: true,
+  start_date:'06/01/2020',
+  goal_date:'06/30/2020'
+},{
+  id:3,
+  user_id:1,
+  goal_id:2,
+  ongoing: '',
+  start_date:'06/15/2020',
+  goal_date:'01/01/2100'
+}]
+
+const habitHistory = [{
+  id:1,
+  habit_id:1,
+  date:'', //added when user completes as done, or end of day passes without check as false
+  done:true
+}]
+
   return (
     <table>
       <thead>
