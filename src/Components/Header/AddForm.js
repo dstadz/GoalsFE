@@ -41,7 +41,7 @@ const AddForm = () => {
       >X</button>
 
       <h5>Add a New {activeForm}</h5>
-      
+
       <form onSubmit={submitForm}>
         <label> New {activeForm}:</label>
         <input
