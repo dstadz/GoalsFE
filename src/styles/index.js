@@ -94,3 +94,8 @@ export const AddFormContainer = styled.div`
   flex-direction: column;
   align-items:center;
 `
+
+export const GoalCardContainer = styled.div`
+  background: red;
+
+`

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import GoalCard from './GoalCard'
+
 const TableThing = () => {
 
   /*api call to get data
@@ -27,8 +29,7 @@ const TableThing = () => {
     ongoing: '',
     start_date:'06/15/2020',
     goal_date:'01/01/2100'
-  }
-  ]
+  }]
   return (
     <table>
       <thead>
@@ -37,7 +38,7 @@ const TableThing = () => {
           <th>Things for tomorrow</th>
         </tr>
         <tr>
-          {goals.map(g => ( <td> {g.goal} </td> )) }
+          {goals.map(g => ( <td> <GoalCard props={g} /> </td> )) }
         </tr>
       </thead>
     </table>
