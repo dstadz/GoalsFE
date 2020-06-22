@@ -49,14 +49,14 @@ const AddForm = () => {
           placeholder='Become better by...'
           value={nextGoal}
           onChange={handleGoalChange}
-          />
+        />
 
         <label>ongoing? </label>
-        <input id='checkbox'
+        <input
           type="checkbox"
           value={onGoing}
           onClick={() => setOnGoing(!onGoing)}
-          />
+        />
 
         {onGoing
           ? <>

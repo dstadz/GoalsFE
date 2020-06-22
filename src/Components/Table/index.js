@@ -31,31 +31,7 @@ const goals = [{
   goal_date:'01/01/2100'
 }]
 
-const habits = [{
-  id: 1,
-  goal_id: 1,
-  habit: 'Apply to jobs',
-  frequency_num: 5,
-  frequncy_den: 'weekly'
-},{
-  id: 2,
-  goal_id: 1,
-  habit: 'work on project',
-  frequency_num: 1,
-  frequncy_den: 'daily'
-},{
-  id: 3,
-  goal_id: 2,
-  habit: 'do push-ups',
-  frequency_num: 5,
-  frequncy_den: 'weekly'
-},{
-  id: 4,
-  goal_id: 2,
-  habit: 'go for a run',
-  frequency_num: 1,
-  frequncy_den: 'weekly'
-}]
+
 
 const habitHistory = [{
   id:1,
@@ -72,7 +48,7 @@ const habitHistory = [{
           <th>Things for tomorrow</th>
         </tr>
         <tr>
-          {goals.map(g => ( <td> <GoalCard props={g} /> </td> )) }
+          {goals.map(g => ( <td key={g.id}> <GoalCard props={g} /> </td> )) }
         </tr>
       </thead>
     </table>

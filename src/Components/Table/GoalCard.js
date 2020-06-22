@@ -45,29 +45,39 @@ const habits = [{
 
 
 const GoalCard = ({props}) => {
-  const { id, user_id, goal, ongoing, start_date, goal_date } = props
-  const [habitList, setHabitList]  = useState([])
+  const { id, goal, ongoing, start_date, goal_date } = props
+  const [habitList, setHabitList]  = useState(habits)
+
+  const handleAddHabit = e => {
+    e.preventDefault();
+    console.log(goal)
+    setHabitList(habitList)
+
+
+  }
 
   return (
     <GoalCardContainer>
-      <h4>{goal} {id}</h4>
+      <h4>{goal}</h4>
       <p>{start_date} => {goal_date}</p>
       <ul>
-        {habits
+        {habitList
           .filter(h => h.goal_id === id)
           .map(l =>
-            <li>
-              <input id='checkbox'
-              type="checkbox"
-              value={ongoing}
-              onClick={() => console.log('done')}
-              />{l.habit}
-            </li>
-          )}
-
-
+            <li key={l.id}>
+              <input
+                type="checkbox"
+                value={ongoing}
+                onClick={() => console.log('done')}
+              />
+            {l.habit}</li>
+        )}
       </ul>
-      <button> Add new habit </button>
+
+      <button
+        onClick={handleAddHabit}
+      > Add new habit </button>
+
     </GoalCardContainer>
   )
 }
