@@ -33,31 +33,35 @@ const goals = [{
 
 const habits = [{
   id: 1,
-  goal_id:1,
-  habit:'Apply to jobs',
-  history: false,
-
+  goal_id: 1,
+  habit: 'Apply to jobs',
+  frequency_num: 5,
+  frequncy_den: 'weekly'
 },{
   id: 2,
-  user_id:1,
-  goal_id:2,
-  ongoing: true,
-  start_date:'06/01/2020',
-  goal_date:'06/30/2020'
+  goal_id: 1,
+  habit: 'work on project',
+  frequency_num: 1,
+  frequncy_den: 'daily'
 },{
-  id:3,
-  user_id:1,
-  goal_id:2,
-  ongoing: '',
-  start_date:'06/15/2020',
-  goal_date:'01/01/2100'
+  id: 3,
+  goal_id: 2,
+  habit: 'do push-ups',
+  frequency_num: 5,
+  frequncy_den: 'weekly'
+},{
+  id: 4,
+  goal_id: 2,
+  habit: 'go for a run',
+  frequency_num: 1,
+  frequncy_den: 'weekly'
 }]
 
 const habitHistory = [{
   id:1,
   habit_id:1,
   date:'', //added when user completes as done, or end of day passes without check as false
-  done:true
+  done: null
 }]
 
   return (
