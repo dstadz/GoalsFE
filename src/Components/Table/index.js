@@ -31,33 +31,13 @@ const goals = [{
   goal_date:'01/01/2100'
 }]
 
-const habits = [{
-  id: 1,
-  goal_id:1,
-  habit:'Apply to jobs',
-  history: false,
 
-},{
-  id: 2,
-  user_id:1,
-  goal_id:2,
-  ongoing: true,
-  start_date:'06/01/2020',
-  goal_date:'06/30/2020'
-},{
-  id:3,
-  user_id:1,
-  goal_id:2,
-  ongoing: '',
-  start_date:'06/15/2020',
-  goal_date:'01/01/2100'
-}]
 
 const habitHistory = [{
   id:1,
   habit_id:1,
   date:'', //added when user completes as done, or end of day passes without check as false
-  done:true
+  done: null
 }]
 
   return (
@@ -68,7 +48,7 @@ const habitHistory = [{
           <th>Things for tomorrow</th>
         </tr>
         <tr>
-          {goals.map(g => ( <td> <GoalCard props={g} /> </td> )) }
+          {goals.map(g => ( <td key={g.id}> <GoalCard props={g} /> </td> )) }
         </tr>
       </thead>
     </table>
