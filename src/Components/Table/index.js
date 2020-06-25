@@ -11,19 +11,11 @@ const TableThing = () => {
 
 
     useEffect(() => {
-      axios
-      .get(backend)
-      .then(res => {
-        console.log(res.data.data)
-      })
-      .catch(err=> {
-        console.log(err)
-      })
-
-      // return () => {
-      //   cleanup
-      // }
+      axios.get(backend)
+      .then(res => { setGoalList(res.data.data) })
+      .catch(err => { console.log(err) })
     }, [])
+
   const goals = [{
     id: 1,
     user_id:1,
@@ -46,13 +38,8 @@ const TableThing = () => {
     start_date:'06/15/2020',
     goal_date:'01/01/2100'
   }]
-  const habitHistory = [{
-    id:1,
-    habit_id:1,
-    date:'', //added when user completes as done, or end of day passes without check as false
-    done: null
-  }]
 
+  // console.log(goalList)
   return (
     <table>
       <thead>

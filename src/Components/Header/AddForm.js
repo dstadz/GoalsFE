@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
-
+import axios from 'axios'
+import { useForm } from 'react-hook-form'
 
 import { activeFormState } from '../../utils/store'
 import { AddFormContainer } from '../../styles'
@@ -9,70 +10,63 @@ let today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
 
-today = mm + '/' + dd + '/' + yyyy;
+
+const backend = `http://localhost:8000/api/goals/`
+const user_id = `1`
+
 const AddForm = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
-  const [onGoing, setOnGoing] = useState(true)
   const [nextGoal, setNextGoal] = useState('')
-  const [date, setDate] = useState(today)
+  const [targetDate, setTargetDate] = useState(today)
+  const { register, handleSubmit, errors } = useForm()
 
-  const habitFunc = () => {
-    console.log('make a habit')
-  }
 
-  const submitForm = e => {
-    e.preventDefault()
+  if ( Object.keys(errors).length ) console.log(errors)
 
+  const handleGoalChange = e => { setNextGoal(e.target.value) }
+  const handleTargetDateChange = e => { setTargetDate(e.target.value) }
+  const onSubmit = data => {
+    data = {...data, user_id,completed:false}
+    console.log(data);
+    axios.post(backend,data)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => { console.log(err) })
     setActiveForm(null)
-
-  }
-
-  const handleGoalChange = e => {
-    setNextGoal(e.target.value)
-
   }
 
 
   return (
     <AddFormContainer>
-      <button
-        onClick={()=> setActiveForm(null)}
-      >X</button>
+      <button onClick={()=> setActiveForm(null)} >X</button>
 
       <h5>Add a New {activeForm}</h5>
 
-      <form onSubmit={submitForm}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label> New {activeForm}:</label>
-        <input
-          type='text'
-          placeholder='Become better by...'
+        <input type="text"
+          placeholder="Goal"
+          name="goal"
+          ref={register({required: true, maxLength: 80})}
           value={nextGoal}
           onChange={handleGoalChange}
         />
 
-        <label>ongoing? </label>
-        <input
-          type="checkbox"
-          value={onGoing}
-          onClick={() => setOnGoing(!onGoing)}
-        />
-
-        {onGoing
-          ? <>
-            <label> By:</label>
-            <input type='date' />
-            </>
-          : <>
-            <label> make it a habit?</label>
-            <input id='habit'
-              type="checkbox"
-              onClick={() => habitFunc()}
-            />
-            </>
-        }
         <br />
-        <button> Add </button>
+
+        <label> By:</label>
+        <input type='date'
+          placeholder="Target Date"
+          name="target_date"
+          ref={register}
+          value={targetDate}
+          onChange={handleTargetDateChange}
+          />
+
+        <input type="submit" />
       </form>
     </AddFormContainer>
   )

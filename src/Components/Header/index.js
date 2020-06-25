@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRecoilState } from 'recoil'
 
 
@@ -9,9 +9,6 @@ import AddForm from './AddForm'
 
 const Header = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
-  const openForm = () => {
-    console.log('open')
-  }
 
   return (
     <TopStuff>
