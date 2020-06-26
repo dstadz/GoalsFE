@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import { GoalCardContainer } from '../../styles'
 
 
+const goals = `http://localhost:8000/api/goals`
+const habits = `http://localhost:8000/api/habits`
 
 
-const habits = [{
+const softHabitList = [{
   id: 1,
   goal_id: 1,
   habit: 'Apply to jobs',
@@ -48,6 +51,15 @@ const GoalCard = ({props}) => {
   const { id, goal, ongoing, start_date, goal_date } = props
   const [habitList, setHabitList]  = useState(habits)
 
+
+  useEffect(() => {
+    axios.get(goals)
+    .then(res => { console.log(res.data) })
+    .catch(err => { console.log(err) })
+  }, [habitList])
+
+  //console.log(habitList)
+
   const handleAddHabit = e => {
     e.preventDefault();
     console.log(goal)
@@ -56,12 +68,22 @@ const GoalCard = ({props}) => {
 
   }
 
+  const deleteGoal = () => {
+    console.log(`delete goal ${id}`)
+    console.log(goals + `/${id}`)
+    axios.delete(goals + `/${id}`)
+    .then(res => { console.log(res.data) })
+    .catch(err => { console.log(err) })
+  }
+
   return (
     <GoalCardContainer>
       <h4>{goal}</h4>
-      <p>{start_date} => {goal_date}</p>
+      <button onClick={()=> deleteGoal()} >X</button>
+
+      {/*<p>{start_date} => {goal_date}</p> */}
       <ul>
-        {habitList
+        {softHabitList
           .filter(h => h.goal_id === id)
           .map(l =>
             <li key={l.id}>
