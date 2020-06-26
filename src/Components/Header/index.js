@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil'
 import { activeFormState } from '../../utils/store'
 import { TopStuff, AddNewBTN } from '../../styles'
 
-import AddForm from './AddForm'
+import AddGoalForm from './AddGoalForm'
 
 const Header = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
@@ -20,15 +20,11 @@ const Header = () => {
 
         <AddNewBTN
         onClick={()=>setActiveForm('Habit')}
-        > add a new habit </AddNewBTN>
-
-        <AddNewBTN
-        onClick={()=>setActiveForm('Habit')}
         > bucket </AddNewBTN>
         <AddNewBTN> 4th thing </AddNewBTN>
       </div>
 
-      {activeForm && <AddForm />}
+      {activeForm && <AddGoalForm />}
     </TopStuff>
   )
 }

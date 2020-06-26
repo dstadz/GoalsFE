@@ -1,28 +1,11 @@
-import React, { useState } from 'react'
-import { useRecoilState } from 'recoil'
+import React from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-
-import { activeFormState } from '../../utils/store'
-
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
 
 const AddHabitForm = () => {
-  const [activeForm, setActiveForm] = useRecoilState(activeFormState)
   const { register, handleSubmit, errors } = useForm()
-
-  const [nextHabit, setNextHabit] = useState('')
-  const [amount, setAmount] = useState(0)
-  const [freq, setFreq] = useState('')
-
-
-  const handleAmount = e => {
-    setAmount(e.target.value)
-  }
-
-
-
 
   const backend = `http://localhost:8000/api/habits`
   const goal_id = `1`
@@ -31,7 +14,6 @@ const AddHabitForm = () => {
 
   if ( Object.keys(errors).length ) console.log(errors)
 
-  const handleHabitChange = e => { setNextHabit(e.target.value) }
 
   const onSubmit = data => {
     data = {...data, goal_id}
@@ -57,19 +39,15 @@ const AddHabitForm = () => {
           placeholder="New Habit"
           name="habit"
           ref={register({required: true, maxLength: 80})}
-          value={nextHabit}
-          onChange={handleHabitChange}
         />
 
         <br />
 
         <label> Frequency:</label>
         <input type='number'
-          name="amount"
           style={{width:"50px"}}
+          name="amount"
           ref={register({required: true})}
-          value={amount}
-          onChange={handleAmount}
         />
 
         <select name="freq" ref={register}>

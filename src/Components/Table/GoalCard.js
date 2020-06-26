@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
 import AddHabitForm from './AddHabitForm'
 import { GoalCardContainer } from '../../styles'
+import { goalListState } from '../../utils/store'
 
 
 const goals = `http://localhost:8000/api/goals`
@@ -49,12 +51,15 @@ const softHabitList = [{
 
 
 const GoalCard = ({props}) => {
-  const { id, goal, ongoing, start_date, goal_date } = props
+  const { id, goal, ongoing, /*start_date, goal_date */} = props
   const [habitList, setHabitList] = useState([softHabitList])
+  const [goalList, setGoalList] = useRecoilState(goalListState)
+
   const [habitFormOpen, setHabitFormOpen] = useState(false)
 
 
   useEffect(() => {
+    console.log(`habit useEffect for goal ${id}`)
     axios.get(habits)
     .then(res => { setHabitList(res.data) })
     .catch(err => { console.log(err) })
@@ -63,8 +68,10 @@ const GoalCard = ({props}) => {
   const deleteGoal = () => {
     axios.delete(goals + `/${id}`)
     .then(res => {
-      //reload goal list
       console.log(res.data)
+      //reload goal list
+      setGoalList(goalList.filter(g => g.id !== id))
+      console.log(goalList)
     })
     .catch(err => { console.log(err) })
   }

@@ -80,7 +80,7 @@ export const AddNewBTN = styled.button`
   background: blue;
   border-radius: 1em;
 `
-export const AddFormContainer = styled.div`
+export const AddGoalFormContainer = styled.div`
   button {
     margin-left:auto;
   }
