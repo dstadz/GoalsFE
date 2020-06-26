@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import AddHabitForm from './AddHabitForm'
 import { GoalCardContainer } from '../../styles'
 
 
@@ -49,33 +50,26 @@ const softHabitList = [{
 
 const GoalCard = ({props}) => {
   const { id, goal, ongoing, start_date, goal_date } = props
-  const [habitList, setHabitList]  = useState(habits)
+  const [habitList, setHabitList] = useState([softHabitList])
+  const [habitFormOpen, setHabitFormOpen] = useState(false)
 
 
   useEffect(() => {
-    axios.get(goals)
-    .then(res => { console.log(res.data) })
+    axios.get(habits)
+    .then(res => { setHabitList(res.data) })
     .catch(err => { console.log(err) })
-  }, [habitList])
-
-  //console.log(habitList)
-
-  const handleAddHabit = e => {
-    e.preventDefault();
-    console.log(goal)
-    setHabitList(habitList)
-
-
-  }
+  }, [habitList.length])
 
   const deleteGoal = () => {
-    console.log(`delete goal ${id}`)
-    console.log(goals + `/${id}`)
     axios.delete(goals + `/${id}`)
-    .then(res => { console.log(res.data) })
+    .then(res => {
+      //reload goal list
+      console.log(res.data)
+    })
     .catch(err => { console.log(err) })
   }
 
+  // console.log(habitList, id)
   return (
     <GoalCardContainer>
       <h4>{goal}</h4>
@@ -95,11 +89,10 @@ const GoalCard = ({props}) => {
             {l.habit}</li>
         )}
       </ul>
-
-      <button
-        onClick={handleAddHabit}
-      > Add new habit </button>
-
+      { habitFormOpen
+        ? <AddHabitForm/>
+        : <button onClick={() => setHabitFormOpen(!habitFormOpen)} > Add new habit </button>
+      }
     </GoalCardContainer>
   )
 }

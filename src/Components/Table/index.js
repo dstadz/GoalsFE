@@ -14,7 +14,7 @@ const TableThing = () => {
       axios.get(backend)
       .then(res => { setGoalList(res.data.data) })
       .catch(err => { console.log(err) })
-    }, [goalList])
+    }, [goalList.length])
 
 
 
