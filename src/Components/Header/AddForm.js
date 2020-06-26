@@ -13,8 +13,6 @@ const yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
 
-const backend = `http://localhost:8000/api/goals/`
-const user_id = `1`
 
 const AddForm = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
@@ -22,6 +20,8 @@ const AddForm = () => {
   const [targetDate, setTargetDate] = useState(today)
   const { register, handleSubmit, errors } = useForm()
 
+  const backend = `http://localhost:8000/api/${activeForm}s`
+  const user_id = `1`
 
   if ( Object.keys(errors).length ) console.log(errors)
 
@@ -29,11 +29,8 @@ const AddForm = () => {
   const handleTargetDateChange = e => { setTargetDate(e.target.value) }
   const onSubmit = data => {
     data = {...data, user_id,completed:false}
-    console.log(data);
     axios.post(backend,data)
-    .then(res => {
-      console.log(res.data)
-    })
+    .then(res => { console.log(res.data) })
     .catch(err => { console.log(err) })
     setActiveForm(null)
   }
@@ -41,14 +38,13 @@ const AddForm = () => {
 
   return (
     <AddFormContainer>
-      <button onClick={()=> setActiveForm(null)} >X</button>
 
       <h5>Add a New {activeForm}</h5>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> New {activeForm}:</label>
         <input type="text"
-          placeholder="Goal"
+          placeholder={activeForm}
           name="goal"
           ref={register({required: true, maxLength: 80})}
           value={nextGoal}
