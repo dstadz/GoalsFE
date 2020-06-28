@@ -12,7 +12,7 @@ axios.get(goals)
 
 export const activeFormState = atom({
   key: 'activeFormState',
-  default: 'goal'
+  default: null
 });
 
 export const goalListState = atom({
