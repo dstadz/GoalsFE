@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
 
-const AddHabitForm = () => {
+const AddHabitForm = ({setHabitFormOpen}) => {
   const { register, handleSubmit, errors } = useForm()
 
   const backend = `http://localhost:8000/api/habits`
@@ -32,6 +32,7 @@ const AddHabitForm = () => {
     <div style={{background:'blue'}}>
 
       <h5>Add a New Habit</h5>
+      <button onClick={() => setHabitFormOpen(false)}> X </button>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> New Habit:</label>
