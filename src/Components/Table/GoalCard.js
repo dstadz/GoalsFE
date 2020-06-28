@@ -3,12 +3,13 @@ import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
 import AddHabitForm from './AddHabitForm'
+import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
 import { goalListState } from '../../utils/store'
 
 
 const goals = `http://localhost:8000/api/goals`
-const habits = `http://localhost:8000/api/habits`
+const habitListURL = `http://localhost:8000/api/habitList`
 
 
 const softHabitList = [{
@@ -59,9 +60,8 @@ const GoalCard = ({props}) => {
 
 
   useEffect(() => {
-    console.log(`habit useEffect for goal ${id}`)
-    axios.get(habits)
-    .then(res => { setHabitList(res.data) })
+    axios.get(habitListURL+`/${id}`)
+    .then(res => { setHabitList(res.data.data) })
     .catch(err => { console.log(err) })
   }, [habitList.length])
 
@@ -76,29 +76,18 @@ const GoalCard = ({props}) => {
     .catch(err => { console.log(err) })
   }
 
-  // console.log(habitList, id)
   return (
     <GoalCardContainer>
-      <h4>{goal}</h4>
+      <h4>{goal} #{id}</h4>
       <button onClick={()=> deleteGoal()} >X</button>
 
       {/*<p>{start_date} => {goal_date}</p> */}
       <ul>
-        {softHabitList
-          .filter(h => h.goal_id === id)
-          .map(l =>
-            <li key={l.id}>
-              <input
-                type="checkbox"
-                value={ongoing}
-                onClick={() => console.log('done')}
-              />
-            {l.habit}</li>
-        )}
+        {habitList.map((h,i) => <HabitSlot props={h} key={i} /> )}
       </ul>
       { habitFormOpen
-        ? <AddHabitForm/>
-        : <button onClick={() => setHabitFormOpen(!habitFormOpen)} > Add new habit </button>
+        ? <AddHabitForm setHabitFormOpen={setHabitFormOpen}/>
+        : <button onClick={() => setHabitFormOpen(true)} > Add new habit </button>
       }
     </GoalCardContainer>
   )
