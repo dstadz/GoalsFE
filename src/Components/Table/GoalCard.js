@@ -78,8 +78,8 @@ const GoalCard = ({props}) => {
 
   return (
     <GoalCardContainer>
-      <h4>{goal} #{id}</h4>
-      <button onClick={()=> deleteGoal()} >X</button>
+    <h4>{goal} #{id}</h4>
+    <button onClick={()=> deleteGoal()} >X</button>
 
       {/*<p>{start_date} => {goal_date}</p> */}
       <ul>

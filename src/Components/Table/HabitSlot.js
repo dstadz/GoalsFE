@@ -1,21 +1,25 @@
 import React from 'react'
 
+import { HabitSlotContainer } from '../../styles'
+
 const HabitSlot = ({props}) => {
   const { id, habit, amount, freq } = props
-  console.log(habit)
   return (
-    <li>
-      <input
-        type="checkbox"
+    <HabitSlotContainer>
+      <input type="checkbox"
         onClick={() => console.log('done')}
       />
 
       {habit}
 
-      <button
-      onClick={()=> //remove habit from list, reload card w/o reloading whole page
+      <button onClick={()=>
+        console.log(`//remove habit from list, reload card w/o reloading whole page`)
       }>X</button>
-    </li>
+
+      <br />
+
+      { /*pulled from habithistory */} of {amount} done this {freq}
+    </HabitSlotContainer>
   )
 }
 

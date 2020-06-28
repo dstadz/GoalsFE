@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import HabitSlot from '../Components/Table/HabitSlot'
 
 export const AppBody = styled.div `
   display: flex;
@@ -97,5 +98,17 @@ export const AddGoalFormContainer = styled.div`
 
 export const GoalCardContainer = styled.div`
   background: red;
+  h4{
+    display: inline;
+  }
 
+  ul{
+    padding-left: 0
+  }
+
+`
+
+export const HabitSlotContainer = styled.li`
+  background: purple;
+  list-style:none;
 `
