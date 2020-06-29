@@ -5,12 +5,11 @@ import axios from 'axios'
 import AddHabitForm from './AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-import { goalListState } from '../../utils/store'
+import { goalListState, habitListState } from '../../utils/store'
 
 
 const goals = `http://localhost:8000/api/goals`
-const habitListURL = `http://localhost:8000/api/habitList`
-
+const habitListURL = `http://localhost:8000/api/habits`
 
 const softHabitList = [{
   id: 1,
@@ -52,29 +51,38 @@ const softHabitList = [{
 
 
 const GoalCard = ({props}) => {
-  const { id, goal, ongoing, /*start_date, goal_date */} = props
-  const [habitList, setHabitList] = useState([softHabitList])
+  const { id, goal, /*ongoing, start_date, goal_date */} = props
+  const [habitList, setHabitList] = useState([])
   const [goalList, setGoalList] = useRecoilState(goalListState)
 
   const [habitFormOpen, setHabitFormOpen] = useState(false)
 
 
-  useEffect(() => {
+
+
+    useEffect(() => {
+      console.log('goal useEffect', id)
     axios.get(habitListURL+`/${id}`)
-    .then(res => { setHabitList(res.data.data) })
-    .catch(err => { console.log(err) })
-  }, [habitList.length])
+      .then(res => { setHabitList(res.data.data) 
+      console.log(habitList)})
+      .catch(err => { console.log(err) })
+    }, [habitList.length, setHabitList])
+
+  // useEffect(() => {
+  //   axios.get(habitListURL+`/${id}`)
+  //   .then(res => { setHabitList(res.data.data) })
+  //   .catch(err => { console.log(err) })
+  // }, [habitList.length])
 
   const deleteGoal = () => {
     axios.delete(goals + `/${id}`)
-    .then(res => {
-      console.log(res.data)
-      //reload goal list
-      setGoalList(goalList.filter(g => g.id !== id))
-      console.log(goalList)
-    })
+    .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
     .catch(err => { console.log(err) })
   }
+
+
+  console.log('habit', id, habitList)
+  // console.log('habits', id, habitList)
 
   return (
     <GoalCardContainer>
@@ -83,8 +91,9 @@ const GoalCard = ({props}) => {
 
       {/*<p>{start_date} => {goal_date}</p> */}
       <ul>
-        {habitList.map((h,i) => <HabitSlot props={h} key={i} /> )}
+        { habitList.map((h,i) => <HabitSlot props={h} key={i} /> )  }
       </ul>
+
       { habitFormOpen
         ? <AddHabitForm setHabitFormOpen={setHabitFormOpen}/>
         : <button onClick={() => setHabitFormOpen(true)} > Add new habit </button>

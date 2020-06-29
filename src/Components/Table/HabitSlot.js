@@ -4,12 +4,19 @@ import { HabitSlotContainer } from '../../styles'
 
 const HabitSlot = ({props}) => {
   const { id, habit, amount, freq } = props
+  console.log('habit:',id)
+
+
+
+
+
+
   return (
     <HabitSlotContainer>
       <input type="checkbox"
         onClick={() => console.log('done')}
       />
-
+      {id}
       {habit}
 
       <button onClick={()=>
@@ -18,7 +25,7 @@ const HabitSlot = ({props}) => {
 
       <br />
 
-      { /*pulled from habithistory */} of {amount} done this {freq}
+      { /*pulled from habithistory */0} of {amount} done this {freq}
     </HabitSlotContainer>
   )
 }

@@ -18,7 +18,7 @@ const TableThing = () => {
       axios.get(backend)
       .then(res => { setGoalList(res.data.data) })
       .catch(err => { console.log(err) })
-    }, [goalList.length])
+    }, [goalList.length, setGoalList])
 
   return ( <div>
     {goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
