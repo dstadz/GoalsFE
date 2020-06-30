@@ -4,20 +4,13 @@ import { HabitSlotContainer } from '../../styles'
 
 const HabitSlot = ({props}) => {
   const { id, habit, amount, freq } = props
-  console.log('habit:',id)
-
-
-
-
-
 
   return (
     <HabitSlotContainer>
       <input type="checkbox"
         onClick={() => console.log('done')}
       />
-      {id}
-      {habit}
+      {id} {habit}
 
       <button onClick={()=>
         console.log(`//remove habit from list, reload card w/o reloading whole page`)
