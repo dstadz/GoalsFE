@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import HabitSlot from '../Components/Table/HabitSlot'
 
 export const AppBody = styled.div `
   display: flex;

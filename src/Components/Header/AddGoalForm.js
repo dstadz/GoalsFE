@@ -23,20 +23,24 @@ const AddGoalForm = () => {
 
 
 
-  const backend = `http://localhost:8000/api/${activeForm}s`
+  const backend = `http://localhost:8000/api/goals`
   const user_id = `1`
 
   if ( Object.keys(errors).length ) console.log(errors)
 
   const handleGoalChange = e => { setNextGoal(e.target.value) }
   const handleTargetDateChange = e => { setTargetDate(e.target.value) }
+
+
   const onSubmit = data => {
     data = {...data, user_id,completed:false}
     axios.post(backend,data)
-    .then(res => { console.log(res.data) })
+    .then(res => {
+      console.log(res.data)
+      setGoalList([...goalList, data])
+      setActiveForm(null)
+    })
     .catch(err => { console.log(err) })
-    setActiveForm(null)
-    setGoalList([...goalList, data])
   }
 
 
