@@ -4,11 +4,10 @@ import { useForm } from 'react-hook-form'
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
 
-const AddHabitForm = ({setHabitFormOpen}) => {
+const AddHabitForm = ({setHabitFormOpen, goal_id}) => {
   const { register, handleSubmit, errors } = useForm()
 
   const backend = `http://localhost:8000/api/habits`
-  const goal_id = `1`
 
 
 
@@ -24,6 +23,7 @@ const AddHabitForm = ({setHabitFormOpen}) => {
       console.log(res.data.data)
     })
     .catch(err => { console.log(err) })
+    console.log('submit done')
   }
 
 

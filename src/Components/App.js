@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SideBar from './SideBar/'
+// import SideBar from './SideBar/'
 import LandingPage from './LandingPage'
 import Header from './Header/'
 import TableThing from './Table/'
@@ -15,8 +15,10 @@ const App = ()  => {
 
   return (
     <AppBody>
-      <SideBar/>
-      <div>
+    {/*}
+    <SideBar/>
+    */}
+    <div>
         <Header />
         <TableThing />
       </div>

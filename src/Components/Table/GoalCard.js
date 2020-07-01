@@ -5,50 +5,38 @@ import axios from 'axios'
 import AddHabitForm from './AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-import { goalListState, habitListState } from '../../utils/store'
+import { goalListState, /*habitListState*/ } from '../../utils/store'
 
 
 const goals = `http://localhost:8000/api/goals`
-const habits = `http://localhost:8000/api/habits/`
+const habits = `http://localhost:8000/habits/`
 
 const GoalCard = ({props}) => {
   const { id, goal, /*ongoing, start_date, goal_date */} = props
-  const [habitList, setHabitList] = useState([])
-  const [url, setUrl] = useState(habits)
-  const [open, setOpen] = useState(true)
-
-  const [goalList, setGoalList] = useRecoilState(goalListState)
-  // const [habitList, setHabitList] = useRecoilState(habitListState)
-  
+  const [open, setOpen] = useState(false)
   const [habitFormOpen, setHabitFormOpen] = useState(false)
-  
-  // const habitListURL = `http://localhost:8000/api/habits/18`
+  const [goalList, setGoalList] = useRecoilState(goalListState)
+  const url = habits+id
+  const [habitList, setHabitList] = useState([])
 
-  // console.log(habitList)
-  
-  useEffect(() => { setUrl(url+id) }, [])
+  const config = { headers: { access_control_allow_origin: '*' } }
 
-
-
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    // console.log('goal:', id)
-    axios.get(url)
-    .then(res => { setHabitList(res.data.data)
-    // console.log('then',habitList)
-  })
-    .catch(err => { console.log(err) })
-    // console.log('finally', habitList)
-  }, [habitList.length, setHabitList])
-
-
-  // setHabitList( habitList.filter(h => h.goal_id === id))
+    (async () => {
+      await axios.get(url, config)
+      .then(res => { setHabitList(res.data.data) })
+      .catch(err => { console.log(err) })
+    })();
+  }, [open])
 
   const deleteGoal = () => {
     axios.delete(goals + `/${id}`)
     .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
     .catch(err => { console.log(err) })
   }
+
 
   return (
     <GoalCardContainer>
@@ -57,17 +45,20 @@ const GoalCard = ({props}) => {
 
       {/*<p>{start_date} => {goal_date}</p> */}
       <div>
+
+        {habitFormOpen
+          ? <AddHabitForm setHabitFormOpen={setHabitFormOpen} goal_id={id} />
+          : <button onClick={() => setHabitFormOpen(true)} > Add new habit </button>
+        }
+
         <button onClick={()=> setOpen(!open)}
         style={{background:"none", border:'none'}} > { open ? '🔺' : '🔻' } </button>
-        {open && <ul>
-          { habitList.map((h,i) => <HabitSlot props={h} key={i} /> )}
+
+        {open &&
+        <ul>
+          { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )}
         </ul>}
       </div>
-
-      { habitFormOpen
-        ? <AddHabitForm setHabitFormOpen={setHabitFormOpen}/>
-        : <button onClick={() => setHabitFormOpen(true)} > Add new habit </button>
-      }
     </GoalCardContainer>
   )
 }
