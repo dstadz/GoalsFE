@@ -9,6 +9,7 @@ import { GoalCardContainer } from '../../styles'
 import EditGoalForm from './EditGoalForm'
 
 // const goals = `http://localhost:8000/api/goals`
+const config = { headers: { access_control_allow_origin: '*' } }
 const habits = `http://localhost:8000/habits/`
 
 const GoalCard = ({props}) => {
@@ -17,10 +18,9 @@ const GoalCard = ({props}) => {
   const [listOpen, setListOpen] = useState(false)
 
 
-  
+
   const [habitList, setHabitList] = useState([])
 
-  const config = { headers: { access_control_allow_origin: '*' } }
 
   //get specific habits for goal
   useEffect(() => {
@@ -31,7 +31,7 @@ const GoalCard = ({props}) => {
     })()
   }, [form, listOpen])
 
-  const deleteGoal = () => {
+  const handleSwitch = (form) => {
     // axios.delete(goals + `/${id}`)
     // .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
     // .catch(err => { console.log(err) })
@@ -40,6 +40,7 @@ const GoalCard = ({props}) => {
 
 
   const renderSwitch = form => {
+    console.log(form)
     switch(form) {
       case 'foo':
         return 'bar'
@@ -48,18 +49,11 @@ const GoalCard = ({props}) => {
       case 'edit':
         return <EditGoalForm setForm={setForm} goal={goal} id={id} target_date={target_date}/>
       case 'get':
-        return(
-          <ul>
-          { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )}
-          </ul>
-          )
+        return <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
       default:
         return;
     }
   }
-  
-
-  
 
 
   return (
@@ -76,12 +70,7 @@ const GoalCard = ({props}) => {
       </div>
 
       {/*<p>{start_date} => {target_date}</p> */}
-      <div>
       {renderSwitch(form)}
-
-
-
-      </div>
     </GoalCardContainer>
   )
 }
