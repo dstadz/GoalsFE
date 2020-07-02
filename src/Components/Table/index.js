@@ -21,6 +21,7 @@ const TableThing = () => {
       .catch(err => { console.log(err) })
     }, [goalList.length, setGoalList])
 
+
   return ( <div>
     {goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
   </div> )
