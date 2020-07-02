@@ -3,7 +3,7 @@ import React from 'react'
 import { HabitSlotContainer } from '../../styles'
 
 const HabitSlot = ({props}) => {
-  const { id, habit, amount, freq } = props
+  const { id, habit, amount, freq, goal_id } = props
 
   return (
     <HabitSlotContainer>
@@ -16,6 +16,10 @@ const HabitSlot = ({props}) => {
         console.log(`//remove habit from list, reload card w/o reloading whole page`)
       }>X</button>
 
+
+      {goal_id}
+      
+      
       <br />
 
       { /*pulled from habithistory */0} of {amount} done this {freq}

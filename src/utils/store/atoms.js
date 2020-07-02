@@ -9,7 +9,7 @@ axios.get(goals)
 .then(res => { goalList = res.data.data })
 .catch(err => { console.log(err) })
 
-// const habits = `http://localhost:8000/api/habits`
+// const habits = `http://localhost:8000/api/habits/1`
 // let habitList = []
 // axios.get(habits)
 // .then(res => { habitList = res.data.data })

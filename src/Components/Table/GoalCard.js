@@ -5,91 +5,91 @@ import axios from 'axios'
 import AddHabitForm from './AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-import { goalListState, habitListState } from '../../utils/store'
-
+import { goalListState, /*habitListState*/ } from '../../utils/store'
+import EditGoalForm from './EditGoalForm'
 
 const goals = `http://localhost:8000/api/goals`
-const habitListURL = `http://localhost:8000/api/habits`
-
-// const softHabitList = [{
-//   id: 1,
-//   goal_id: 1,
-//   habit: 'Apply to jobs',
-//   frequency_num: 5,
-//   frequncy_den: 'weekly'
-// },{
-//   id: 2,
-//   goal_id: 1,
-//   habit: 'work on project',
-//   frequency_num: 1,
-//   frequncy_den: 'daily'
-// },{
-//   id: 3,
-//   goal_id: 2,
-//   habit: 'do push-ups',
-//   frequency_num: 5,
-//   frequncy_den: 'weekly'
-// },{
-//   id: 4,
-//   goal_id: 2,
-//   habit: 'go for a run',
-//   frequency_num: 1,
-//   frequncy_den: 'weekly'
-// },{
-//   id: 5,
-//   goal_id: 3,
-//   habit: 'live a life',
-//   frequency_num: 1,
-//   frequncy_den: 'daily'
-// },{
-//   id: 6,
-//   goal_id: 3,
-//   habit: 'use this app',
-//   frequency_num: 1,
-//   frequncy_den: 'weekly'
-// }]
-
+const habits = `http://localhost:8000/habits/`
 
 const GoalCard = ({props}) => {
   const { id, goal, /*ongoing, start_date, goal_date */} = props
+  const [form, setForm] = useState('')
+  const [listOpen, setListOpen] = useState(false)
+
+
+
+
+
+
+  
   const [habitList, setHabitList] = useState([])
-  const [goalList, setGoalList] = useRecoilState(goalListState)
 
-  const [habitFormOpen, setHabitFormOpen] = useState(false)
+  const config = { headers: { access_control_allow_origin: '*' } }
 
-
-
-
+  //get specific habits for goal
   useEffect(() => {
-    console.log('goal:', id)
-  axios.get(habitListURL+`/${id}`)
-    .then(res => { setHabitList(res.data.data)
-    console.log(habitList)})
-    .catch(err => { console.log(err) })
-  }, [habitList.length, setHabitList])
-
-
+    listOpen && !habitList.length && (async () => {
+      await axios.get(habits+id, config)
+      .then(res => { setHabitList(res.data.data) })
+      .catch(err => { console.log(err) })
+    })()
+  }, [listOpen])
 
   const deleteGoal = () => {
-    axios.delete(goals + `/${id}`)
-    .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
-    .catch(err => { console.log(err) })
+    // axios.delete(goals + `/${id}`)
+    // .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
+    // .catch(err => { console.log(err) })
   }
+
+  const editGoal = () => {
+
+  }
+
+
+
+  const renderSwitch = form => {
+    switch(form) {
+      case 'foo':
+        return 'bar';
+      case 'add':
+        return <AddHabitForm setForm={setForm} goal_id={id} />
+      case 'edit':
+        return <EditGoalForm setForm={setForm} goal_id={id} />
+      case 'get':
+        return(
+          <ul>
+          { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )}
+          </ul>
+          )
+      default:
+        return;
+    }
+  }
+  
+
+  
+
 
   return (
     <GoalCardContainer>
     <h4>{goal} #{id}</h4>
-    <button onClick={()=> deleteGoal()} >X</button>
+      <div>
+      <button onClick={() => setForm('delete')} >X</button>
+      <button onClick={() => setForm('edit')} >Edit</button>
+      <button onClick={() => setForm('add')}> Add new habit </button>
+      <button onClick={() => {
+        setListOpen(true)
+        setForm('get')}}
+        > See Habits </button>
+      </div>
 
       {/*<p>{start_date} => {goal_date}</p> */}
-      <ul>
-        { habitList.map((h,i) => <HabitSlot props={h} key={i} /> )  }
-      </ul>
+      <div>
+      {renderSwitch(form)}
 
-      { habitFormOpen
-        ? <AddHabitForm setHabitFormOpen={setHabitFormOpen}/>
-        : <button onClick={() => setHabitFormOpen(true)} > Add new habit </button>
-      }
+
+
+      </div>
     </GoalCardContainer>
   )
 }
