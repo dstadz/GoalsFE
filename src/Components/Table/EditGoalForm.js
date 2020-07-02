@@ -3,25 +3,35 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
-const backend = `http://localhost:8000/habits`
+const backend = `http://localhost:8000/api/goals`
 
-const AddHabitForm = ({setForm, goal_id}) => {
+const EditGoalForm = ({setForm, goal_id}) => {
   const { register, handleSubmit, errors } = useForm()
+
+
 
   if ( Object.keys(errors).length ) console.log(errors)
 
+
   const onSubmit = data => {
     data = {...data, goal_id}
-    axios.post(backend,{...data, goal_id})
-    .then(res => { console.log(res.data.data) })
+    console.log(data)
+    axios.post(backend,data)
+    .then(res => {
+      //reload goal list
+      console.log(res.data.data)
+    })
     .catch(err => { console.log(err) })
+    console.log('submit done')
   }
 
-  return (
-    <div style={{background:'green'}}>
 
-      <h5>Add a New Habit</h5>
-      <button onClick={() => setForm(false)}> X </button>
+
+  return (
+    <div style={{background:'blue'}}>
+
+      <h5>Edit Goal</h5>
+      <button onClick={() => setForm('')}> X </button>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> New Habit:</label>
@@ -52,4 +62,4 @@ const AddHabitForm = ({setForm, goal_id}) => {
   )
 }
 
-export default AddHabitForm
+export default EditGoalForm

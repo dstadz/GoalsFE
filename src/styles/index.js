@@ -108,6 +108,6 @@ export const GoalCardContainer = styled.div`
 `
 
 export const HabitSlotContainer = styled.li`
-  background: purple;
+  background: orange;
   list-style:none;
 `
