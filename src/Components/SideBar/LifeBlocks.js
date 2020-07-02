@@ -2,7 +2,7 @@ import React from 'react'
 import { MonthBox, YearRow, LifeContainer } from '../../styles'
 
 
-const birthYear = 1994 //get from api
+const birthYear = 2015 //get from api
 const birthMonth = 7 //get from api
 
 const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','August','September','October','November', 'December']

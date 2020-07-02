@@ -31,16 +31,8 @@ const GoalCard = ({props}) => {
     })()
   }, [form, listOpen])
 
-  const handleSwitch = (form) => {
-    // axios.delete(goals + `/${id}`)
-    // .then(() => { setGoalList(goalList.filter(g => g.id !== id)) })
-    // .catch(err => { console.log(err) })
-  }
-
-
 
   const renderSwitch = form => {
-    console.log(form)
     switch(form) {
       case 'foo':
         return 'bar'
@@ -58,7 +50,7 @@ const GoalCard = ({props}) => {
 
   return (
     <GoalCardContainer>
-    <h4>{goal} #{id}</h4>
+    <h4>{goal} {start_date}</h4>
       <div>
       <button onClick={() => setForm('delete')} >X</button>
       <button onClick={() => setForm('edit')} >Edit</button>
