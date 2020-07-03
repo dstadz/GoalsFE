@@ -7,7 +7,7 @@ import { userState } from '../utils/store'
 
 
 import SideBar from './SideBar/'
-import LandingPage from './LandingPage'
+import LandingPage from './LandingPage/'
 import Header from './Header/'
 import TableThing from './Table/'
 
@@ -31,7 +31,7 @@ const App = ()  => {
 
 
 
-  const signedIn = true
+  const signedIn = false
   if (!signedIn ) return <LandingPage />
 
   return (
