@@ -5,6 +5,9 @@ import { FooterContainer } from './styles'
 const Footer = () => {
   return (
     <FooterContainer>
+      <div>
+      Join dozens of people who have figured out what they want in life with Goals
+      </div>
       <ul>
         <ol>
           <li> Features </li>

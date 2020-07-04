@@ -10,7 +10,7 @@ import {
   Hero,
   ReviewBox,
   Section,
-  LetsDoThis,
+  LetsDoThisBTN,
 } from './styles'
 
 
@@ -38,8 +38,9 @@ const peopleList = ['creatives','developers','students','small businesses','entr
 // todoist.com
 const LandingPage = () => {
   const [time, setTime] = useState(timeList[0])
+  const [modalUp, setModalUp] = useState(true)
 
-
+  console.log(modalUp)
   return (
     <LandingPageContainer>
       <Nav>
@@ -54,12 +55,14 @@ const LandingPage = () => {
           <li>For Teams</li>
           <li>Resources</li>
         </ul>
-        <SignInUp />
+        <button onClick={()=> setModalUp(!modalUp)}> Sign in/up</button>
       </Nav>
+
+      { modalUp && <SignInUp />}
 
       <Hero>
         <h1>Accomplish all your goals in life</h1>
-        <LetsDoThis/>
+        <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
         <img src={randomArt} />
 
         <h2> Work towards becoming the ideal You </h2>
@@ -83,9 +86,8 @@ const LandingPage = () => {
         <div>
           <p>
             Goals has helped me and
-
           </p>
-          <h4> a bunch of other people do finish a bunch of goals</h4>
+          <h4> a bunch of other people do finish a lot of goals</h4>
           <div>nile, fakebook, wetwerk mickey</div>
         </div>
         <img src={testimonialPic} />
@@ -122,7 +124,7 @@ const LandingPage = () => {
         <img src={finalPic} />
         <div>
           <h2> Get your life together with Goals</h2>
-          <LetsDoThis/>
+          <LetsDoThisBTN/>
         </div>
       </Section>
 
