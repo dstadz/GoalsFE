@@ -141,5 +141,11 @@ export const SignInUpModal = styled.div`
     flex-direction: column;
     justify-content:center;
     align-items:center;
-  r}
+
+
+    input[type=submit] {
+      background: orange;
+      width:100%;
+    }
+  }
 `
