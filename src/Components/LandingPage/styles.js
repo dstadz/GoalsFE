@@ -97,7 +97,7 @@ export const Section = styled.section`
   }
 `
 
-export const LetsDoThis = styled.button`
+export const LetsDoThisBTN = styled.button`
   background: red;
   :before{ content:"Lets Do This" }
 
@@ -107,6 +107,12 @@ export const LetsDoThis = styled.button`
 `
 
 export const FooterContainer = styled.footer`
+  display:flex;
+  justify-content: space-between;
+  div{
+    width:33%;
+  }
+
   ul{
     display:flex;
     border: 1px solid green;
@@ -115,4 +121,25 @@ export const FooterContainer = styled.footer`
   ol{
     list-style: none;
   }
+`
+
+export const SignInUpModal = styled.div`
+  background: purple;
+  position: fixed;
+  z-index: 2;
+  top: 10rem;
+  width:32rem;
+  height: 18rem;
+
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+
+  form{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+  r}
 `
