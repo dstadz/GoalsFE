@@ -40,7 +40,6 @@ const LandingPage = () => {
   const [time, setTime] = useState(timeList[0])
   const [modalUp, setModalUp] = useState(true)
 
-  console.log(modalUp)
   return (
     <LandingPageContainer>
       <Nav>
@@ -58,7 +57,7 @@ const LandingPage = () => {
         <button onClick={()=> setModalUp(!modalUp)}> Sign in/up</button>
       </Nav>
 
-      { modalUp && <SignInUp />}
+      { modalUp && <SignInUp closeModal={setModalUp}/>}
 
       <Hero>
         <h1>Accomplish all your goals in life</h1>

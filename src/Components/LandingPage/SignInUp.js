@@ -16,8 +16,10 @@ import { SignInUpModal } from './styles'
 
 
 
-const SignInUp = () => {
+const SignInUp = ({closeModal}) => {
+
   const [signIn, setSignIn] = useState(true)
+  const [passVis, setPassVis] = useState(true)
   const [keepLoggedIn, setKeepLoggedIn] = useState(true)
   const { register, handleSubmit, errors } = useForm()
 
@@ -30,9 +32,12 @@ const SignInUp = () => {
   //   .catch(err => { console.log(err) })
   }
 
-  if (signIn) return (
+  return (
     <SignInUpModal>
-      Log In
+    <div>
+      {signIn ? 'Log In' : 'Sign Up'}
+      <button onClick={()=>closeModal(false)} >X</button>
+    </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Email</label>
         <input type="text"
@@ -42,12 +47,13 @@ const SignInUp = () => {
         />
 
 
-        <label>name</label>
-        <input type="text"
-          placeholder="Name"
-          name="name"
+        <label>Password</label>
+        <input type={passVis ? 'password' : 'text' }
+          value="Password"
+          name="password"
           ref={register({required: true, maxLength: 80})}
-        />
+          />
+          <span onClick={()=>setPassVis(!passVis)}>{passVis ? '🕶️' : '👓' }</span>
 
 
         <div>
@@ -63,10 +69,15 @@ const SignInUp = () => {
         <label> <input type="checkbox"
         value={keepLoggedIn}
         onClick={()=> setKeepLoggedIn(!keepLoggedIn)}
-        />Keep me logged in </label>
+        /> Keep me logged in </label>
+
+        <span>I forgot my password</span>
       </form>
 
-
+      {signIn
+        ? <p>Don't have an account? <span onClick={()=>setSignIn(!signIn)}>Sign Up</span></p>
+        : <p> Already have an account? <span onClick={()=>setSignIn(!signIn)}>Sign In</span></p>
+      }
     </SignInUpModal>
   )
 }
