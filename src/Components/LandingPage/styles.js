@@ -46,13 +46,14 @@ export const Hero = styled.div`
 
 export const ReviewBox =styled.section`
   background: yellow;
+  width:99vw;
 
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items:center;
 
-  margin: 1rem;
+  margin: 1rem 0;
 
   ul{
     display: flex;
@@ -124,28 +125,76 @@ export const FooterContainer = styled.footer`
 `
 
 export const SignInUpModal = styled.div`
-  background: purple;
+  border: 2px solid purple;
+  border-radius: 1rem;
+  background: white;
   position: fixed;
   z-index: 2;
   top: 10rem;
-  width:32rem;
-  height: 18rem;
+  width: 24rem;
+  padding:2rem;
 
   display:flex;
   flex-direction: column;
   justify-content:center;
   align-items:center;
 
+  .close-Button{
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    margin-left: auto;
+  }
+  
+  h3{
+    margin-bottom: 0
+  }
+
   form{
+    width:100%;
     display:flex;
     flex-direction: column;
     justify-content:center;
     align-items:center;
 
+    div{
+      display:flex;
+      flex-direction: row;
+      width:100%;
+      border: 1px solid blue;
+      border-radius: 1rem;
+    }
+
+    label{
+      width:100%;
+      margin-top: 1rem;
+    }
+
+    input {
+      background:none;
+      border:none;
+      height:1.25rem;
+      width:100%;
+    }
 
     input[type=submit] {
       background: orange;
-      width:100%;
+    }
+
+    input[type=checkbox] {
+      width: 20px;
     }
   }
+`
+
+export const ButtonBar = styled.ul`
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  width:100%;
+  justify-content: space-around ;
+  padding: 0;
+  list-style: none;
 `
