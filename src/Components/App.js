@@ -26,7 +26,7 @@ const App = ()  => {
     await axios.get(userUrl)
     .then(res => {  setUser(res.data.data) })
     .catch(err => { console.log(err) })
-  })() }, [])
+  })() }, [setUser])
 
 
 

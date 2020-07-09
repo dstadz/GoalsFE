@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
-import { SignInUpModal } from './styles'
+import { SignInUpModal, ButtonBar } from './styles'
 
 
 
@@ -20,7 +20,8 @@ const SignInUp = ({closeModal}) => {
 
   const [signIn, setSignIn] = useState(true)
   const [passVis, setPassVis] = useState(true)
-  const [keepLoggedIn, setKeepLoggedIn] = useState(true)
+  const [forgotPass, setforgotPass] = useState(false)
+  const [keepLoggedIn, setKeepLoggedIn] = useState(false)
   const { register, handleSubmit, errors } = useForm()
 
   if ( Object.keys(errors).length ) console.log(errors)
@@ -33,50 +34,79 @@ const SignInUp = ({closeModal}) => {
   }
 
   return (
-    <SignInUpModal>
-    <div>
-      {signIn ? 'Log In' : 'Sign Up'}
-      <button onClick={()=>closeModal(false)} >X</button>
-    </div>
+    forgotPass
+    ?<SignInUpModal>
+      <button className="close-Button" onClick={()=>closeModal(false)} >X</button>
+      <h3> Forget Password</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Email</label>
-        <input type="text"
-          placeholder="email"
-          name="email"
-          ref={register({required: true, maxLength: 80})}
-        />
-
-
-        <label>Password</label>
-        <input type={passVis ? 'password' : 'text' }
-          value="Password"
-          name="password"
-          ref={register({required: true, maxLength: 80})}
+          <input type="text"
+            placeholder="email"
+            name="email"
+            ref={register({required: true, maxLength: 80})}
           />
-          <span onClick={()=>setPassVis(!passVis)}>{passVis ? '🕶️' : '👓' }</span>
+      </form>
+      <p>Miraculously remembered your password? <span onClick={()=> setforgotPass(false)}>signIn</span></p>
+    </SignInUpModal>
 
 
+    :<SignInUpModal>
+      <button className="close-Button" onClick={()=>closeModal(false)} >X</button>
+      <h3> {signIn ?'Log In' : 'Sign Up'} </h3>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+        <label> Email </label>
         <div>
-          <button> Google </button>
-          <button> FaceBook </button>
-          <button> Apple </button>
+          <input type="text"
+            placeholder="email"
+            name="email"
+            ref={register({required: true, maxLength: 80})}
+          />
         </div>
 
-        <input type="submit"
-          value="Log In"/>
+        <label> Password </label>
+        <div>
+          <input type={passVis ? 'password' : 'text' }
+            placeholder="password"
+            name="password"
+            ref={register({required: true, maxLength: 80})}
+          />
+          <span onClick={()=>setPassVis(!passVis)}>{passVis ? '🕶️' : '👓' }</span>
+        </div>
 
 
-        <label> <input type="checkbox"
-        value={keepLoggedIn}
-        onClick={()=> setKeepLoggedIn(!keepLoggedIn)}
-        /> Keep me logged in </label>
+        {!signIn && <div>
+          <label> Confirm Password </label>
+          <input type={passVis ? 'password' : 'text' }
+            name="password"
+            ref={register({required: true, maxLength: 80})}
+          />
+        </div> }
 
-        <span>I forgot my password</span>
+        <ButtonBar>
+          <li> Google </li>
+          <li> FaceBook </li>
+          <li> Apple </li>
+        </ButtonBar>
+
+        <input type="submit" value="Log In"/>
       </form>
 
+      <br/>
+
+      <label>
+        <input type="checkbox"
+          value={keepLoggedIn}
+          onClick={()=> setKeepLoggedIn(!keepLoggedIn)}
+        />
+        Keep me logged in
+      </label>
+
+      <span onClick={()=> setforgotPass(true)}>I forgot my password</span>
       {signIn
-        ? <p>Don't have an account? <span onClick={()=>setSignIn(!signIn)}>Sign Up</span></p>
-        : <p> Already have an account? <span onClick={()=>setSignIn(!signIn)}>Sign In</span></p>
+        ? <span>Don't have an account? <span onClick={()=>{setSignIn(!signIn)}}>Sign Up</span></span>
+        : <span> Already have an account? <span onClick={()=>setSignIn(!signIn)}>Sign In</span></span>
       }
     </SignInUpModal>
   )
