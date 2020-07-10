@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 const backend = `http://localhost:8000/api/goals/`
 
 const EditGoalForm = (props) => {
-  const { id, goal, ongoing, start_date, target_date,setForm } = props
+  const { id, goal, target_date,setForm } = props
 
   const { register, handleSubmit, errors } = useForm()
   const [nextGoal, setNextGoal] = useState(goal)

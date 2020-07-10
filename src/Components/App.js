@@ -15,18 +15,19 @@ import { AppBody } from '../styles'
 
 
 
-const userUrl = `http://localhost:8000/api/users/1`
+const userUrl = `http://localhost:8000/api/users/`
 
 
 
 const App = ()  => {
+  console.log('app')
   const setUser = useSetRecoilState(userState)
 
-  useEffect(() => { (async () => {
-    await axios.get(userUrl)
-    .then(res => {  setUser(res.data.data) })
-    .catch(err => { console.log(err) })
-  })() }, [setUser])
+  // useEffect(() => { (async () => {
+  //   await axios.get(userUrl)
+  //   .then(res => {  setUser(res.data.data) })
+  //   .catch(err => { console.log(err) })
+  // })() }, [setUser])
 
 
 
