@@ -15,7 +15,7 @@ import {
 
 
 import randomArt from '../../assets/randomArt.jpg'
-import screenShot from '../../assets/screenShot.png'
+// import screenShot from '../../assets/screenShot.png'
 import testimonialPic from '../../assets/testimonialPic.png'
 import finalPic from '../../assets/finalPic.png'
 
@@ -37,9 +37,10 @@ const fakeReviews = [{
 const peopleList = ['creatives','developers','students','small businesses','entreprenuers','freelancers']
 // todoist.com
 const LandingPage = () => {
-  const [time, setTime] = useState(timeList[0])
+  // const [time, setTime] = useState(timeList[0])
   const [modalUp, setModalUp] = useState(true)
 
+  const time = timeList[0]
   return (
     <LandingPageContainer>
       <Nav>
@@ -62,7 +63,7 @@ const LandingPage = () => {
       <Hero>
         <h1>Accomplish all your goals in life</h1>
         <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
-        <img src={randomArt} />
+        <img src={randomArt} alt={'random art'}/>
 
         <h2> Work towards becoming the ideal You </h2>
         <p> You'll be lucky if you get <span>{time}</span> </p>
@@ -89,7 +90,7 @@ const LandingPage = () => {
           <h4> a bunch of other people do finish a lot of goals</h4>
           <div>nile, fakebook, wetwerk mickey</div>
         </div>
-        <img src={testimonialPic} />
+        <img src={testimonialPic} alt={'testimonial'}/>
       </Section>
 
       <Section>{/*2- */}
@@ -98,9 +99,9 @@ const LandingPage = () => {
             "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goals"
           </p>
           </div>
-        <img src={testimonialPic} />
+        <img src={testimonialPic} alt='testiminial'/>
         <ol>
-          {peopleList.map(p => (<li> { p } </li>))}
+          {peopleList.map((p,i) => (<li key={i}> { p } </li>))}
         </ol>
       </Section>
 
@@ -116,14 +117,14 @@ const LandingPage = () => {
         I am committed to improving my life by getting a job in tech, and earning your trust through this high quality app helps me and you with our goals.
         </p>
         </div>
-        <img src={finalPic} />
+        <img src={finalPic} alt='final'/>
       </Section>
 
       <Section>{/*4- */}
-        <img src={finalPic} />
+        <img src={finalPic} alt='final'/>
         <div>
           <h2> Get your life together with Goals</h2>
-          <LetsDoThisBTN/>
+        <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
         </div>
       </Section>
 

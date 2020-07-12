@@ -46,7 +46,7 @@ export const Hero = styled.div`
 
 export const ReviewBox =styled.section`
   background: yellow;
-  width:99vw;
+  width:100%;
 
   display:flex;
   flex-direction: column;
@@ -71,7 +71,7 @@ export const Section = styled.section`
   margin: 1rem;
 
   width: 940px;
-  
+
   @media(max-width: 900px){
     width:75%
   }
@@ -139,13 +139,13 @@ export const SignInUpModal = styled.div`
   justify-content:center;
   align-items:center;
 
-  .close-Button{
+  button{
     position: absolute;
     right: 2rem;
     top: 2rem;
     margin-left: auto;
   }
-  
+
   h3{
     margin-bottom: 0
   }

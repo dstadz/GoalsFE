@@ -9,7 +9,7 @@ import { GoalCardContainer } from '../../styles'
 import EditGoalForm from './EditGoalForm'
 
 // const goals = `http://localhost:8000/api/goals`
-const config = { headers: { access_control_allow_origin: '*' } }
+// const config = { headers: { access_control_allow_origin: '*' } }
 const habits = `http://localhost:8000/habits/`
 
 const GoalCard = ({props}) => {
@@ -17,20 +17,16 @@ const GoalCard = ({props}) => {
   const [form, setForm] = useState('')
   const [listOpen, setListOpen] = useState(false)
 
-
-
   const [habitList, setHabitList] = useState([])
-
 
   //get specific habits for goal
   useEffect(() => {
     listOpen && !habitList.length && (async () => {
-      await axios.get(habits+id, config)
+      await axios.get(habits+id ) //, config)
       .then(res => { setHabitList(res.data.data) })
       .catch(err => { console.log(err) })
     })()
   }, [form, listOpen])
-
 
   const renderSwitch = form => {
     switch(form) {
@@ -47,17 +43,16 @@ const GoalCard = ({props}) => {
     }
   }
 
-
   return (
     <GoalCardContainer>
-    <h4>{goal} {start_date}</h4>
+      <h4>{goal} {start_date}</h4>
       <div>
-      <button onClick={() => setForm('delete')} >X</button>
-      <button onClick={() => setForm('edit')} >Edit</button>
-      <button onClick={() => setForm('add')}> Add new habit </button>
-      <button onClick={() => {
-        setListOpen(true)
-        setForm('get')}}
+        <button onClick={() => setForm('delete')} >X</button>
+        <button onClick={() => setForm('edit')} >Edit</button>
+        <button onClick={() => setForm('add')}> Add new habit </button>
+        <button onClick={() => {
+          setListOpen(true)
+          setForm('get')}}
         > See Habits </button>
       </div>
 
