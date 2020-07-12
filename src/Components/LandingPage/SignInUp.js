@@ -23,37 +23,13 @@ const SignInUp = ({closeModal}) => {
 
   if ( Object.keys(errors).length ) console.log('error:',errors)
 
-  const users     = `http://localhost:8000/api/users`
-  const signInUrl = `http://localhost:8000/api/signIn`
-  const signUpUrl = `http://localhost:8000/api/signUp`
-
-  const data = {
-    email: 'blue@colors.com',
-    password:'blue'
-  };
-
-  const config = { headers: {
-    "Allowed":"*",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Request-Headers": "*",
-    "Access-Control-Request-Method": "*"
-  } }
-
-
   const onSubmit = () => {
     console.log(data)
     if (forgotPass){
       console.log('send recovery email')
     } else {
-      if (signIn) {
-        // (async () => { await
-          axios.post(signInUrl,data, config)
-          .then(res => { setUser(res.data.data) })
-          .catch(err => { console.log(err) })
-          // })();
-      } else {
-        signUpCall(data)
-      }
+      if (signIn) { signInCall(data) }
+      else { signUpCall(data) }
     }
   }
 
