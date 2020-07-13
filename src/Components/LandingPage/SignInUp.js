@@ -3,14 +3,15 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useRecoilState } from 'recoil'
 
-import { signUpCall } from '../../utils/signInUp'
 import { SignInUpModal, ButtonBar } from './styles'
-import { signInCall } from '../../utils/signInUp'
 import { userState } from '../../utils/store'
 
 
 
 
+
+const signInUrl = `http://localhost:8000/api/signIn`
+const signUpUrl = `http://localhost:8000/api/signUp`
 
 
 const SignInUp = ({closeModal}) => {
@@ -19,26 +20,30 @@ const SignInUp = ({closeModal}) => {
   const [passVis, setPassVis] = useState(false)
   const [forgotPass, setforgotPass] = useState(false)
   const [keepLoggedIn, setKeepLoggedIn] = useState(false)
+
   const { register, handleSubmit, errors } = useForm()
 
   if ( Object.keys(errors).length ) console.log('error:',errors)
 
-  const onSubmit = () => {
-    console.log(data)
+  const onSubmit = data => {
     if (forgotPass){
       console.log('send recovery email')
     } else {
-      if (signIn) { signInCall(data) }
-      else { signUpCall(data) }
+      if (signIn) {
+        axios.post(signInUrl,data) //, config)
+        .then(res => { setUser(res.data.data) })
+        .catch(err => { console.log(err) })
+      } else {
+        axios.post(signUpUrl, {...data, name:'bob', birthday:'01/01/2000'})
+        .then(res => { setUser(res.data.data) })
+        .catch(err => { console.log(err) })
+      }
     }
   }
 
-// axios.post(backend,{...data, goal_id})
-// .then(res => { console.log(res.data.data) })
-// .catch(err => { console.log(err) })
 
   console.log(user)
-
+  const color = `green`
   return (
     forgotPass
     ?<SignInUpModal>
@@ -69,7 +74,9 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type="text"
             name="email"
-            value="blue@colors.com"
+
+            value={`${color}@colors.com`}
+
             ref={register({required: true, maxLength: 80})}
           />
         </div>
@@ -78,7 +85,9 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type={passVis ? 'text' : 'password' }
             name="password"
-            value="blue"
+
+            value={`${color}`}
+
             ref={register({required: true, maxLength: 80})}
           />
           <span onClick={()=>setPassVis(!passVis)}>{passVis ? '👓' : '🕶️' }</span>
@@ -88,9 +97,12 @@ const SignInUp = ({closeModal}) => {
         {!signIn && <>
           <label> Confirm Password </label>
           <div>
-          <input type='password'
+            <input type='password'
               placeholder="password"
               name="password"
+
+              value={`${color}`}
+
               ref={register({required: true, maxLength: 80})}
             />
           </div>
@@ -98,14 +110,14 @@ const SignInUp = ({closeModal}) => {
           <br />
           
           <ButtonBar>
-          <li> Google </li>
-          <li> FaceBook </li>
-          <li> Apple </li>
+            <li> Google </li>
+            <li> FaceBook </li>
+            <li> Apple </li>
           </ButtonBar>
           
           <input type="submit" value={signIn ? 'Log In' : 'Sign Up'} />
         </form>
-        
+
         <br/>
 
       <label>

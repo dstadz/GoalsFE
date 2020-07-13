@@ -9,27 +9,33 @@ const config = { headers: {
 } }
 
 
-const signInUrl = `http://localhost:8000/signIn`
-const signUpUrl = `http://localhost:8000/signUp`
+const signInUrl = `http://localhost:8000/api/signIn`
+const signUpUrl = `http://localhost:8000/api/signUp`
 
 
-export const signUpCall = () => {
+export const signUpCall = data => {
+  data = {...data, name:'bob', birthday:'01/01/2000'}
   //need to make sure passwords match and other stuff
-  axios.post(signUpUrl)
+
+  const xhr = new XMLHttpRequest();
+
+
+
+
+
+
+  axios.post(signUpUrl,data)
     .then(res => {  console.log(res.data.data) })
-    .catch(err => { console.log(err) })
+    .catch(err => { console.log(err, Response.body) })
 }
 
-export const signInCall = data => {
-  axios.post(signInUrl,data, config)
-  .then(res => { setUser(res.data.data) })
+export const signInCall = (data) => {
+  let person;
+  axios.post(signInUrl,data) //, config)
+  .then(res => {
+    console.log(res.data.data)
+    person = res.data.data
+  })
   .catch(err => { console.log(err) })
-  
-  const config = { headers: { access_control_allow_origin: '*' } }
-  (async () => {
-      await  axios.get(signInUrl,data,config)
-
-      .then(res => { console.log(res.data.data) })
-      .catch(err => { console.log(err) })
-    })()
+  return person
 }

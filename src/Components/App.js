@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
 import { userState } from '../utils/store'
@@ -20,21 +20,10 @@ const userUrl = `http://localhost:8000/api/users/`
 
 
 const App = ()  => {
-  console.log('app')
-  const setUser = useSetRecoilState(userState)
+  const [user, setUser] = useRecoilState(userState)
 
-  // useEffect(() => { (async () => {
-  //   await axios.get(userUrl)
-  //   .then(res => {  setUser(res.data.data) })
-  //   .catch(err => { console.log(err) })
-  // })() }, [setUser])
-
-
-
-
-  const signedIn = false
-  if (!signedIn ) return <LandingPage />
-
+  
+  if(Object.keys(user).length == 0) return <LandingPage />
   return (
     <AppBody>
       <SideBar/>
