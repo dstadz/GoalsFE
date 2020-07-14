@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
-import { goalListState, activeFormState } from '../../utils/store'
+import { goalListState, activeFormState, userState } from '../../utils/store'
 import { AddGoalFormContainer } from '../../styles'
 
 let today = new Date();
@@ -15,6 +15,7 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 const AddGoalForm = () => {
+  const user = useRecoilValue(userState)
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
   const [nextGoal, setNextGoal] = useState('')
   const [targetDate, setTargetDate] = useState(today)
@@ -24,7 +25,6 @@ const AddGoalForm = () => {
 
 
   const backend = `http://localhost:8000/api/goals`
-  const user_id = `1`
 
   if ( Object.keys(errors).length ) console.log(errors)
 
@@ -33,7 +33,7 @@ const AddGoalForm = () => {
 
 
   const onSubmit = data => {
-    data = {...data, user_id,completed:false}
+    data = {...data, user_id:user.id, completed:false}
     axios.post(backend,data)
     .then(res => {
       console.log(res.data)
