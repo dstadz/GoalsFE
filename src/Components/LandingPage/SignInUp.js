@@ -6,22 +6,17 @@ import { useRecoilState } from 'recoil'
 import { SignInUpModal, ButtonBar } from './styles'
 import { userState } from '../../utils/store'
 
-
-
-
-
 const signInUrl = `http://localhost:8000/api/signIn`
 const signUpUrl = `http://localhost:8000/api/signUp`
 
-
 const SignInUp = ({closeModal}) => {
-  const [user, setUser] = useRecoilState(userState)
   const [signIn, setSignIn] = useState(true)
   const [passVis, setPassVis] = useState(false)
+  const [user, setUser] = useRecoilState(userState)
   const [forgotPass, setforgotPass] = useState(false)
   const [keepLoggedIn, setKeepLoggedIn] = useState(false)
-
   const { register, handleSubmit, errors } = useForm()
+
 
   if ( Object.keys(errors).length ) console.log('error:',errors)
 
@@ -41,16 +36,14 @@ const SignInUp = ({closeModal}) => {
     }
   }
 
-
-  console.log(user)
   const color = `green`
   return (
     forgotPass
     ?<SignInUpModal>
       <button className="close-Button" onClick={()=>closeModal(false)} >X</button>
-      <h3> Forget Password</h3>
+      <h3> Forget Password </h3>
       <form onSubmit={onSubmit}>
-        <label>Email</label>
+        <label> Email </label>
         <div>
           <input type="text"
             placeholder="email"
@@ -58,9 +51,10 @@ const SignInUp = ({closeModal}) => {
             ref={register({required: true, maxLength: 80})}
           />
         </div>
-        <input type="submit" value='Send Recovery email thing' />
 
+        <input type="submit" value='Send Recovery email thing' />
       </form>
+
       <p>Miraculously remembered your password? <span onClick={()=> setforgotPass(false)}>signIn</span></p>
     </SignInUpModal>
 
@@ -69,7 +63,6 @@ const SignInUp = ({closeModal}) => {
       <h3> {signIn ?'Log In' : 'Sign Up'} </h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-
         <label> Email </label>
         <div>
           <input type="text"
@@ -106,19 +99,19 @@ const SignInUp = ({closeModal}) => {
               ref={register({required: true, maxLength: 80})}
             />
           </div>
-          </> }
-          <br />
-          
-          <ButtonBar>
-            <li> Google </li>
-            <li> FaceBook </li>
-            <li> Apple </li>
-          </ButtonBar>
-          
-          <input type="submit" value={signIn ? 'Log In' : 'Sign Up'} />
-        </form>
+        </> }
+        <br />
 
-        <br/>
+        <ButtonBar>
+          <li> Google </li>
+          <li> FaceBook </li>
+          <li> Apple </li>
+        </ButtonBar>
+
+        <input type="submit" value={signIn ? 'Log In' : 'Sign Up'} />
+      </form>
+
+      <br/>
 
       <label>
         <input type="checkbox"

@@ -1,29 +1,21 @@
-import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil'
-import axios from 'axios'
+import React from 'react';
+import { useRecoilValue } from 'recoil'
+// import axios from 'axios'
 
-import { userState } from '../utils/store'
-
-
-
-import SideBar from './SideBar/'
 import LandingPage from './LandingPage/'
 import Header from './Header/'
+import SideBar from './SideBar/'
 import TableThing from './Table/'
 
+import { userState } from '../utils/store'
 import { AppBody } from '../styles'
 
-
-
-const userUrl = `http://localhost:8000/api/users/`
-
-
+// const userUrl = `http://localhost:8000/api/users/`
 
 const App = ()  => {
-  const [user, setUser] = useRecoilState(userState)
+  const user = useRecoilValue(userState)
 
-  
-  if(Object.keys(user).length == 0) return <LandingPage />
+  if(Object.keys(user).length === 0) return <LandingPage />
   return (
     <AppBody>
       <SideBar/>

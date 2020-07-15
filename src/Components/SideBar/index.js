@@ -27,8 +27,9 @@ const SideBar = () => {
       <nav>
       nav stuff
       </nav>
-      Hey { name }
-      You have {100} years until you 'retire'
+      <h3>
+      Hey { name }! You have {100} years until you 'retire'
+      </h3>
       <LifeBlocks />
     </Side>
   )

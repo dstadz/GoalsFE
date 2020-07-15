@@ -67,7 +67,8 @@ const LandingPage = () => {
 
         <h2> Work towards becoming the ideal You </h2>
         <p> You'll be lucky if you get <span>{time}</span> </p>
-        <p> Gain perspective and awareness by getting all your aspirations and dreams out of your head and onto your goal list (no matter where you are or what device you use).
+        <p>
+          Gain perspective and awareness by getting all your aspirations and dreams out of your head and onto your goal list (no matter where you are or what device you use).
         </p>
         <span> Browse Goals features </span>
         <span> See Goals in action </span>
@@ -75,10 +76,10 @@ const LandingPage = () => {
 
       <ReviewBox>
         <h2>
-        100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM?
+          100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM?
         </h2>
         <ul>
-        {fakeReviews.map(r => ( <li key={r.reviewer}>{r.reviewer} {r.rating} {r.comment} </li>))}
+          {fakeReviews.map(r => ( <li key={r.reviewer}>{r.reviewer} {r.rating} {r.comment} </li>))}
         </ul>
       </ReviewBox>
 
@@ -98,7 +99,7 @@ const LandingPage = () => {
           <p>
             "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goals"
           </p>
-          </div>
+        </div>
         <img src={testimonialPic} alt='testiminial'/>
         <ol>
           {peopleList.map((p,i) => (<li key={i}> { p } </li>))}
@@ -106,16 +107,16 @@ const LandingPage = () => {
       </Section>
 
       <Section>{/*3- */}
-      <div>
-      <h2>
-      A goal manager you can trust for life
-      </h2>
-        <p>
-        In the {'timeSinceInit'} that I've been making Goals, I've been looking for someone to give me a lot of money to work on something else.
-        </p>
-        <p>
-        I am committed to improving my life by getting a job in tech, and earning your trust through this high quality app helps me and you with our goals.
-        </p>
+        <div>
+          <h2>
+          A goal manager you can trust for life
+          </h2>
+          <p>
+          In the {'timeSinceInit'} that I've been making Goals, I've been looking for someone to give me a lot of money to work on something else.
+          </p>
+          <p>
+          I am committed to improving my life by getting a job in tech, and earning your trust through this high quality app helps me and you with our goals.
+          </p>
         </div>
         <img src={finalPic} alt='final'/>
       </Section>
@@ -124,7 +125,7 @@ const LandingPage = () => {
         <img src={finalPic} alt='final'/>
         <div>
           <h2> Get your life together with Goals</h2>
-        <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
+          <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
         </div>
       </Section>
 
