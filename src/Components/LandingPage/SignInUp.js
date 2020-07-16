@@ -54,7 +54,6 @@ const SignInUp = ({closeModal}) => {
         <label> Email </label>
         <div>
           <input type="text"
-            placeholder="email"
             name="email"
             ref={register({required: true, maxLength: 80})}
           />
@@ -75,9 +74,6 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type="text"
             name="email"
-
-            value={`${color}@colors.com`}
-
             ref={register({required: true, maxLength: 80})}
           />
         </div>
@@ -86,9 +82,6 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type="text"
             name="name"
-
-            value={`${color}`}
-
             ref={register({required: true, maxLength: 80})}
           />
         </div>
@@ -106,9 +99,6 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type={passVis ? 'text' : 'password' }
             name="password"
-
-            value={`${color}`}
-
             ref={register({required: true, maxLength: 80})}
           />
           <span onClick={()=>setPassVis(!passVis)}>{passVis ? '👓' : '🕶️' }</span>
@@ -121,16 +111,10 @@ const SignInUp = ({closeModal}) => {
             <input type='password'
               placeholder="password"
               name="password"
-
-              value={`${color}`}
-
               ref={register({required: true, maxLength: 80})}
             />
           </div>
         </> }
-
-          
-
 
         <br />
 
