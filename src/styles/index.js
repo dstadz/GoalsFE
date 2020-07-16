@@ -38,7 +38,7 @@ export const YearRow = styled.li `
   display:flex;
 `
 export const LifeContainer = styled.div `
-  height:90%;
+  height:75vh;
   width:90%;
   margin:auto;
 

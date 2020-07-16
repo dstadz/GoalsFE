@@ -1,42 +1,50 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 import { SignInUpModal, ButtonBar } from './styles'
 import { userState } from '../../utils/store'
 
-const signInUrl = `http://localhost:8000/api/signIn`
+const signInUrl = `https://dstadz.github.io/GoalsBE/api/signIn`
 const signUpUrl = `http://localhost:8000/api/signUp`
 
 const SignInUp = ({closeModal}) => {
+  const [forgotPass, setforgotPass] = useState(false)
   const [signIn, setSignIn] = useState(true)
   const [passVis, setPassVis] = useState(false)
-  const [user, setUser] = useRecoilState(userState)
-  const [forgotPass, setforgotPass] = useState(false)
+  const setUser = useSetRecoilState(userState)
+
+
   const [keepLoggedIn, setKeepLoggedIn] = useState(false)
   const { register, handleSubmit, errors } = useForm()
 
 
   if ( Object.keys(errors).length ) console.log('error:',errors)
-
-  const onSubmit = data => {
+  
+  const config = { headers: {
+    // "Allowed":"*",
+    "Access-Control-Allow-Origin": "*",
+    // "Access-Control-Request-Headers": "origin, x-requested-with",
+    // "Access-Control-Request-Method": "POST"
+  } }
+    const onSubmit = data => {
     if (forgotPass){
       console.log('send recovery email')
-    } else {
-      if (signIn) {
-        axios.post(signInUrl,data) //, config)
-        .then(res => { setUser(res.data.data) })
-        .catch(err => { console.log(err) })
-      } else {
-        axios.post(signUpUrl, {...data, name:'bob', birthday:'01/01/2000'})
-        .then(res => { setUser(res.data.data) })
-        .catch(err => { console.log(err) })
-      }
+    } else if (signIn) {
+      axios.post(signInUrl,data, config)
+      .then(res => { setUser(res.data.data) })
+      .catch(err => { console.log(err) })
+    } else { //signUp
+      axios.post(signUpUrl,data)
+      .then(res => { setUser(res.data.data) })
+      .catch(err => { console.log(err) })
     }
   }
+    
+  
 
-  const color = `green`
+  const color = `purple`
   return (
     forgotPass
     ?<SignInUpModal>
@@ -73,6 +81,26 @@ const SignInUp = ({closeModal}) => {
             ref={register({required: true, maxLength: 80})}
           />
         </div>
+        {!signIn && <>
+        <label> Whats your Name? </label>
+        <div>
+          <input type="text"
+            name="name"
+
+            value={`${color}`}
+
+            ref={register({required: true, maxLength: 80})}
+          />
+        </div>
+
+        <label> When were you born? </label>
+        <div>
+          <input type="date"
+            name="birthday"
+            ref={register({required: true, maxLength: 80})}
+          />
+        </div>
+        </>}
 
         <label> Password </label>
         <div>
@@ -100,6 +128,10 @@ const SignInUp = ({closeModal}) => {
             />
           </div>
         </> }
+
+          
+
+
         <br />
 
         <ButtonBar>
@@ -108,7 +140,7 @@ const SignInUp = ({closeModal}) => {
           <li> Apple </li>
         </ButtonBar>
 
-        <input type="submit" value={signIn ? 'Log In' : 'Sign Up'} />
+        <input type="submit" value={signIn ? 'Log In' : 'Lets get started!'} />
       </form>
 
       <br/>

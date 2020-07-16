@@ -1,9 +1,10 @@
 import React from 'react'
 import { MonthBox, YearRow, LifeContainer } from '../../styles'
+import { useRecoilValue } from 'recoil'
+
+import { userState } from '../../utils/store'
 
 
-const birthYear = 2015 //get from api
-const birthMonth = 7 //get from api
 
 const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','August','September','October','November', 'December']
 
@@ -15,7 +16,11 @@ const lifeTime = 81
 const life = Array(lifeTime).fill().map((_, i) => i);
 
 const Month = ({month, year}) => {
-
+  const { birthday }  = useRecoilValue(userState)
+  const bday = new Date(birthday)
+  const birthYear = bday.getFullYear()
+  const birthMonth = bday.getMonth()
+  
   return(
     <MonthBox
       style={
@@ -42,6 +47,10 @@ const Year = ({ year }) => {
 
 
 const LifeBlocks = () => {
+  const { birthday }  = useRecoilValue(userState)
+  const bday = new Date(birthday)
+  const birthYear = bday.getFullYear()
+  const birthMonth = bday.getMonth()
 
   return (
     <LifeContainer birthMonth={birthMonth}>
