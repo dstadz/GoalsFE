@@ -23,10 +23,10 @@ const SignInUp = ({closeModal}) => {
   if ( Object.keys(errors).length ) console.log('error:',errors)
   
   const config = { headers: {
-    // "Allowed":"*",
+    "Allowed":"*",
     "Access-Control-Allow-Origin": "*",
-    // "Access-Control-Request-Headers": "origin, x-requested-with",
-    // "Access-Control-Request-Method": "POST"
+    "Access-Control-Request-Headers": "origin, x-requested-with",
+    "Access-Control-Request-Method": "POST"
   } }
     const onSubmit = data => {
     if (forgotPass){
@@ -36,7 +36,7 @@ const SignInUp = ({closeModal}) => {
       .then(res => { setUser(res.data.data) })
       .catch(err => { console.log(err) })
     } else { //signUp
-      axios.post(signUpUrl,data)
+      axios.post(signUpUrl,data, config)
       .then(res => { setUser(res.data.data) })
       .catch(err => { console.log(err) })
     }
