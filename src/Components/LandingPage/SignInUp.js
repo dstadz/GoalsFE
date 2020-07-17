@@ -21,7 +21,7 @@ const SignInUp = ({closeModal}) => {
 
 
   if ( Object.keys(errors).length ) console.log('error:',errors)
-  
+
   const config = { headers: {
     "Allowed":"*",
     "Access-Control-Allow-Origin": "*",
@@ -33,7 +33,9 @@ const SignInUp = ({closeModal}) => {
       console.log('send recovery email')
     } else if (signIn) {
       axios.post(signInUrl,data, config)
-      .then(res => { setUser(res.data.data) })
+      .then(res => {
+        console.log('post push')
+        setUser(res.data.data) })
       .catch(err => { console.log(err) })
     } else { //signUp
       axios.post(signUpUrl,data, config)
@@ -41,8 +43,8 @@ const SignInUp = ({closeModal}) => {
       .catch(err => { console.log(err) })
     }
   }
-    
-  
+
+
 
   const color = `purple`
   return (
