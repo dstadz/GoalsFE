@@ -24,7 +24,7 @@ const SignInUp = ({closeModal}) => {
 
   const config = { headers: {
     "Allowed":"*",
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "https://goalgetter.netlify.app/",
     "Access-Control-Request-Headers": "origin, x-requested-with",
     "Access-Control-Request-Method": "POST"
   } }
