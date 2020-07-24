@@ -38,7 +38,7 @@ const peopleList = ['creatives','developers','students','small businesses','entr
 // todoist.com
 const LandingPage = () => {
   // const [time, setTime] = useState(timeList[0])
-  const [modalUp, setModalUp] = useState(true)
+  const [modalUp, setModalUp] = useState(false)
 
   const time = timeList[0]
   return (
