@@ -18,7 +18,6 @@ const Footer = () => {
           <li> Templates </li>
         </ol>
 
-
         <ol>
           <li> Resources </li>
           <li> Downloaded Apps </li>
