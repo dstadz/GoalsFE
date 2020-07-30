@@ -44,7 +44,7 @@ const LandingPage = () => {
   return (
     <LandingPageContainer>
       <Nav>
-        <p>LOGO site by <a
+        <p>LOGO <a
           href="https://danielstadler.com/"
           target='_blank'
           rel="noopener noreferrer"
@@ -62,7 +62,7 @@ const LandingPage = () => {
 
       <Hero>
         <h1>Accomplish all your goals in life</h1>
-        <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
+        <LetsDoThisBTN onClick={()=> setModalUp(modalUp => !modalUp)}/>
         <img src={randomArt} alt={'random art'}/>
 
         <h2> Work towards becoming the ideal You </h2>

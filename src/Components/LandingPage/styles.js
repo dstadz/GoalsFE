@@ -8,7 +8,7 @@ export const LandingPageContainer = styled.div`
   align-items:center;
 
   img{
-    width:500px;
+    width:15em;
   }
 `
 
@@ -21,10 +21,12 @@ export const Nav = styled.nav`
   padding: .1rem;
 
   ul{
+    width:90%;
     display:flex;
-
+    justify-content:space-around;
     li{
-      margin:auto 40px;
+      margin:auto;
+      list-style:none;
     }
   }
 
@@ -91,6 +93,10 @@ export const Section = styled.section`
     display:flex;
     flex-direction: row;
 
+    @media(max-width:766px){
+      flex-direction:column;
+    }
+
     li{
       margin: 0 auto;
       list-style: none;
@@ -108,19 +114,24 @@ export const LetsDoThisBTN = styled.button`
 `
 
 export const FooterContainer = styled.footer`
+
+  @media(max-width: 766px){
+    flex-direction: column;
+  }
   display:flex;
   justify-content: space-between;
-  div{
-    width:33%;
-  }
 
   ul{
     display:flex;
     border: 1px solid green;
+    padding: 0;
+    justify-content: space-around;
   }
 
   ol{
     list-style: none;
+    padding: 0;
+
   }
 `
 
