@@ -85,11 +85,9 @@ const LandingPage = () => {
 
       <Section>{/*1- */}
         <div>
-          <p>
-            Goals has helped me and
-          </p>
+          <p> Goals has helped me and </p>
           <h4> a bunch of other people do finish a lot of goals</h4>
-          <div>nile, fakebook, wetwerk mickey</div>
+          <h6>nile, fakebook, wetwerk mickey</h6>
         </div>
         <img src={testimonialPic} alt={'testimonial'}/>
       </Section>

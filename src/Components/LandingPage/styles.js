@@ -77,7 +77,7 @@ export const Section = styled.section`
   @media(max-width: 900px){
     width:75%
   }
-
+lihp;h
   div{
     width:500px;
   }
