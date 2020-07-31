@@ -10,7 +10,8 @@ import { Side } from '../../styles'
 
 
 
-const SideBar = () => {  
+const SideBar = () => {
+  console.log(userState)
   const { name, id, birthday, email }  = useRecoilValue(userState)
 
   //{id: 1, name: "clack Wayne", email: "Bmoney@bats.com", birth: "1982-06-25T07:00:00.000Z"}

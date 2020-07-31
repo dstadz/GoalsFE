@@ -6,8 +6,7 @@ import { useSetRecoilState } from 'recoil'
 import { SignInUpModal, ButtonBar } from './styles'
 import { userState } from '../../utils/store'
 
-const signInUrl = `https://dstadz.github.io/GoalsBE/api/signIn`
-const signUpUrl = `http://localhost:8000/api/signUp`
+
 
 const SignInUp = ({closeModal}) => {
   const [forgotPass, setforgotPass] = useState(false)
@@ -24,21 +23,23 @@ const SignInUp = ({closeModal}) => {
 
   const config = { headers: {
     "Allowed":"*",
-    "Access-Control-Allow-Origin": "https://goalgetter.netlify.app/",
+    "Access-Control-Allow-Origin": "https://goalgetter.netlify.app",
     "Access-Control-Request-Headers": "origin, x-requested-with",
     "Access-Control-Request-Method": "POST"
   } }
     const onSubmit = data => {
     if (forgotPass){
       console.log('send recovery email')
+
     } else if (signIn) {
-      axios.post(signInUrl,data, config)
+      axios.post(`${process.env.REACT_APP_BE}/users/signIn`,data, config)
       .then(res => {
         console.log('post push')
         setUser(res.data.data) })
       .catch(err => { console.log(err) })
+
     } else { //signUp
-      axios.post(signUpUrl,data, config)
+      axios.post(`${process.env.REACT_APP_BE}/users/signUp`,data, config)
       .then(res => { setUser(res.data.data) })
       .catch(err => { console.log(err) })
     }
@@ -46,7 +47,6 @@ const SignInUp = ({closeModal}) => {
 
 
 
-  const color = `purple`
   return (
     forgotPass
     ?<SignInUpModal>

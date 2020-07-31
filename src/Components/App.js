@@ -15,6 +15,7 @@ import { AppBody } from '../styles'
 const App = ()  => {
   const user = useRecoilValue(userState)
 
+  console.log(user)
   //APP IDEA: TINDER/HINGE CLONE, BUT ALL PROMPTS ARE GIF/VIDEOS WITH SPECIFIC DIRECTIONS:
   /*
     - TALK ABOUT YOUR MORNING ROUTINE
@@ -24,7 +25,7 @@ const App = ()  => {
     - 
   */
 
-  if(Object.keys(user).length === 0) return <LandingPage />
+  if(user) return <LandingPage />
   return (
     <AppBody>
       <SideBar/>
