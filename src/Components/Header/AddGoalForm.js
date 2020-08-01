@@ -24,7 +24,6 @@ const AddGoalForm = () => {
 
 
 
-  const backend = `http://localhost:8000/api/goals`
 
   if ( Object.keys(errors).length ) console.log(errors)
 
@@ -34,7 +33,7 @@ const AddGoalForm = () => {
 
   const onSubmit = data => {
     data = {...data, user_id:user.id, completed:false}
-    axios.post(backend,data)
+    axios.post(`${process.env.REACT_APP_BE}/users/signUp`,data)//, config)
     .then(res => {
       console.log(res.data)
       setGoalList([...goalList, data])
