@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const LandingPageContainer = styled.div`
-  background:grey;
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -77,7 +76,6 @@ export const Section = styled.section`
   @media(max-width: 900px){
     width:75%
   }
-
   div{
     width:500px;
   }

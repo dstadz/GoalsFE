@@ -6,9 +6,6 @@ import GoalCard from './GoalCard'
 import { userState, goalListState } from '../../utils/store'
 
 
-const backend = `http://localhost:8000/api/goals`
-
-
 const TableThing = () => {
   const [goalList, setGoalList] = useRecoilState(goalListState)
   // const [goalList, setGoalList] = useState([])
@@ -16,14 +13,14 @@ const TableThing = () => {
 
 
     useEffect(() => {
-      axios.get(backend+`/${user.id}`)
-      .then(res => { setGoalList(res.data.data) })
+      axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
+      .then(res => { setGoalList(res.data) })
       .catch(err => { console.log(err) })
     }, [goalList.length, setGoalList])
 
 
   return ( <div>
-    {goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
+    {goalList && goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
   </div> )
 }
 

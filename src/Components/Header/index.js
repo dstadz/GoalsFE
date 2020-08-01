@@ -12,10 +12,10 @@ import AddGoalForm from './AddGoalForm'
 
 const Header = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
-  const user = useRecoilValue(userState)
+  // const { name, id, birthday, email }  = useRecoilValue(userState)
   return (
     <TopStuff>
-      <h1> How will you become the person you want to be, {user.id}? </h1>
+      <h1> How will you become the person you want to be? </h1>
 
 
 

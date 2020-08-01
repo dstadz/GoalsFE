@@ -21,7 +21,7 @@ import finalPic from '../../assets/finalPic.png'
 
 const timeList = ['100 years','1200 months','5200 weeks','36500 days']
 const fakeReviews = [{
-  reviewer:'Goooooooooogle',
+  reviewer:'Googol',
   rating:'⭐⭐⭐⭐⭐⭐',
   comment:`I couldn't have made my company without having Goals`
 },{
@@ -31,14 +31,14 @@ const fakeReviews = [{
 },{
   reviewer:'The Splurge',
   rating:'9.9/10',
-  comment:`"The best existential`
+  comment:`"The best existential get-your-life-together app we've seen all week`
 },
 ]
 const peopleList = ['creatives','developers','students','small businesses','entreprenuers','freelancers']
 // todoist.com
 const LandingPage = () => {
   // const [time, setTime] = useState(timeList[0])
-  const [modalUp, setModalUp] = useState(false)
+  const [modalUp, setModalUp] = useState(true)
 
   const time = timeList[0]
   return (
@@ -55,7 +55,7 @@ const LandingPage = () => {
           <li>For Teams</li>
           <li>Resources</li>
         </ul>
-        <button onClick={()=> setModalUp(!modalUp)}> Sign in/up</button>
+        <button onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in/up</button>
       </Nav>
 
       { modalUp && <SignInUp closeModal={setModalUp}/>}
@@ -85,11 +85,9 @@ const LandingPage = () => {
 
       <Section>{/*1- */}
         <div>
-          <p>
-            Goals has helped me and
-          </p>
+          <p> Goals has helped me and </p>
           <h4> a bunch of other people do finish a lot of goals</h4>
-          <div>nile, fakebook, wetwerk mickey</div>
+          <h6>nile, fakebook, wetwerk mickey</h6>
         </div>
         <img src={testimonialPic} alt={'testimonial'}/>
       </Section>
