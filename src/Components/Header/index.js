@@ -12,7 +12,7 @@ import AddGoalForm from './AddGoalForm'
 
 const Header = () => {
   const [activeForm, setActiveForm] = useRecoilState(activeFormState)
-  // const { name, id, birthday, email }  = useRecoilValue(userState)
+  const { name, id, birthday, email }  = useRecoilValue(userState)
   return (
     <TopStuff>
       <h1> How will you become the person you want to be? </h1>
@@ -32,7 +32,7 @@ const Header = () => {
 
         <AddNewBTN
         onClick={()=>setActiveForm('Habit')}
-        > bucket </AddNewBTN>
+        > Sort By: </AddNewBTN>
 
         <AddNewBTN> 4th thing </AddNewBTN>
       </div>

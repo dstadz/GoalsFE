@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
-const backend = `http://localhost:8000/habits`
 
 const AddHabitForm = ({setForm, goal_id}) => {
   const { register, handleSubmit, errors } = useForm()
@@ -11,11 +10,11 @@ const AddHabitForm = ({setForm, goal_id}) => {
   if ( Object.keys(errors).length ) console.log(errors)
 
   const onSubmit = data => {
-    data = {...data, goal_id}
-    axios.post(backend,{...data, goal_id})
-    .then(res => { console.log(res.data.data) })
+    axios.post(`${process.env.REACT_APP_BE}/habits/add/${goal_id}`, {...data,goal_id})//, config)
+    .then(res => { console.log(res.data) })
     .catch(err => { console.log(err) })
   }
+
 
   return (
     <div style={{background:'green'}}>

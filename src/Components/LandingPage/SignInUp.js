@@ -48,7 +48,7 @@ const SignInUp = ({closeModal}) => {
   }
 
 
-  const color = 'red'
+  // const color = 'red'
   return (
     forgotPass
     ?<SignInUpModal>
@@ -78,9 +78,7 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type="text"
             name="email"
-
-            value={`${color}@colors.com`}
-
+            // value={`${color}@colors.com`}
             ref={register({required: true, maxLength: 80})}
           />
         </div>
@@ -106,9 +104,7 @@ const SignInUp = ({closeModal}) => {
         <div>
           <input type={passVis ? 'text' : 'password' }
             name="password"
-
-            value={`${color}`}
-
+            // value={`${color}`}
             ref={register({required: true, maxLength: 80})}
           />
           <span onClick={()=>setPassVis(!passVis)}>{passVis ? '👓' : '🕶️' }</span>

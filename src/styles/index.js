@@ -9,10 +9,10 @@ export const Side = styled.div `
   height: 100vh;
 `
 export const MonthBox = styled.div `
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   margin: 1px;
-  margin-top: 5px;
+  margin-top: 3px;
   position: relative;
   display: inline-block;
   :hover{ background:grey; }
@@ -96,7 +96,13 @@ export const AddGoalFormContainer = styled.div`
 `
 
 export const GoalCardContainer = styled.div`
-  background: red;
+  background: blue;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  margin:10px;
+  width:300px;
   h4{
     display: inline;
   }
@@ -110,4 +116,5 @@ export const GoalCardContainer = styled.div`
 export const HabitSlotContainer = styled.li`
   background: orange;
   list-style:none;
+  margin: 10px;
 `
