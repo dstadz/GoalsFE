@@ -17,9 +17,6 @@ const HabitSlot = ({props}) => {
       }>X</button>
 
 
-      {goal_id}
-      
-      
       <br />
 
       { /*pulled from habithistory */0} of {amount} done this {freq}
