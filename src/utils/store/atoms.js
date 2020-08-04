@@ -2,13 +2,7 @@ import { atom } from 'recoil'
 
 export const userState = atom({
   key: ' userState',
-  default: {
-    "id": 1,
-    "name": "blue",
-    "email": "blue@colors.com",
-    "password": "$2a$12$ryzLX0wYX3HzCl0obS1T4etlhCafkmvvu8QGC1m93JVV0nvXV33ay",
-    "birthday": "01/23/1994"
-  }
+  default: {}
 })
 
 export const activeFormState = atom({
@@ -22,7 +16,7 @@ export const goalListState = atom({
 });
 
 
-export const habitListState = atom({
-  key: 'habitListState',
-  default: [{X:[]}]
-});
+// export const habitListState = atom({
+//   key: 'habitListState',
+//   default: [{X:[]}]
+// });
