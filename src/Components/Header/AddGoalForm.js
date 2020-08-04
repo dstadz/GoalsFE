@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
 import { goalListState, activeFormState, userState } from '../../utils/store'
-import { AddGoalFormContainer } from '../../styles'
+import { GoalForm } from '../../styles'
 
 let today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
@@ -32,8 +32,8 @@ const AddGoalForm = () => {
 
 
   const onSubmit = data => {
-    data = {...data, user_id:user.id, completed:false}
-    axios.post(`${process.env.REACT_APP_BE}/users/signUp`,data)//, config)
+    data = {...data, completed:false}
+    axios.post(`${process.env.REACT_APP_BE}/goals/add/${user.id}`,data)//, config)
     .then(res => {
       console.log(res.data)
       setGoalList([...goalList, data])
@@ -43,9 +43,16 @@ const AddGoalForm = () => {
   }
 
 
-  return (
-    <AddGoalFormContainer>
+  // return (
+  //   <form onSubmit={handleSubmit(onSubmit)}>
+  //     <input type="text" placeholder="goal" name="goal" ref={register} />
+  //     <input type="datetime" placeholder="target_date" name="target_date" ref={register} />
 
+  //     <input type="submit" />
+  //   </form>
+  // );
+  return (
+    <GoalForm>
       <h5>Add a New {activeForm}</h5>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +78,7 @@ const AddGoalForm = () => {
 
         <input type="submit" />
       </form>
-    </AddGoalFormContainer>
+    </GoalForm>
   )
 }
 

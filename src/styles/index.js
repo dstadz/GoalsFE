@@ -80,7 +80,7 @@ export const AddNewBTN = styled.button`
   background: blue;
   border-radius: 1em;
 `
-export const AddGoalFormContainer = styled.div`
+export const GoalForm = styled.div`
   button {
     margin-left:auto;
   }
@@ -102,7 +102,7 @@ export const GoalCardContainer = styled.div`
   justify-content:center;
   align-items:center;
   margin:10px;
-  width:300px;
+  width: 240px;
   h4{
     display: inline;
   }
