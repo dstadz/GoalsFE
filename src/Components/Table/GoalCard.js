@@ -5,7 +5,7 @@ import axios from 'axios'
 import AddHabitForm from './AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-// import { goalListState, /*habitListState*/ } from '../../utils/store'
+// import { goalListState, habitListState } from '../../utils/store'
 import EditGoalForm from './EditGoalForm'
 
 
@@ -40,12 +40,12 @@ const GoalCard = ({props}) => {
 
   return (
     <GoalCardContainer>
-      <h4>{goal} {start_date}</h4>
+      <h3>{goal} {start_date}</h3>
       <div>
-        <button onClick={() => setForm('delete')} >Delete</button>
+        <button onClick={() => setForm('add')}> Add new habit </button>
         <button onClick={() => setForm('edit')} >Edit</button>
-        {/*<button onClick={() => setForm('add')}> Add new habit </button> */}
-        <button onClick={() => { setForm('get')}} > See Habits </button>
+        <button onClick={() => setForm('delete')} >Delete</button>
+    {/* <button onClick={() => { setForm('get')}} > See Habits </button> */}
       </div>
 
       {/*<p>{start_date} => {target_date}</p> */}

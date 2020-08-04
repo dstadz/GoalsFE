@@ -2,5 +2,5 @@ export {
   userState,
   activeFormState,
   goalListState,
-  // habitListState
+  habitListState
 } from './atoms'

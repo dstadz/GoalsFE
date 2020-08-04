@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
-const backend = `http://localhost:8000/api/goals/`
-
+import { GoalForm } from '../../styles'
 const EditGoalForm = (props) => {
   const { id, goal, target_date,setForm } = props
 
@@ -22,7 +21,7 @@ const EditGoalForm = (props) => {
 
   const onSubmit = data => {
     data = {...data, completed:false}
-    axios.put(backend+id,data)
+    axios.put(`${process.env.REACT_APP_BE}/users/`+id,data)
     .then(res => {console.log(res.data)})
     .catch(err => { console.log(err) })
 
@@ -32,35 +31,35 @@ const EditGoalForm = (props) => {
 
 
   return (
-    <div style={{background:'blue'}}>
+    <GoalForm>
 
       <h5>Edit {goal}</h5>
       <button onClick={() => setForm('')}> X </button>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-      <label> Goal Name </label>
-      <input type="text"
-        placeholder={goal}
-        name="goal"
-        ref={register({required: true, maxLength: 80})}
-        value={nextGoal}
-        onChange={handleGoalChange}
-      />
-
-      <br />
-
-      <label> By:</label>
-      <input type='date'
-        placeholder={targetDate}
-        name="target_date"
-        ref={register}
-        value={targetDate}
-        onChange={handleTargetDateChange}
+        <label> Goal Name </label>
+        <input type="text"
+          placeholder={goal}
+          name="goal"
+          ref={register({required: true, maxLength: 80})}
+          value={nextGoal}
+          onChange={handleGoalChange}
         />
 
-      <input type="submit" />
-    </form>
-    </div>
+        <br />
+
+        <label> By:</label>
+        <input type='date'
+          placeholder={targetDate}
+          name="target_date"
+          ref={register}
+          value={targetDate}
+          onChange={handleTargetDateChange}
+          />
+
+        <input type="submit" />
+      </form>
+    </GoalForm>
   )
 }
 

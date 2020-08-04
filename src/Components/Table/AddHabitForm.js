@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
+import { GoalForm } from '../../styles'
+
 const times = ['daily', 'weekly', 'monthly', 'annually']
 
 const AddHabitForm = ({setForm, goal_id}) => {
@@ -17,10 +19,9 @@ const AddHabitForm = ({setForm, goal_id}) => {
 
 
   return (
-    <div style={{background:'green'}}>
-
-      <h5>Add a New Habit</h5>
+    <GoalForm>
       <button onClick={() => setForm(false)}> X </button>
+      <h5>Add a New Habit</h5>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> New Habit:</label>
@@ -47,7 +48,7 @@ const AddHabitForm = ({setForm, goal_id}) => {
 
         <input type="submit" />
       </form>
-    </div>
+    </GoalForm>
   )
 }
 
