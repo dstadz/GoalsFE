@@ -7,7 +7,7 @@ export const userState = atom({
     "name": "blue",
     "email": "blue@colors.com",
     "password": "$2a$12$ryzLX0wYX3HzCl0obS1T4etlhCafkmvvu8QGC1m93JVV0nvXV33ay",
-    "birthday": "01/23/1994"
+    "birthday": "06/23/1994"
   }
 })
 

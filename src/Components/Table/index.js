@@ -18,7 +18,7 @@ const TableThing = () => {
       .catch(err => { console.log(err) })
     }, [goalList.length, setGoalList])
 
-  console.log(goalList)
+  console.log({goalList})
   return ( <div style={{background:'#330'}}>
     {goalList && goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
   </div> )

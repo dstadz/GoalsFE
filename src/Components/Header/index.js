@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 
-import { activeFormState } from '../../utils/store'
+import { addOpenState } from '../../utils/store'
 import { TopStuff, AddNewBTN } from '../../styles'
 import { userState } from '../../utils/store'
 import { useRecoilValue } from 'recoil'
@@ -11,7 +11,7 @@ import { useRecoilValue } from 'recoil'
 import AddGoalForm from './AddGoalForm'
 
 const Header = () => {
-  const [activeForm, setActiveForm] = useRecoilState(activeFormState)
+  const [addOpen, setAddOpen] = useState(false)
   const { name, id, birthday, email }  = useRecoilValue(userState)
   return (
     <TopStuff>
@@ -27,19 +27,14 @@ const Header = () => {
 
       <div>
         <div>
-          <AddNewBTN
-          onClick={()=>setActiveForm('Goal')}
-          > add a new goal </AddNewBTN>
-
-          {activeForm && <AddGoalForm />}
-
+          <AddNewBTN onClick={()=>setAddOpen(addOpen => !addOpen)} > add a new goal </AddNewBTN>
+          {addOpen && <AddGoalForm />}
         </div>
-      
+
         <AddNewBTN
-        onClick={()=>setActiveForm('Habit')}
+        onClick={()=>setAddOpen('Habit')}
         > Sort By: </AddNewBTN>
 
-        <AddNewBTN> 4th thing </AddNewBTN>
       </div>
 
     </TopStuff>

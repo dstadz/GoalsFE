@@ -38,6 +38,8 @@ const GoalCard = ({props}) => {
     }
   }
 
+  console.log(goal)
+
   return (
     <GoalCardContainer>
       <h3>{goal} {start_date}</h3>

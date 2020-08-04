@@ -15,10 +15,9 @@ const SideBar = () => {
 
   return (
     <Side>
-      <div> above nav things </div>
-      <nav> nav stuff </nav>
-      <h3> Hey { name }! You have {100} years until you 'retire' </h3>
+      <h3> Your Life Here:</h3>
       <LifeBlocks />
+      <div></div>
     </Side>
   )
 }
