@@ -68,28 +68,32 @@ export const LifeContainer = styled.div `
   }
 `
 export const TopStuff = styled.div`
-  background:gray;
   div{
     display:flex;
     justify-content: space-around;
+
+    div{
+      flex-direction: column;
+
+    }
   }
 
 
 `
 export const AddNewBTN = styled.button`
-  background: blue;
+  width: 200px;
+  height: 20px;
+  background: cyan;
   border-radius: 1em;
 `
 export const GoalForm = styled.div`
   button {
-    margin-left:auto;
+    margin :5px 5px 0 auto;
   }
 
   h5{
     margin: 0;
   }
-  background:green;
-  width: 300px;
   display:flex;
   flex-direction: column;
   align-items:center;

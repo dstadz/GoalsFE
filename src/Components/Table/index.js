@@ -19,7 +19,7 @@ const TableThing = () => {
     }, [goalList.length, setGoalList])
 
   console.log(goalList)
-  return ( <div>
+  return ( <div style={{background:'#330'}}>
     {goalList && goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
   </div> )
 }

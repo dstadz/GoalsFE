@@ -21,10 +21,9 @@ const AddHabitForm = ({setForm, goal_id}) => {
   return (
     <GoalForm>
       <button onClick={() => setForm(false)}> X </button>
-      <h5>Add a New Habit</h5>
+      <h5>New Habit</h5>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label> New Habit:</label>
         <input type="text"
           placeholder="New Habit"
           name="habit"

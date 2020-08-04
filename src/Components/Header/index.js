@@ -26,10 +26,15 @@ const Header = () => {
 
 
       <div>
-        <AddNewBTN
+        <div>
+          <AddNewBTN
           onClick={()=>setActiveForm('Goal')}
-        > add a new goal </AddNewBTN>
+          > add a new goal </AddNewBTN>
 
+          {activeForm && <AddGoalForm />}
+
+        </div>
+      
         <AddNewBTN
         onClick={()=>setActiveForm('Habit')}
         > Sort By: </AddNewBTN>
@@ -37,7 +42,6 @@ const Header = () => {
         <AddNewBTN> 4th thing </AddNewBTN>
       </div>
 
-      {activeForm && <AddGoalForm />}
     </TopStuff>
   )
 }
