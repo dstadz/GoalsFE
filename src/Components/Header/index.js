@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { useRecoilState } from 'recoil'
 
 
-import { addOpenState } from '../../utils/store'
 import { TopStuff, AddNewBTN } from '../../styles'
-import { userState } from '../../utils/store'
-import { useRecoilValue } from 'recoil'
+// import { userState } from '../../utils/store'
+// import { useRecoilValue, useRecoilState } from 'recoil'
 
 
 import AddGoalForm from './AddGoalForm'
+// import { habitListState } from '../../utils/store/atoms'
 
 const Header = () => {
   const [addOpen, setAddOpen] = useState(false)
-  const { name, id, birthday, email }  = useRecoilValue(userState)
+  // const { name, id, birthday, email }  = useRecoilValue(userState)
+  // const [habitList, setHabitlist] = useRecoilState(habitListState)
+
   return (
     <TopStuff>
       <h1> How will you become the person you want to be? </h1>

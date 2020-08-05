@@ -6,14 +6,18 @@ import { GoalForm } from '../../styles'
 
 const times = ['daily', 'weekly', 'monthly', 'annually']
 
-const AddHabitForm = ({setForm, goal_id}) => {
+const AddHabitForm = ({setForm, goal_id, habitList, setHabitList}) => {
   const { register, handleSubmit, errors } = useForm()
 
   if ( Object.keys(errors).length ) console.log(errors)
 
   const onSubmit = data => {
+    console.log({...data, goal_id})
     axios.post(`${process.env.REACT_APP_BE}/habits/add/${goal_id}`, {...data,goal_id})//, config)
-    .then(res => { console.log(res.data) })
+    .then(res => {
+      console.log(res.data)
+      setHabitList(habitList.concat(res.data))
+    })
     .catch(err => { console.log(err) })
   }
 

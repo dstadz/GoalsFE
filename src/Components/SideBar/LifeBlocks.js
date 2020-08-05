@@ -1,5 +1,5 @@
 import React from 'react'
-import { MonthBox, YearRow, LifeContainer } from '../../styles'
+import { MonthBox, LifeContainer } from '../../styles'
 import { useRecoilValue } from 'recoil'
 
 import { userState } from '../../utils/store'

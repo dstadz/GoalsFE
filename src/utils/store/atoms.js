@@ -26,3 +26,8 @@ export const habitListState = atom({
   key: 'habitListState',
   default: [{X:[]}]
 });
+
+// const goalIdListState = atom({
+//   key: 'goalIdListState',
+//   default: 'Show All',
+// });
