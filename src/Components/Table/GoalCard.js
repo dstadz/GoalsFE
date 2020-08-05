@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 // import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
-import AddHabitForm from './AddHabitForm'
+import AddHabitForm from '../Forms/AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
 // import { goalListState, habitListState } from '../../utils/store'
-import EditGoalForm from './EditGoalForm'
+import EditGoalForm from '../Forms/EditGoalForm'
 
 
 const GoalCard = ({props}) => {
@@ -25,9 +25,19 @@ const GoalCard = ({props}) => {
   const renderSwitch = form => {
     switch(form) {
       case 'add':
-        return <AddHabitForm setForm={setForm} goal_id={id} setHabitList={setHabitList} habitList={habitList} />
+        return <AddHabitForm
+          goal_id={id}
+          setForm={setForm}
+          habitList={habitList}
+          setHabitList={setHabitList}
+        />
       case 'edit':
-        return <EditGoalForm setForm={setForm} goal={goal} id={id} target_date={target_date} />
+        return <EditGoalForm
+        id={id}
+        goal={goal}
+        setForm={setForm}
+        target_date={target_date}
+        />
       case 'delete':
         break
       //   return <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>

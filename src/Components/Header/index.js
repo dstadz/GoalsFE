@@ -6,7 +6,7 @@ import { TopStuff, AddNewBTN } from '../../styles'
 // import { useRecoilValue, useRecoilState } from 'recoil'
 
 
-import AddGoalForm from './AddGoalForm'
+import AddGoalForm from '../Forms/AddGoalForm'
 // import { habitListState } from '../../utils/store/atoms'
 
 const Header = () => {

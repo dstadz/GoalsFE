@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 
 import Footer from './Footer'
-import SignInUp from './SignInUp'
+import SignInUp from '../Forms/SignInUp'
 
 import {
   LandingPageContainer,
