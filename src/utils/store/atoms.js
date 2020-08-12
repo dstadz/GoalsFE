@@ -16,7 +16,12 @@ export const goalListState = atom({
 });
 
 
-// export const habitListState = atom({
-//   key: 'habitListState',
-//   default: [{X:[]}]
+export const habitListState = atom({
+  key: 'habitListState',
+  default: [{X:[]}]
+});
+
+// const goalIdListState = atom({
+//   key: 'goalIdListState',
+//   default: 'Show All',
 // });

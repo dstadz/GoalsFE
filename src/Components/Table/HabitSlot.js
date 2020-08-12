@@ -3,7 +3,7 @@ import React from 'react'
 import { HabitSlotContainer } from '../../styles'
 
 const HabitSlot = ({props}) => {
-  const { id, habit, amount, freq, goal_id } = props
+  const { id, habit, amount, freq, /*goal_id*/ } = props
 
   return (
     <HabitSlotContainer>

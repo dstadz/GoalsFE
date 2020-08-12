@@ -1,5 +1,5 @@
 import React from 'react'
-import { MonthBox, YearRow, LifeContainer } from '../../styles'
+import { MonthBox, LifeContainer } from '../../styles'
 import { useRecoilValue } from 'recoil'
 
 import { userState } from '../../utils/store'
@@ -12,7 +12,7 @@ const today = new Date()
 const thisYear = today.getFullYear()
 const thisMonth = today.getMonth()
 
-const lifeTime = 81
+const lifeTime = 101
 const life = Array(lifeTime).fill().map((_, i) => i);
 
 const Month = ({month, year}) => {
@@ -20,30 +20,24 @@ const Month = ({month, year}) => {
   const bday = new Date(birthday)
   const birthYear = bday.getFullYear()
   const birthMonth = bday.getMonth()
-  
+
   return(
-    <MonthBox
-      style={
+    <MonthBox style={
       (year === thisYear && month === thisMonth)
       ? {background:'blue'}
       : (year === birthYear && month < birthMonth)
         ? {visibility:'hidden'}
         : {}
-    }>
+      }>
       <span> {months[month]} {year} </span>
     </MonthBox>
   )
 }
 
 
-const Year = ({ year }) => {
-
-  return(
-    <YearRow>
-      {months.map((_, i)=> ( <Month key={i} month={i} year={year}/> ))}
-    </YearRow>
-  )
-}
+const Year = ({ year }) => {return( <li>
+  {months.map((_, i)=> ( <Month key={i} month={i} year={year}/> ))}
+</li> )}
 
 
 const LifeBlocks = () => {
@@ -54,8 +48,7 @@ const LifeBlocks = () => {
 
   return (
     <LifeContainer birthMonth={birthMonth}>
-      <h3> Your Life Here:</h3>
-      <ol> {life.map( y => (<Year key={y}  year={y + birthYear}/>))} </ol>
+      {life.map( y => (<Year key={y}  year={y + birthYear}/>))}
     </LifeContainer>
   )
 }

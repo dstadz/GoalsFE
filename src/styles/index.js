@@ -1,18 +1,59 @@
 import styled from 'styled-components'
 
-export const AppBody = styled.div `
+export const AppBody = styled.div`
   display: flex;
+
+  section{
+    margin:auto;
+  }
 `
-export const Side = styled.div `
-  background: blue;
+
+export const Side = styled.div`
+  background: gold;
+  position: fixed;
+  top: 0;
+  left:0;
+  bottom:0;
   width: 300px;
-  height: 100vh;
 `
-export const MonthBox = styled.div `
-  width: 4px;
-  height: 4px;
-  margin: 1px;
-  margin-top: 3px;
+
+export const OtherSideContainer = styled.div`
+  background: silver;
+  position: fixed;
+  top: 0;
+  right:0;
+  bottom:0;
+  width: 300px;
+`
+
+export const LifeContainer = styled.ol`
+  background:white;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding:0;
+
+  overflow:scroll;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  li{
+    display:flex;
+  }
+
+  li:nth-child(-n+18) div { border: 2px solid red; }
+  li:nth-child(n+18):nth-child(-n+40) div { border: 2px solid green; }
+  li:nth-child(n+41) div { border: 2px solid grey; }
+`
+
+export const MonthBox = styled.div`
+  width: 5px;
+  height: 5px;
+  margin: 2px;
   position: relative;
   display: inline-block;
   :hover{ background:grey; }
@@ -34,62 +75,36 @@ export const MonthBox = styled.div `
     visibility: visible;
   }
 `
-export const YearRow = styled.li `
-  display:flex;
-`
-export const LifeContainer = styled.div `
-  height:75vh;
-  width:90%;
-  margin:auto;
 
-  background:white;
-  border: 1px solid black;
-  overflow-y: auto;
-  ::-webkit-scrollbar { display: none; }
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  h3{
-    margin:0;
-  }
-
-  ol{
-    padding-left: 0;
-    margin-top: 0;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-
-    li:nth-child(-n+18) div { border: 2px solid red; }
-    li:nth-child(n+18):nth-child(-n+40) div { border: 2px solid green; }
-    li:nth-child(n+41) div { border: 2px solid grey; }
-  }
-`
 export const TopStuff = styled.div`
-  background:gray;
   div{
     display:flex;
     justify-content: space-around;
+
+    div{
+      flex-direction: column;
+
+    }
   }
 
 
 `
+
 export const AddNewBTN = styled.button`
-  background: blue;
+  width: 200px;
+  height: 20px;
+  background: cyan;
   border-radius: 1em;
 `
+
 export const GoalForm = styled.div`
   button {
-    margin-left:auto;
+    margin :5px 5px 0 auto;
   }
 
   h5{
     margin: 0;
   }
-  background:green;
-  width: 300px;
   display:flex;
   flex-direction: column;
   align-items:center;

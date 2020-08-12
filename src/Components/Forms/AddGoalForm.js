@@ -53,10 +53,7 @@ const AddGoalForm = () => {
   // );
   return (
     <GoalForm>
-      <h5>Add a New {activeForm}</h5>
-
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label> New {activeForm}:</label>
         <input type="text"
           placeholder={activeForm}
           name="goal"

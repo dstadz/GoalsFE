@@ -6,6 +6,7 @@ import LandingPage from './LandingPage/'
 import Header from './Header/'
 import SideBar from './SideBar/'
 import TableThing from './Table/'
+import OtherSide from './OtherSide/'
 
 import { userState } from '../utils/store'
 import { AppBody } from '../styles'
@@ -28,10 +29,11 @@ const App = ()  => {
   return (
     <AppBody>
       <SideBar/>
-      <div>
+      <section>
         <Header />
         <TableThing />
-      </div>
+      </section>
+      <OtherSide/>
     </AppBody>
   );
 }

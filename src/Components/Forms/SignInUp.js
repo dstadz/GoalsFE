@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useSetRecoilState } from 'recoil'
 
-import { SignInUpModal, ButtonBar } from './styles'
+import { SignInUpModal, ButtonBar } from '../LandingPage/styles'
 import { userState } from '../../utils/store'
 
 
