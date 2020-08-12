@@ -22,14 +22,13 @@ const TableThing = () => {
       .then(res => {
         setGoalList(res.data)
         console.log(goalList)
-        for (let goal of goalList) {
-          console.log(goal.id)
-          setGoalIds([goalIds].concat(goal.id))
-        }
-        console.log({ goalIds })
       })
       .catch(err => { console.log(err) })
     },[])//, [goalList.length, setGoalList])
+
+    let goalIdCol = []
+    console.log({ goalIdCol })
+    console.log({ goalIds })
 
 
 
