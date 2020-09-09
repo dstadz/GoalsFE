@@ -60,7 +60,7 @@ const GoalCard = ({props}) => {
 
       {/*<p>{start_date} => {target_date}</p> */}
       {renderSwitch(form)}
-      {console.log(habitList)}
+      {/* {console.log(habitList)} */}
       <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
     </GoalCardContainer>
   )
