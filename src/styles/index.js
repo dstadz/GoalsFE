@@ -2,33 +2,29 @@ import styled from 'styled-components'
 
 export const AppBody = styled.div`
   display: flex;
+  height: 100vh;
+
+  justify-content: space-between;
 
   section{
-    margin:auto;
+    background: red;
+    ${'' /* margin:auto; */}
   }
 `
 
 export const Side = styled.div`
-  background: gold;
-  position: fixed;
-  top: 0;
-  left:0;
-  bottom:0;
+  background: silver;
   width: 300px;
 `
 
 export const OtherSideContainer = styled.div`
-  background: silver;
-  position: fixed;
-  top: 0;
-  right:0;
-  bottom:0;
+  background: gold;
   width: 300px;
 `
 
 export const LifeContainer = styled.ol`
-  background:white;
-  height: 80vh;
+  background: #88f;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +38,8 @@ export const LifeContainer = styled.ol`
   }
 
   li{
+    background: yellow;
+
     display:flex;
   }
 

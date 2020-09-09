@@ -23,7 +23,7 @@ const SignInUp = ({closeModal}) => {
 
   const config = { headers: {
     "Allowed":"*",
-    "Access-Control-Allow-Origin": "https://goalgetter.netlify.app",
+    "Access-Control-Allow-Origin": 'localhost:3000',//"https://goalgetter.netlify.app",
     "Access-Control-Request-Headers": "origin, x-requested-with",
     "Access-Control-Request-Method": "POST"
   } }
@@ -34,10 +34,7 @@ const SignInUp = ({closeModal}) => {
 
     } else if (signIn) {
       axios.post(`${process.env.REACT_APP_BE}/users/signIn`,data, config)
-      .then(res => {
-        console.log(res.data)
-        setUser(res.data)
-      })
+      .then(res => { setUser(res.data) })
       .catch(err => { console.log(err) })
 
     } else { //signUp
