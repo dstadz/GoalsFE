@@ -1,57 +1,41 @@
 import styled from 'styled-components'
 
 export const AppBody = styled.div`
-  display: flex;
-  height: 100vh;
-
   justify-content: space-between;
 
   section{
-    background: red;
-    ${'' /* margin:auto; */}
-  }
+    background: red; }
 `
 
 export const Side = styled.div`
   background: silver;
-  width: 300px;
-`
-
-export const OtherSideContainer = styled.div`
-  background: gold;
-  width: 300px;
-`
-
-export const LifeContainer = styled.ol`
-  background: #88f;
-  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+`
 
-  padding:0;
-
-  overflow:scroll;
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
+export const LifeContainer = styled.ol`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
 
   li{
-    background: yellow;
-
     display:flex;
+    flex-direction:column;
   }
 
-  li:nth-child(-n+18) div { border: 2px solid red; }
-  li:nth-child(n+18):nth-child(-n+40) div { border: 2px solid green; }
-  li:nth-child(n+41) div { border: 2px solid grey; }
+  ${'' /* li:nth-child(-n+18) div { background: red; }
+  li:nth-child(n+18):nth-child(-n+40) div { background: green; }
+  li:nth-child(n+41) div { background: grey; } */}
 `
 
 export const MonthBox = styled.div`
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   margin: 2px;
+  border: 2px solid black;
+
   position: relative;
   display: inline-block;
   :hover{ background:grey; }

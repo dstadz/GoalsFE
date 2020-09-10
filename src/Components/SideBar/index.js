@@ -15,9 +15,8 @@ const SideBar = () => {
 
   return (
     <Side>
-      <h3> Your Life Here:</h3>
       <LifeBlocks />
-      <div></div>
+      {/* <h3> Your Life Here:</h3> */}
     </Side>
   )
 }

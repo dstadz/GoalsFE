@@ -24,7 +24,7 @@ const Month = ({month, year}) => {
   return(
     <MonthBox style={
       (year === thisYear && month === thisMonth)
-      ? {background:'blue'} //highlight current month
+      ? {background:'gold'} //highlight current month
       : (year === birthYear && month < birthMonth)
         ? {visibility:'hidden'} //hide months before birth
         : {}
