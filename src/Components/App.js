@@ -30,11 +30,11 @@ const App = ()  => {
   return (
     <AppBody>
       <SideBar/>
-      <section>
+      {/* <section> */}
         <Header />
         <TableThing />
-      </section>
-      <OtherSide/>
+      {/* </section> */}
+      {/* <OtherSide/> */}
     </AppBody>
   );
 }
