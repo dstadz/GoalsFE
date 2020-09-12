@@ -17,7 +17,8 @@ const EditGoalForm = (props) => {
 
 
   const onSubmit = data => {
-    data = {...data, ...props, completed:false}
+    data = { ...props, ...data, completed:false}
+    console.log(data)
     axios.put(`${process.env.REACT_APP_BE}/goals/`+id,data)
     .then(res => {console.log(res.data)})
     .catch(err => { console.log(err) })

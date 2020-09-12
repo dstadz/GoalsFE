@@ -24,10 +24,10 @@ export const LifeContainer = styled.ol`
     display:flex;
     flex-direction:column;
   }
-
-  ${'' /* li:nth-child(-n+18) div { background: red; }
-  li:nth-child(n+18):nth-child(-n+40) div { background: green; }
-  li:nth-child(n+41) div { background: grey; } */}
+${'' /* 
+  li:nth-child(-n+18) div { background: yellow; }
+  li:nth-child(n+18):nth-child(-n+35) div { background: red; }
+  li:nth-child(n+51) div { background: grey; } */}
 `
 
 export const MonthBox = styled.div`

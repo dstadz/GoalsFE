@@ -22,13 +22,22 @@ const Month = ({month, year}) => {
   const targetList =  useRecoilValue(targetDates)
 
   const color = () => {
-    if (year === thisYear && month === thisMonth) return {background:'gold'} //highlight current month
-    else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'} //hide months before birth
-    // else if()
+    //highlight current month
+    if (year === thisYear && month === thisMonth) return {background:'gold'}
+    //hide months before birth
+    else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'}
+    //highlights months with goals in them
+    let timefrag = `${year}-${month < 10 ?`0${month}` : month}`
+    if (targetList.some(date => date.substr(0,7) === timefrag)) return {background:'purple'}
   }
 
+
   return(
-    <MonthBox style={color()}>
+    <MonthBox style={color()}
+      onClick={()=>{
+        console.log(month, year)
+        }}
+    >
       <span> {months[month]} {year} </span>
     </MonthBox>
   )

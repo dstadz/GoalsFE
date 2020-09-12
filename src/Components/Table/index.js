@@ -16,7 +16,9 @@ const TableThing = () => {
 
   useEffect(async () => {
     await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
-    .then(res => { setGoalList(res.data) })
+    .then(res => {
+      setGoalList(res.data)
+    })
     .catch(err => { console.log(err) })
   },[user.id, setGoalList])
 
