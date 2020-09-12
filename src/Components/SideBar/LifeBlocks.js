@@ -2,7 +2,7 @@ import React from 'react'
 import { MonthBox, LifeContainer } from '../../styles'
 import { useRecoilValue } from 'recoil'
 
-import { userState } from '../../utils/store'
+import { userState, targetDates } from '../../utils/store'
 
 
 
@@ -11,7 +11,6 @@ const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','Aug
 const today = new Date()
 const thisYear = today.getFullYear()
 const thisMonth = today.getMonth()
-
 const lifeTime = 101
 const life = Array(lifeTime).fill().map((_, i) => i);
 
@@ -20,15 +19,16 @@ const Month = ({month, year}) => {
   const bday = new Date(birthday)
   const birthYear = bday.getFullYear()
   const birthMonth = bday.getMonth()
+  const targetList =  useRecoilValue(targetDates)
+
+  const color = () => {
+    if (year === thisYear && month === thisMonth) return {background:'gold'} //highlight current month
+    else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'} //hide months before birth
+    // else if()
+  }
 
   return(
-    <MonthBox style={
-      (year === thisYear && month === thisMonth)
-      ? {background:'gold'} //highlight current month
-      : (year === birthYear && month < birthMonth)
-        ? {visibility:'hidden'} //hide months before birth
-        : {}
-      }>
+    <MonthBox style={color()}>
       <span> {months[month]} {year} </span>
     </MonthBox>
   )
@@ -45,6 +45,11 @@ const LifeBlocks = () => {
   const bday = new Date(birthday)
   const birthYear = bday.getFullYear()
   const birthMonth = bday.getMonth()
+  const targetList =  useRecoilValue(targetDates)
+
+
+  console.log(targetList)
+
 
   return (
     <LifeContainer birthMonth={birthMonth}>

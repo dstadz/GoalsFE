@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-
 import { GoalForm } from '../../styles'
+
 const EditGoalForm = (props) => {
   const { id, goal, target_date,setForm } = props
-
   const { register, handleSubmit, errors } = useForm()
   const [nextGoal, setNextGoal] = useState(goal)
   const [targetDate, setTargetDate] = useState(target_date.slice(0,10))
-
-
 
   if ( Object.keys(errors).length ) console.log(errors)
 
@@ -20,8 +17,8 @@ const EditGoalForm = (props) => {
 
 
   const onSubmit = data => {
-    data = {...data, completed:false}
-    axios.put(`${process.env.REACT_APP_BE}/users/`+id,data)
+    data = {...data, ...props, completed:false}
+    axios.put(`${process.env.REACT_APP_BE}/goals/`+id,data)
     .then(res => {console.log(res.data)})
     .catch(err => { console.log(err) })
 

@@ -4,3 +4,7 @@ export {
   goalListState,
   habitListState
 } from './atoms'
+
+export {
+  targetDates
+} from './selectors'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import { OtherSideContainer } from '../../styles'
+// import { OtherSideContainer } from '../../styles'
 const OtherSide = () => {
   return (
     <div> otherside </div>

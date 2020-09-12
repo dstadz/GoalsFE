@@ -6,7 +6,7 @@ import LandingPage from './LandingPage/'
 import Header from './Header/'
 import SideBar from './SideBar/'
 import TableThing from './Table/'
-import OtherSide from './OtherSide/'
+// import OtherSide from './OtherSide/'
 
 import { userState } from '../utils/store'
 import { AppBody } from '../styles'
@@ -14,7 +14,7 @@ import { AppBody } from '../styles'
 
 const App = ()  => {
   const user = useRecoilValue(userState)
-  console.log(user)
+  // console.log(user)
 
   //APP IDEA: "GetMe" => TINDER/HINGE CLONE, BUT ALL PROMPTS ARE GIF/VIDEOS WITH SPECIFIC DIRECTIONS:
   /*
@@ -30,11 +30,8 @@ const App = ()  => {
   return (
     <AppBody>
       <SideBar/>
-      {/* <section> */}
-        <Header />
-        <TableThing />
-      {/* </section> */}
-      {/* <OtherSide/> */}
+      <Header />
+      <TableThing />
     </AppBody>
   );
 }
