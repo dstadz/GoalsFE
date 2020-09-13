@@ -1,19 +1,9 @@
 import React, { useState } from 'react'
-
-
 import { TopStuff, AddNewBTN } from '../../styles'
-// import { userState } from '../../utils/store'
-// import { useRecoilValue, useRecoilState } from 'recoil'
-
-
 import AddGoalForm from '../Forms/AddGoalForm'
-// import { habitListState } from '../../utils/store/atoms'
 
 const Header = () => {
   const [addOpen, setAddOpen] = useState(false)
-  // const { name, id, birthday, email }  = useRecoilValue(userState)
-  // const [habitList, setHabitlist] = useRecoilState(habitListState)
-
   return (
     <TopStuff>
       <h1> How will you become the person you want to be? </h1>
@@ -25,13 +15,7 @@ const Header = () => {
           <AddNewBTN onClick={()=>setAddOpen(addOpen => !addOpen)} > add a new goal </AddNewBTN>
           {addOpen && <AddGoalForm />}
         </div>
-
-        <AddNewBTN
-        onClick={()=>setAddOpen('Habit')}
-        > Sort By: </AddNewBTN>
-
       </div>
-
     </TopStuff>
   )
 }

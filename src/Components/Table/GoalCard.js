@@ -21,6 +21,12 @@ const GoalCard = ({props}) => {
       .catch(err => { console.log(err) })
   }, [])
 
+  const deleteGoal = () => {
+    axios.delete(`${process.env.REACT_APP_BE}/goal/${id}`)//, config)
+    .then(res => { console.log(res.data) })
+    .catch(err => { console.log(err) })
+  }
+
   const renderSwitch = form => {
     switch(form) {
       case 'add':
@@ -38,7 +44,11 @@ const GoalCard = ({props}) => {
         target_date={target_date}
         />
       case 'delete':
-        break
+        return <div>
+          are you sure?
+          <button onClick={()=> deleteGoal()}> remove it </button>
+          <button onClick={() => setForm('')}> nvm </button>
+        </div>
       //   return <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
       default:
         return;
@@ -49,7 +59,7 @@ const GoalCard = ({props}) => {
 
   return (
     <GoalCardContainer>
-      <h3>{goal}</h3>
+      <h3>{goal} {id}</h3>
       <span>By: {target_date}</span>
       <div>
         <button onClick={() => setForm('add')}> Add new habit </button>
@@ -58,9 +68,7 @@ const GoalCard = ({props}) => {
     {/* <button onClick={() => { setForm('get')}} > See Habits </button> */}
       </div>
 
-      {/*<p>{start_date} => {target_date}</p> */}
       {renderSwitch(form)}
-      {/* {console.log(habitList)} */}
       <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
     </GoalCardContainer>
   )
