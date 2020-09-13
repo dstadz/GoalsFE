@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import axios from 'axios'
-
+import { Table } from '../../styles'
 import GoalCard from './GoalCard'
 import {
   userState,
@@ -14,19 +14,28 @@ const TableThing = () => {
   const [goalList, setGoalList] = useRecoilState(goalListState)
 
 
-  useEffect(async () => {
-    await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
-    .then(res => {
-      setGoalList(res.data)
-    })
-    .catch(err => { console.log(err) })
-  },[user.id, setGoalList])
+  // useEffect(async () => {
+  //   await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
+  //   .then(res => { setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1)) }) // sort by date
+  //   .catch(err => { console.log(err) })
+  // },[user.id, setGoalList])
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
+        .then(res => {setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1))}) // sort by date
+        .catch(err => { console.log(err) })
+      // response = await response
+    }
+
+    fetchMyAPI()
+  }, [])
 
 
     // console.log(user.name, {goalList}, {habitList})
-  return ( <div style={{background:'green'}}>
+  return ( <Table>
     {goalList && goalList.map(g => ( <GoalCard key={g.id} props={g} /> )) }
-  </div> )
+  </Table> )
 }
 
 export default TableThing
