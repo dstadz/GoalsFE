@@ -2,13 +2,7 @@ import { atom } from 'recoil'
 
 export const userState = atom({
   key: ' userState',
-  default: {
-    id: 2,
-    name: "red",
-    email: "red@colors.com",
-    password: "$2a$12$IOEJKNlmbZ7r87nm1.xKweUALlGj9sjQmN6PZ8pkkL0J81HOGYqNm",
-    birthday: "01/23/1945"
-  }
+  default: {}
 })
 
 export const activeFormState = atom({
