@@ -13,6 +13,10 @@ export const Side = styled.div`
   flex-direction: column;
   align-items: center;
 `
+export const Table = styled.div`
+  background: yellow;
+  display:flex;
+`
 
 export const LifeContainer = styled.ol`
   display: flex;
@@ -46,16 +50,30 @@ export const MonthBox = styled.div`
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    width: 120px;
+    ${'' /* width: 120px; */}
     position: absolute;
     top: 15px;
     right:-50px;
     z-index: 1;
   }
 
-  :hover span {
-    visibility: visible;
+  ol {
+    visibility: hidden;
+    padding: 0;
+    ${'' /* list-style: none; */}
+    ${'' /* position: absolute;
+    top: 36px;
+    right: -70px;
+    z-index: 1; */}
+    li {
+      background-color: black;
+      color: white;
+      white-space:nowrap;
+    }
   }
+
+  :hover span { visibility: visible; }
+  :hover ol { visibility: visible; }
 `
 
 export const TopStuff = styled.div`
