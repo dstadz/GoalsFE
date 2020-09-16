@@ -1,13 +1,12 @@
 import React from 'react'
 import { MonthBox, LifeContainer } from '../../styles'
-import { useRecoilValue } from 'recoil'
+import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { activeMonthState } from '../../utils/store'
+
 
 import { userState, goalListState, targetDates } from '../../utils/store'
 
-
-
 const months = ['January', 'Febuary', 'March', 'April', 'May','June','July','August','September','October','November', 'December']
-
 const today = new Date()
 const thisYear = today.getFullYear()
 const thisMonth = today.getMonth()
@@ -17,17 +16,24 @@ const life = Array(lifeTime).fill().map((_, i) => i);
 const Month = ({month, year}) => {
   const { birthday }  = useRecoilValue(userState)
   const bday = new Date(birthday)
-  const birthYear = bday.getFullYear()
   const birthMonth = bday.getMonth()
-  const targetList =  useRecoilValue(targetDates)
+  const birthYear = bday.getFullYear()
   const goalList = useRecoilValue(goalListState)
+  const targetList =  useRecoilValue(targetDates)
+  const setActiveMonth = useSetRecoilState(activeMonthState);
+
   const timefrag = `${year}-${month - 1 < 10 ? `0${month + 1}` : month + 1}`
 
   const color = () => {
     //highlight current month
     if (year === thisYear && month === thisMonth) return {background:'gold'}
+
     //hide months before birth
     else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'}
+
+    //hide months after 100th birthday
+    else if (year === birthYear + 100 && month > birthMonth) return  {visibility:'hidden'}
+
     //highlights months with goals in them
     if (targetList.some(date => date.substr(0,7) === timefrag)) return {background:'purple'}
   }
@@ -35,12 +41,14 @@ const Month = ({month, year}) => {
   // console.log(goalList)
 //on hover over month with goal, shows goal(s)
   return(
-    <MonthBox style={color()}
-      onClick={()=>{ console.log(month, year) }}
+    <MonthBox
+      style={color()}
+      onClick={()=>{ setActiveMonth(new Date(year, month, 1)) }}
     >
       <span> {months[month]} {year}
       <ol>
-        {goalList.filter(goal => goal.target_date.substr(0,7) === timefrag).map(goal => <li>{goal.goal}</li>)}
+        {goalList.filter(goal => goal.target_date.substr(0,7) === timefrag)
+        .map(goal => <li key={goal.id}>{goal.goal}</li>)}
       </ol>
     </span>
     </MonthBox>
@@ -62,16 +70,11 @@ const LifeBlocks = () => {
   const birthMonth = bday.getMonth()
   const targetList =  useRecoilValue(targetDates)
 
-
-  console.log(targetList)
-
-
   return (
     <LifeContainer birthMonth={birthMonth}>
       {life.map( y => (
         <Year key={y}  year={y + birthYear}/>
       ))}
-      {console.log(life[25][6])}
     </LifeContainer>
   )
 }

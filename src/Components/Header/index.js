@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
+import { useRecoilState } from 'recoil'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-
-import { TopStuff, AddNewBTN } from '../../styles'
 import AddGoalForm from '../Forms/AddGoalForm'
+import { TopStuff, AddNewBTN } from '../../styles'
+import { activeMonthState } from '../../utils/store'
 
 const Header = () => {
   const [addOpen, setAddOpen] = useState(false)
-  const [value, onChange] = useState(new Date());
+  const [month, setMonth] = useRecoilState(activeMonthState);
 
+  console.log(month)
   return (
     <TopStuff>
       <div>
@@ -19,8 +21,9 @@ const Header = () => {
       </div>
 
       <Calendar
-        onChange={onChange}
-        value={value}
+        calendarType={"US"}
+        onChange={setMonth}
+        value={month}
       />
     </TopStuff>
   )
