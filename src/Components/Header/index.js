@@ -10,7 +10,6 @@ const Header = () => {
   const [addOpen, setAddOpen] = useState(false)
   const [month, setMonth] = useRecoilState(activeMonthState);
 
-  console.log(month)
   return (
     <TopStuff>
       <div>
