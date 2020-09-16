@@ -10,15 +10,15 @@ import { Side } from '../../styles'
 
 
 
-const SideBar = () => {
+const TimeLine = () => {
   // const { name, id, birthday, email }  = useRecoilValue(userState)
 
   return (
     <Side>
-      <LifeBlocks />
       {/* <h3> Your Life Here:</h3> */}
+      <LifeBlocks />
     </Side>
   )
 }
 
-export default SideBar
+export default TimeLine

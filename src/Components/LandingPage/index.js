@@ -52,7 +52,6 @@ const LandingPage = () => {
         <ul>
           <li>Features</li>
           <li>Premium</li>
-          <li>For Teams</li>
           <li>Resources</li>
         </ul>
         <button onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in/up</button>

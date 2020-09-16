@@ -13,6 +13,11 @@ export const Side = styled.div`
   flex-direction: column;
   align-items: center;
 `
+export const Table = styled.div`
+  background: yellow;
+  display:flex;
+  flex-wrap: wrap;
+`
 
 export const LifeContainer = styled.ol`
   display: flex;
@@ -24,10 +29,10 @@ export const LifeContainer = styled.ol`
     display:flex;
     flex-direction:column;
   }
-
-  ${'' /* li:nth-child(-n+18) div { background: red; }
-  li:nth-child(n+18):nth-child(-n+40) div { background: green; }
-  li:nth-child(n+41) div { background: grey; } */}
+${'' /* 
+  li:nth-child(-n+18) div { background: yellow; }
+  li:nth-child(n+18):nth-child(-n+35) div { background: red; }
+  li:nth-child(n+51) div { background: grey; } */}
 `
 
 export const MonthBox = styled.div`
@@ -46,28 +51,39 @@ export const MonthBox = styled.div`
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    width: 120px;
+    ${'' /* width: 120px; */}
     position: absolute;
     top: 15px;
     right:-50px;
     z-index: 1;
   }
 
-  :hover span {
-    visibility: visible;
+  ol {
+    visibility: hidden;
+    padding: 0;
+    ${'' /* list-style: none; */}
+    ${'' /* position: absolute;
+    top: 36px;
+    right: -70px;
+    z-index: 1; */}
+    li {
+      background-color: black;
+      color: white;
+      white-space:nowrap;
+    }
   }
+
+  :hover span { visibility: visible; }
+  :hover ol { visibility: visible; }
 `
 
 export const TopStuff = styled.div`
-  div{
+  display:flex;
+  justify-content: space-around;
+  ${'' /* div {
     display:flex;
     justify-content: space-around;
-
-    div{
-      flex-direction: column;
-
-    }
-  }
+  } */}
 
 
 `

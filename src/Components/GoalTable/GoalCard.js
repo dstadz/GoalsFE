@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react'
-// import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
 import AddHabitForm from '../Forms/AddHabitForm'
+import EditGoalForm from '../Forms/EditGoalForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-// import { goalListState, habitListState } from '../../utils/store'
-import EditGoalForm from '../Forms/EditGoalForm'
 
 
 const GoalCard = ({props}) => {
-  const { id, goal,  start_date, target_date } = props
+  const { id, goal, target_date } = props
   const [form, setForm] = useState('')
-
   const [habitList, setHabitList] = useState([])
 
   //get specific habits for goal
@@ -20,7 +17,13 @@ const GoalCard = ({props}) => {
     axios.get(`${process.env.REACT_APP_BE}/habits/all/${id}`)//, config)
       .then(res => { setHabitList(res.data) })
       .catch(err => { console.log(err) })
-  }, [id])
+  }, [])
+
+  const deleteGoal = () => {
+    axios.delete(`${process.env.REACT_APP_BE}/goal/${id}`)//, config)
+    .then(res => { console.log(res.data) })
+    .catch(err => { console.log(err) })
+  }
 
   const renderSwitch = form => {
     switch(form) {
@@ -39,8 +42,11 @@ const GoalCard = ({props}) => {
         target_date={target_date}
         />
       case 'delete':
-        break
-      //   return <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
+        return <div>
+          are you sure?
+          <button onClick={()=> deleteGoal()}> remove it </button>
+          <button onClick={() => setForm('')}> nvm </button>
+        </div>
       default:
         return;
     }
@@ -50,7 +56,8 @@ const GoalCard = ({props}) => {
 
   return (
     <GoalCardContainer>
-      <h3>{goal} {start_date}</h3>
+      <h3>{goal} {id}</h3>
+      <span>By: {target_date}</span>
       <div>
         <button onClick={() => setForm('add')}> Add new habit </button>
         <button onClick={() => setForm('edit')} >Edit</button>
@@ -58,9 +65,7 @@ const GoalCard = ({props}) => {
     {/* <button onClick={() => { setForm('get')}} > See Habits </button> */}
       </div>
 
-      {/*<p>{start_date} => {target_date}</p> */}
       {renderSwitch(form)}
-      {/* {console.log(habitList)} */}
       <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
     </GoalCardContainer>
   )

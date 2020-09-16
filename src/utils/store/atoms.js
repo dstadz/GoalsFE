@@ -16,9 +16,9 @@ export const goalListState = atom({
 });
 
 
-export const habitListState = atom({
-  key: 'habitListState',
-  default: [{X:[]}]
+export const activeMonthState = atom({
+  key: 'activeMonthState',
+  default: new Date()
 });
 
 // const goalIdListState = atom({

@@ -3,14 +3,14 @@ import React from 'react'
 import { HabitSlotContainer } from '../../styles'
 
 const HabitSlot = ({props}) => {
-  const { id, habit, amount, freq, /*goal_id*/ } = props
+  const {habit, amount, freq, /*goal_id, id*/ } = props
 
   return (
     <HabitSlotContainer>
       <input type="checkbox"
         onClick={() => console.log('done')}
       />
-      {id} {habit}
+      {habit}
 
       <button onClick={()=>
         console.log(`//remove habit from list, reload card w/o reloading whole page`)
