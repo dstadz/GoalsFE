@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil'
 import LandingPage from './LandingPage/'
 import Header from './Header/'
 import TimeLine from './TimeLine/'
-import TableThing from './Table/'
+import GoalTable from './GoalTable'
 // import OtherSide from './OtherSide/'
 
 import { userState } from '../utils/store'
@@ -31,7 +31,7 @@ const App = ()  => {
     <AppBody>
       <TimeLine/>
       <Header />
-      <TableThing />
+      <GoalTable />
     </AppBody>
   );
 }
