@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import AddHabitForm from '../Forms/AddHabitForm'
+import EditGoalForm from '../Forms/EditGoalForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-import EditGoalForm from '../Forms/EditGoalForm'
 
 
 const GoalCard = ({props}) => {

@@ -16,6 +16,7 @@ export const Side = styled.div`
 export const Table = styled.div`
   background: yellow;
   display:flex;
+  flex-wrap: wrap;
 `
 
 export const LifeContainer = styled.ol`
@@ -77,15 +78,12 @@ export const MonthBox = styled.div`
 `
 
 export const TopStuff = styled.div`
-  div{
+  display:flex;
+  justify-content: space-around;
+  ${'' /* div {
     display:flex;
     justify-content: space-around;
-
-    div{
-      flex-direction: column;
-
-    }
-  }
+  } */}
 
 
 `
