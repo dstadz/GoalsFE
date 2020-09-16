@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-// import { useRecoilState } from 'recoil'
 import axios from 'axios'
 
 import AddHabitForm from '../Forms/AddHabitForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
-// import { goalListState, habitListState } from '../../utils/store'
 import EditGoalForm from '../Forms/EditGoalForm'
 
 
@@ -49,7 +47,6 @@ const GoalCard = ({props}) => {
           <button onClick={()=> deleteGoal()}> remove it </button>
           <button onClick={() => setForm('')}> nvm </button>
         </div>
-      //   return <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
       default:
         return;
     }

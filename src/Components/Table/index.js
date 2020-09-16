@@ -13,23 +13,15 @@ const TableThing = () => {
   const user = useRecoilValue(userState)
   const [goalList, setGoalList] = useRecoilState(goalListState)
 
+  async function fetchMyAPI() {
+  await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
+    .then(res => { setGoalList(
+        res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1)
+      )}) // sort by date
+    .catch(err => { console.log(err) })
+  }
 
-  // useEffect(async () => {
-  //   await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
-  //   .then(res => { setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1)) }) // sort by date
-  //   .catch(err => { console.log(err) })
-  // },[user.id, setGoalList])
-
-  useEffect(() => {
-    async function fetchMyAPI() {
-      await axios.get(`${process.env.REACT_APP_BE}/goals/all/${user.id}`)
-        .then(res => {setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1))}) // sort by date
-        .catch(err => { console.log(err) })
-      // response = await response
-    }
-
-    fetchMyAPI()
-  }, [])
+  useEffect(() => { fetchMyAPI() }, [goalList.length])
 
 
     // console.log(user.name, {goalList}, {habitList})
