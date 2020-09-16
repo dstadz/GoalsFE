@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 
 import LandingPage from './LandingPage/'
 import Header from './Header/'
-import SideBar from './SideBar/'
+import TimeLine from './TimeLine/'
 import TableThing from './Table/'
 // import OtherSide from './OtherSide/'
 
@@ -29,7 +29,7 @@ const App = ()  => {
 
   return (
     <AppBody>
-      <SideBar/>
+      <TimeLine/>
       <Header />
       <TableThing />
     </AppBody>
