@@ -5,16 +5,10 @@ export const userState = atom({
   default: {}
 })
 
-export const activeFormState = atom({
-  key: 'activeFormState',
-  default: null
-});
-
 export const goalListState = atom({
   key: 'goalListState',
   default: []
 });
-
 
 export const activeMonthState = atom({
   key: 'activeMonthState',

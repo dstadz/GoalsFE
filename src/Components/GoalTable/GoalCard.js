@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import AddHabitForm from '../Forms/AddHabitForm'
 import EditGoalForm from '../Forms/EditGoalForm'
 import HabitSlot from './HabitSlot'
 import { GoalCardContainer } from '../../styles'
+import { goalListState } from '../../utils/store'
 
 
 const GoalCard = ({props}) => {
   const { id, goal, target_date } = props
   const [form, setForm] = useState('')
   const [habitList, setHabitList] = useState([])
+  const [goalList, setGoalList] = useRecoilState(goalListState)
 
   //get specific habits for goal
   useEffect(() => {
@@ -20,8 +23,12 @@ const GoalCard = ({props}) => {
   }, [])
 
   const deleteGoal = () => {
-    axios.delete(`${process.env.REACT_APP_BE}/goal/${id}`)//, config)
-    .then(res => { console.log(res.data) })
+    axios.delete(`${process.env.REACT_APP_BE}/goals/${id}`)//, config)
+    .then(res => {
+      console.log(res.data)
+      const newList = [...goalList].filter(goal => goal.id !== id);
+      setGoalList(newList)
+    })
     .catch(err => { console.log(err) })
   }
 
