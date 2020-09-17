@@ -1,6 +1,5 @@
 export {
   userState,
-  activeFormState,
   goalListState,
   activeMonthState
 } from './atoms'

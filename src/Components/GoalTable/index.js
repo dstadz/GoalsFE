@@ -23,7 +23,7 @@ const TableThing = () => {
   const [loading, setLoading] = useState(true)
 
   const getGoals = async() => {
-  await axios.get(`${ process.env.REACT_APP_BE }/goals/all/${ user.id }`)
+    await axios.get(`${ process.env.REACT_APP_BE }/goals/all/${ user.id }`)
     .then(res => {
       setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1))
       setLoading(false)
@@ -34,17 +34,16 @@ const TableThing = () => {
   useEffect(() => { getGoals() }, [goalList.length])
 
   return (
+    <Table>
+      { loading && <PropagateLoader
+        css={ override }
+        size={ 45 }
+        color={ "#123abc" }
+        loading={ loading }
+      /> }
 
-  <Table>
-    { loading && <PropagateLoader
-      css={ override }
-      size={ 45 }
-      color={ "#123abc" }
-      loading={ loading }
-    /> }
-
-    { goalList && goalList.map(g => (<GoalCard key={ g.id } props={ g } />)) }
-  </Table>
+      { goalList && goalList.map(g => (<GoalCard key={ g.id } props={ g } />)) }
+    </Table>
   )
 }
 

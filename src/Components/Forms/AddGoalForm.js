@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { goalListState, activeFormState, userState } from '../../utils/store'
+import { goalListState, userState } from '../../utils/store'
 import { GoalForm } from '../../styles'
 
 let today = new Date();
@@ -16,7 +16,6 @@ today = yyyy + '-' + mm + '-' + dd;
 
 const AddGoalForm = () => {
   const user = useRecoilValue(userState)
-  const [activeForm, setActiveForm] = useRecoilState(activeFormState)
   const [nextGoal, setNextGoal] = useState('')
   const [targetDate, setTargetDate] = useState(today)
   const { register, handleSubmit, errors } = useForm()
@@ -37,25 +36,14 @@ const AddGoalForm = () => {
     .then(res => {
       console.log(res.data)
       setGoalList([...goalList, data])
-      setActiveForm(null)
     })
     .catch(err => { console.log(err) })
   }
 
-
-  // return (
-  //   <form onSubmit={handleSubmit(onSubmit)}>
-  //     <input type="text" placeholder="goal" name="goal" ref={register} />
-  //     <input type="datetime" placeholder="target_date" name="target_date" ref={register} />
-
-  //     <input type="submit" />
-  //   </form>
-  // );
   return (
     <GoalForm>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text"
-          placeholder={activeForm}
           name="goal"
           ref={register({required: true, maxLength: 80})}
           value={nextGoal}

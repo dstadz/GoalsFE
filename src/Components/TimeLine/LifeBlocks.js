@@ -37,7 +37,7 @@ const Month = ({month, year}) => {
   const goalList = useRecoilValue(goalListState)
   const targetList =  useRecoilValue(targetDates)
   const setActiveMonth = useSetRecoilState(activeMonthState);
-  const timefrag = `${year}-${month - 1 < 10 ? `0${month + 1}` : month + 1}`
+  const timefrag = `${year}-${month < 9 ? `0${month + 1}` : month + 1}`
   const theseGoals = goalList.filter(goal => goal.target_date.substr(0,7) === timefrag)
 
   const color = () => {
@@ -57,7 +57,9 @@ const Month = ({month, year}) => {
   return(
     <MonthBox
       style={color()}
-      onClick={()=>{ setActiveMonth(new Date(year, month, 1)) }}
+      onClick={()=>{ 
+        console.log(months[month],year)
+        setActiveMonth(new Date(year, month, 1)) }}
     >
       <span>
         {months[month]} {year}
