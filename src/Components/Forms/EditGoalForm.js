@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useRecoilState } from 'recoil'
 import { useForm } from 'react-hook-form'
 import { GoalForm } from '../../styles'
-import { useRecoilState } from 'recoil'
 import { goalListState } from '../../utils/store'
 
 const EditGoalForm = (props) => {
@@ -11,10 +11,7 @@ const EditGoalForm = (props) => {
   const [nextGoal, setNextGoal] = useState(goal)
   const [targetDate, setTargetDate] = useState(target_date.slice(0,10))
   const [goalList,  setGoalList] = useRecoilState(goalListState)
-
   if ( Object.keys(errors).length ) console.log(errors)
-
-
   const handleGoalChange = e => { setNextGoal(e.target.value) }
   const handleTargetDateChange = e => { setTargetDate(e.target.value) }
 
@@ -37,12 +34,9 @@ const EditGoalForm = (props) => {
 
 
   return (
-    <GoalForm>
+    <GoalForm onSubmit={handleSubmit(onSubmit)}>
+      <h5>Edit {goal} <button onClick={() => setForm('')}> X </button> </h5>
 
-      <h5>Edit {goal}</h5>
-      <button onClick={() => setForm('')}> X </button>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
         <label> Goal Name </label>
         <input type="text"
           placeholder={goal}
@@ -64,7 +58,6 @@ const EditGoalForm = (props) => {
           />
 
         <input type="submit" />
-      </form>
     </GoalForm>
   )
 }

@@ -41,23 +41,16 @@ const Month = ({month, year}) => {
   const theseGoals = goalList.filter(goal => goal.target_date.substr(0,7) === timefrag)
 
   const color = () => {
-    //highlight current month
-    if (year === thisYear && month === thisMonth) return {background:'gold'}
-
-    //hide months before birth
-    else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'}
-
-    //hide months after 100th birthday
-    else if (year === birthYear + 100 && month > birthMonth) return  {visibility:'hidden'}
-
-    //highlights months with goals in them
-    if (targetList.some(date => date.substr(0,7) === timefrag)) return {background:'purple'}
+    if (year === thisYear && month === thisMonth) return {background:'gold'} //highlight current month
+    else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'} //hide months before birth
+    else if (year === birthYear + 100 && month > birthMonth) return  {visibility:'hidden'} //hide months after 100th birthday
+    if (targetList.some(date => date.substr(0,7) === timefrag)) return {background:'purple'} //highlights months with goals in them
   }
 
   return(
     <MonthBox
       style={color()}
-      onClick={()=>{ 
+      onClick={()=>{
         console.log(months[month],year)
         setActiveMonth(new Date(year, month, 1)) }}
     >

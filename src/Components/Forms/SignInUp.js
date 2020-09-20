@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useSetRecoilState } from 'recoil'
-
-import { SignInUpModal, ButtonBar } from '../LandingPage/styles'
 import { userState } from '../../utils/store'
+import { SignInUpModal, ButtonBar } from '../LandingPage/styles'
 
 
 
@@ -13,14 +12,8 @@ const SignInUp = ({closeModal}) => {
   const [signIn, setSignIn] = useState(true)
   const [passVis, setPassVis] = useState(false)
   const setUser = useSetRecoilState(userState)
-
-
   const [keepLoggedIn, setKeepLoggedIn] = useState(false)
   const { register, handleSubmit, errors } = useForm()
-
-
-  if ( Object.keys(errors).length ) console.log('error:',errors)
-
   const config = { headers: {
     "Allowed":"*",
     "Access-Control-Allow-Origin": 'localhost:3000',//"https://goalgetter.netlify.app",
@@ -28,24 +21,21 @@ const SignInUp = ({closeModal}) => {
     "Access-Control-Request-Method": "POST"
   } }
 
+
+  if ( Object.keys(errors).length ) console.log('error:',errors)
+
   const onSubmit = data => {
     if (forgotPass){
       console.log('send recovery email')
 
-    } else if (signIn) {
-      axios.post(`${process.env.REACT_APP_BE}/users/signIn`,data, config)
-      .then(res => { setUser(res.data) })
-      .catch(err => { console.log(err) })
-
-    } else { //signUp
-      axios.post(`${process.env.REACT_APP_BE}/users/signUp`,data, config)
+    } else {
+      axios.post(`${process.env.REACT_APP_BE}/users/${signIn? 'signIn' : 'signUp'}`,data, config)
       .then(res => { setUser(res.data) })
       .catch(err => { console.log(err) })
     }
   }
 
 
-  // const color = 'red'
   return (
     forgotPass
     ?<SignInUpModal>

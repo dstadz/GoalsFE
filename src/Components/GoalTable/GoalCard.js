@@ -25,7 +25,6 @@ const GoalCard = ({props}) => {
   const deleteGoal = () => {
     axios.delete(`${process.env.REACT_APP_BE}/goals/${id}`)//, config)
     .then(res => {
-      console.log(res.data)
       const newList = [...goalList].filter(goal => goal.id !== id);
       setGoalList(newList)
     })
@@ -41,6 +40,7 @@ const GoalCard = ({props}) => {
           habitList={habitList}
           setHabitList={setHabitList}
         />
+
       case 'edit':
         return <EditGoalForm
         id={id}
@@ -48,22 +48,26 @@ const GoalCard = ({props}) => {
         setForm={setForm}
         target_date={target_date}
         />
+
       case 'delete':
         return <div>
           are you sure?
           <button onClick={()=> deleteGoal()}> remove it </button>
           <button onClick={() => setForm('')}> nvm </button>
         </div>
+
       default:
-        return;
+        return <ul>
+          { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )}
+        </ul>
+        ;
     }
   }
 
-  // console.log(goal)
 
   return (
     <GoalCardContainer>
-      <h3>{goal} {id}</h3>
+      <h3>{goal}</h3>
       <span>By: {target_date}</span>
       <div>
         <button onClick={() => setForm('add')}> Add new habit </button>
@@ -73,7 +77,7 @@ const GoalCard = ({props}) => {
       </div>
 
       {renderSwitch(form)}
-      <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul>
+      {/* <ul> { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )} </ul> */}
     </GoalCardContainer>
   )
 }

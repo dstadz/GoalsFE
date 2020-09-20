@@ -10,7 +10,7 @@ const HabitSlot = ({props}) => {
       <input type="checkbox"
         onClick={() => console.log('done')}
       />
-      {habit}
+      <span> {habit} </span>
 
       <button onClick={()=>
         console.log(`//remove habit from list, reload card w/o reloading whole page`)

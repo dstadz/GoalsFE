@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { useRecoilState, useRecoilValue } from 'recoil'
-
 import { goalListState, userState } from '../../utils/store'
 import { GoalForm } from '../../styles'
 
@@ -15,54 +14,45 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 const AddGoalForm = () => {
-  const user = useRecoilValue(userState)
-  const [nextGoal, setNextGoal] = useState('')
+  const { id } = useRecoilValue(userState)
+  const [newGoal, setnewGoal] = useState('')
   const [targetDate, setTargetDate] = useState(today)
-  const { register, handleSubmit, errors } = useForm()
   const [goalList, setGoalList] = useRecoilState(goalListState)
-
-
-
-
+  const { register, handleSubmit, errors } = useForm()
   if ( Object.keys(errors).length ) console.log(errors)
-
-  const handleGoalChange = e => { setNextGoal(e.target.value) }
+  const handleGoalChange = e => { setnewGoal(e.target.value) }
   const handleTargetDateChange = e => { setTargetDate(e.target.value) }
 
 
   const onSubmit = data => {
     data = {...data, completed:false}
-    axios.post(`${process.env.REACT_APP_BE}/goals/add/${user.id}`,data)//, config)
-    .then(res => {
-      console.log(res.data)
-      setGoalList([...goalList, data])
-    })
+    axios.post(`${process.env.REACT_APP_BE}/goals/add/${id}`,data)//, config)
+    .then(res => setGoalList([...goalList, data]))
     .catch(err => { console.log(err) })
   }
 
   return (
-    <GoalForm>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text"
-          name="goal"
-          ref={register({required: true, maxLength: 80})}
-          value={nextGoal}
-          onChange={handleGoalChange}
+    <GoalForm onSubmit={handleSubmit(onSubmit)}>
+      <input type="text"
+        placeholder="What do you want to do?"
+
+        name="goal"
+        ref={register({required: true, maxLength: 80})}
+        value={newGoal}
+        onChange={handleGoalChange}
+      />
+
+      <br />
+
+      <label> By:</label>
+      <input type='date'
+        name="target_date"
+        ref={register}
+        value={targetDate}
+        onChange={handleTargetDateChange}
         />
 
-        <br />
-
-        <label> By:</label>
-        <input type='date'
-          placeholder="Target Date"
-          name="target_date"
-          ref={register}
-          value={targetDate}
-          onChange={handleTargetDateChange}
-          />
-
-        <input type="submit" />
-      </form>
+      <input type="submit" />
     </GoalForm>
   )
 }
