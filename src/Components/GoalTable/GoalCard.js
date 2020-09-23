@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import AddHabitForm from '../Forms/AddHabitForm'
 import EditGoalForm from '../Forms/EditGoalForm'
