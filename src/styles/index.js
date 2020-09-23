@@ -1,21 +1,24 @@
 import styled from 'styled-components'
 
+const round = '10px';
+const borderLine = `border: 2px solid black;`;
+
 export const AppBody = styled.div`
   justify-content: space-between;
 
-  section{
-    background: red; }
+  section{ background: red; }
 `
 
-export const Side = styled.div`
+export const Top = styled.div`
   background: silver;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 export const Table = styled.div`
-  background: yellow;
-  display:flex;
+  ${borderLine}
+  display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
 `
 
@@ -29,17 +32,20 @@ export const LifeContainer = styled.ol`
     display:flex;
     flex-direction:column;
   }
-${'' /* 
+${'' /*
   li:nth-child(-n+18) div { background: yellow; }
   li:nth-child(n+18):nth-child(-n+35) div { background: red; }
   li:nth-child(n+51) div { background: grey; } */}
 `
 
 export const MonthBox = styled.div`
-  width: 10px;
-  height: 10px;
-  margin: 2px;
-  border: 2px solid black;
+  ${borderLine}
+
+  width: ${round};
+  height: ${round};
+  margin: 1px;
+  border-radius: ${round};
+
 
   position: relative;
   display: inline-block;
@@ -47,37 +53,31 @@ export const MonthBox = styled.div`
 
   span {
     visibility: hidden;
-    background-color: black;
-    color: #fff;
+    background-color: silver;
+    color: blue;
     text-align: center;
-    border-radius: 6px;
+    border-radius: ${round};
     ${'' /* width: 120px; */}
     position: absolute;
     top: 15px;
     right:-50px;
     z-index: 1;
-  }
 
-  ol {
-    visibility: hidden;
-    padding: 0;
-    ${'' /* list-style: none; */}
-    ${'' /* position: absolute;
-    top: 36px;
-    right: -70px;
-    z-index: 1; */}
-    li {
-      background-color: black;
-      color: white;
-      white-space:nowrap;
+    ol {
+      visibility: hidden;
+      padding: 0;
+      li {
+        white-space:nowrap;
+      }
     }
   }
+
 
   :hover span { visibility: visible; }
   :hover ol { visibility: visible; }
 `
 
-export const TopStuff = styled.div`
+export const ActionCenter = styled.div`
   display:flex;
   justify-content: space-around;
   ${'' /* div {
@@ -89,15 +89,16 @@ export const TopStuff = styled.div`
 `
 
 export const AddNewBTN = styled.button`
-  width: 200px;
+  ${'' /* width: 200px; */}
   height: 20px;
   background: cyan;
   border-radius: 1em;
 `
 
-export const GoalForm = styled.div`
+export const GoalForm = styled.form`
+  ${borderLine}
   button {
-    margin :5px 5px 0 auto;
+    margin: 5px 5px 0 auto;
   }
 
   h5{
@@ -109,13 +110,16 @@ export const GoalForm = styled.div`
 `
 
 export const GoalCardContainer = styled.div`
-  background: blue;
+  ${borderLine}
+  border-radius: ${round};
+  background: #cce;
   display:flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: flex-start;
   align-items:center;
-  margin:10px;
+  margin:${round};
   width: 240px;
+
   h4{
     display: inline;
   }
@@ -127,7 +131,14 @@ export const GoalCardContainer = styled.div`
 `
 
 export const HabitSlotContainer = styled.li`
+  ${borderLine}
+
   background: orange;
   list-style:none;
-  margin: 10px;
+  margin: ${round};
+`
+
+export const CountDownContainer = styled.ul`
+  ${borderLine}
+
 `

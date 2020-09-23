@@ -206,4 +206,9 @@ export const ButtonBar = styled.ul`
   justify-content: space-around ;
   padding: 0;
   list-style: none;
+
+  li {
+    background: cyan;
+    padding: 15px;
+  }
 `
