@@ -13,7 +13,8 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 
-const AddGoalForm = () => {
+const AddGoalForm = (props) => {
+  const { open,setOpen } = props
   const { id } = useRecoilValue(userState)
   const [newGoal, setnewGoal] = useState('')
   const [targetDate, setTargetDate] = useState(today)
@@ -27,7 +28,10 @@ const AddGoalForm = () => {
   const onSubmit = data => {
     data = {...data, completed:false}
     axios.post(`${process.env.REACT_APP_BE}/goals/add/${id}`,data)//, config)
-    .then(res => setGoalList([...goalList, data]))
+    .then(res => {
+      setGoalList([...goalList, data])
+      setOpen(open => !open)
+    })
     .catch(err => { console.log(err) })
   }
 
