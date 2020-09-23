@@ -17,7 +17,7 @@ const override = css`
 `;
 
 
-const TableThing = () => {
+const GoalTable = () => {
   const user = useRecoilValue(userState)
   const [goalList, setGoalList] = useRecoilState(goalListState)
   const [loading, setLoading] = useState(true)
@@ -47,4 +47,4 @@ const TableThing = () => {
   )
 }
 
-export default TableThing
+export default GoalTable

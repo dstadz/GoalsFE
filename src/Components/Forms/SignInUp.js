@@ -39,17 +39,14 @@ const SignInUp = ({closeModal}) => {
   return (
     forgotPass
     ?<SignInUpModal>
-      <button className="close-Button" onClick={()=>closeModal(false)} >X</button>
-      <h3> Forget Password </h3>
+      <h3> Forget Password <button className="close-Button" onClick={() => closeModal(false)} >X</button> </h3>
+
       <form onSubmit={onSubmit}>
         <label> Email </label>
-        <div>
-          <input type="text"
-            name="email"
-            ref={register({required: true, maxLength: 80})}
-          />
-        </div>
-
+        <div> <input type="text"
+          name="email"
+          ref={register({required: true, maxLength: 80})}
+        /> </div>
         <input type="submit" value='Send Recovery email thing' />
       </form>
 
@@ -57,56 +54,46 @@ const SignInUp = ({closeModal}) => {
     </SignInUpModal>
 
     :<SignInUpModal>
-      <button onClick={()=>closeModal(false)} >X</button>
-      <h3> {signIn ?'Log In' : 'Sign Up'} </h3>
+      <h3> {signIn ?'Log In' : 'Sign Up'} <button onClick={() => closeModal(false)} >X</button> </h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> Email </label>
-        <div>
-          <input type="text"
-            name="email"
-            // value={`${color}@colors.com`}
-            ref={register({required: true, maxLength: 80})}
-          />
-        </div>
+        <div> <input type="text"
+          name="email"
+          ref={register({required: true, maxLength: 80})}
+        /> </div>
+
         {!signIn && <>
-        <label> Whats your Name? </label>
-        <div>
-          <input type="text"
+          <label> Whats your Name? </label>
+          <div> <input type="text"
             name="name"
             ref={register({required: true, maxLength: 80})}
-          />
-        </div>
+          /> </div>
 
-        <label> When were you born? </label>
-        <div>
-          <input type="date"
+          <label> When were you born? </label>
+          <div> <input type="date"
             name="birthday"
             ref={register({required: true, maxLength: 80})}
-          />
-        </div>
+          /> </div>
         </>}
 
         <label> Password </label>
         <div>
           <input type={passVis ? 'text' : 'password' }
             name="password"
-            // value={`${color}`}
             ref={register({required: true, maxLength: 80})}
           />
-          <span onClick={()=>setPassVis(!passVis)}>{passVis ? '👓' : '🕶️' }</span>
+          <span onClick={() => setPassVis(!passVis)}>{passVis ? '👓' : '🕶️' }</span>
         </div>
 
 
         {!signIn && <>
           <label> Confirm Password </label>
-          <div>
-            <input type='password'
-              placeholder="password"
-              name="password"
-              ref={register({required: true, maxLength: 80})}
-            />
-          </div>
+          <div> <input type='password'
+            placeholder="password"
+            name="password"
+            ref={register({required: true, maxLength: 80})}
+          /> </div>
         </> }
 
         <br />

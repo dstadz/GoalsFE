@@ -18,8 +18,7 @@ const HabitSlot = ({props}) => {
 
 
       <br />
-
-      { /*pulled from habithistory */0} of {amount} done this {freq}
+      <span> { /*pulled from habithistory */0} of {amount} done this {freq} </span>
     </HabitSlotContainer>
   )
 }

@@ -7,19 +7,17 @@ import { goalListState } from '../../utils/store'
 
 const EditGoalForm = (props) => {
   const { id, goal, target_date, setForm } = props
-  const { register, handleSubmit, errors } = useForm()
   const [nextGoal, setNextGoal] = useState(goal)
-  const [targetDate, setTargetDate] = useState(target_date.slice(0,10))
-  const [goalList,  setGoalList] = useRecoilState(goalListState)
+  const { register, handleSubmit, errors } = useForm()
   if ( Object.keys(errors).length ) console.log(errors)
+  const [goalList,  setGoalList] = useRecoilState(goalListState)
+  const [targetDate, setTargetDate] = useState(target_date.slice(0,10))
   const handleGoalChange = e => { setNextGoal(e.target.value) }
   const handleTargetDateChange = e => { setTargetDate(e.target.value) }
 
 
   const onSubmit = data => {
-    console.log(data)
     data = { ...props, ...data, completed:false}
-    console.log(data, goalList)
     axios.put(`${process.env.REACT_APP_BE}/goals/`+id, data)
     .then(res => {
       const changed = goalList.findIndex(goal => goal.id === id);
@@ -37,27 +35,27 @@ const EditGoalForm = (props) => {
     <GoalForm onSubmit={handleSubmit(onSubmit)}>
       <h5>Edit {goal} <button onClick={() => setForm('')}> X </button> </h5>
 
-        <label> Goal Name </label>
-        <input type="text"
-          placeholder={goal}
-          name="goal"
-          ref={register({required: true, maxLength: 80})}
-          value={nextGoal}
-          onChange={handleGoalChange}
-        />
+      <label> Goal Name </label>
+      <input type="text"
+        placeholder={goal}
+        name="goal"
+        ref={register({required: true, maxLength: 80})}
+        value={nextGoal}
+        onChange={handleGoalChange}
+      />
 
-        <br />
+      <br />
 
-        <label> By:</label>
-        <input type='date'
-          placeholder={targetDate}
-          name="target_date"
-          ref={register}
-          value={targetDate}
-          onChange={handleTargetDateChange}
-          />
+      <label> By:</label>
+      <input type='date'
+        placeholder={targetDate}
+        name="target_date"
+        ref={register}
+        value={targetDate}
+        onChange={handleTargetDateChange}
+      />
 
-        <input type="submit" />
+      <input type="submit" />
     </GoalForm>
   )
 }
