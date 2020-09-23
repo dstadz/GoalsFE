@@ -9,6 +9,8 @@ import {
   targetDates
 } from '../../utils/store'
 
+const lifeTime = 101;
+const life = Array(lifeTime).fill().map((_, i) => i);
 const months = [
   'January',
   'Febuary',
@@ -23,11 +25,6 @@ const months = [
   'November',
   'December'
 ]
-const lifeTime = 101
-const today = new Date()
-const thisMonth = today.getMonth()
-const thisYear = today.getFullYear()
-const life = Array(lifeTime).fill().map((_, i) => i);
 
 const Month = ({month, year}) => {
   const { birthday }  = useRecoilValue(userState)
@@ -41,18 +38,16 @@ const Month = ({month, year}) => {
   const theseGoals = goalList.filter(goal => goal.target_date.substr(0,7) === timefrag)
 
   const color = () => {
-    if (year === thisYear && month === thisMonth) return {background:'gold'} //highlight current month
+    if (year === new Date().getFullYear() && month === new Date().getMonth()) return {background:'gold'} //highlight current month
     else if (year === birthYear && month < birthMonth) return  {visibility:'hidden'} //hide months before birth
-    else if (year === birthYear + 100 && month > birthMonth) return  {visibility:'hidden'} //hide months after 100th birthday
+    else if (year === birthYear + lifeTime - 1 && month > birthMonth) return  {visibility:'hidden'} //hide months after 100th birthday
     if (targetList.some(date => date.substr(0,7) === timefrag)) return {background:'purple'} //highlights months with goals in them
   }
 
   return(
     <MonthBox
       style={color()}
-      onClick={()=>{
-        console.log(months[month],year)
-        setActiveMonth(new Date(year, month, 1)) }}
+      onClick={()=>{ setActiveMonth(new Date(year, month, 1)) }}
     >
       <span>
         {months[month]} {year}

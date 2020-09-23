@@ -8,7 +8,7 @@ import { ActionCenter, AddNewBTN } from '../../styles'
 import { activeMonthState } from '../../utils/store'
 
 const Header = () => {
-  const [addOpen, setAddOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const [month, setMonth] = useRecoilState(activeMonthState);
 
   return (
@@ -16,9 +16,9 @@ const Header = () => {
       <div>
         <h1> How will you become the person you want to be? </h1>
         {/*<h1>add default goal for every user:</h1> <h2>'I will retire by <input type='date' /> or age <input type='number'/></h2> <h2> right side bar can have a goal/habit suggestion dealer</h2> */}
-        <AddNewBTN onClick={()=>setAddOpen(addOpen => !addOpen)} > add a new goal </AddNewBTN>
+        <AddNewBTN onClick={()=>setOpen(open => !open)} > add a new goal </AddNewBTN>
 
-        {addOpen && <AddGoalForm />}
+        {open && <AddGoalForm open={open} setOpen={setOpen} />}
       </div>
 
       <Calendar
