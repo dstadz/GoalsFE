@@ -64,7 +64,6 @@ const GoalCard = ({props}) => {
     }
   }
 
-
   return (
     <GoalCardContainer>
       <h3>{goal}</h3>
