@@ -39,7 +39,6 @@ const AddGoalForm = (props) => {
     <GoalForm onSubmit={handleSubmit(onSubmit)}>
       <input type="text"
         placeholder="What do you want to do?"
-
         name="goal"
         ref={register({required: true, maxLength: 80})}
         value={newGoal}
