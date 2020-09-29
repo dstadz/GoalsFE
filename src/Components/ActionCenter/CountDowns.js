@@ -3,10 +3,19 @@ import moment from 'moment'
 import { CountDownContainer } from '../../styles'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { goalListState, targetDates } from '../../utils/store'
-import { MonthView } from 'react-calendar'
 // import 
+
+
+const Timer = ({ date }) => {
+  console.log(date)
+  return (
+    <span> { date } </span>
+  )
+}
+
+
+
 const CountDowns = () => {
-  const [goalList, setGoalList] = useRecoilState(goalListState)// use a selector to filterout GoalList[0]?
   const targetList =  useRecoilValue(targetDates)
   console.log(targetList)
   // Parse a date and get it as Unix time
@@ -21,7 +30,7 @@ const CountDowns = () => {
 
     <CountDownContainer>
     <p>{Date.now()}</p>
-    {/* {targetList.map(d => (<p> {d} {moment(d).diff(today, 'hours')}</p>))} */}
+    {targetList.map(date => ( <Timer date={date} /> ))}
     </CountDownContainer>
   )
 }
