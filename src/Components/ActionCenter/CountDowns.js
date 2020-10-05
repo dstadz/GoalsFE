@@ -6,13 +6,34 @@ import { goalListState, targetDates } from '../../utils/store'
 // import 
 
 
+
+
+
+
+
+
+
+
 const Timer = ({ date }) => {
-  console.log(date)
+  const [y,m,d] = [date.slice(0,4), date.slice(5,7) - 1, date.slice(8)]
+  let now = new Date();
+  let then = new Date(y,m,d)
+
+
+
+
+  let diff = then - now; // difference in ms
+  console.log('diff', Math.round(diff / 1000))
+  return Math.round(diff / 1000 / 60); // convert to seconds
+
+
+
+
+
   return (
-    <span> { date } </span>
+    <p> { diff } </p>
   )
 }
-
 
 
 const CountDowns = () => {
@@ -26,6 +47,8 @@ const CountDowns = () => {
   //also display holidays and 100th birthday
 
   let today = moment([new Date().getFullYear(),new Date().getMonth(),new Date().getDay()])
+  console.log(today)
+  
   return (
 
     <CountDownContainer>
