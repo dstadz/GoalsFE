@@ -1,59 +1,56 @@
 import React, { useState } from 'react'
-import moment from 'moment'
 import { CountDownContainer } from '../../styles'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { goalListState, targetDates } from '../../utils/store'
-// import 
 
 
-
-
-
-
-
-
-
-
-const Timer = ({ date }) => {
+const Timer = ({ date, interval, time }) => {
   const [y,m,d] = [date.slice(0,4), date.slice(5,7) - 1, date.slice(8)]
-  let now = new Date();
-  let then = new Date(y,m,d)
+  const now = new Date();
+  const then = new Date(y,m,d)
+  const diff = Math.round((then - now) / time) ; // difference in ms
 
-
-
-
-  let diff = then - now; // difference in ms
-  console.log('diff', Math.round(diff / 1000))
-  return Math.round(diff / 1000 / 60); // convert to seconds
-
-
-
-
-
-  return (
-    <p> { diff } </p>
-  )
+  return ( <p> { diff } {interval}s until </p> )
 }
 
 
 const CountDowns = () => {
+  const [interval, setinterval] = useState('sec')
   const targetList =  useRecoilValue(targetDates)
-  console.log(targetList)
-  // Parse a date and get it as Unix time
 
-  //get goalList dates
-  //calculate time between noww and then
-  //display `${time} until {goal}
-  //also display holidays and 100th birthday
+  const msInInterval = {
+    sec: 1000,
+    min: 1000 * 60,
+    hour: 1000 * 60 * 60,
+    day: 1000 * 60 * 60 * 24,
+    week: 1000 * 60 * 60 * 24 * 7,
+    month: 1000 * 60 * 60 * 24 * 30,
+    year: 1000 * 60 * 60 * 24 * 365,
+    decade: 1000 * 60 * 60 * 24 * 365 * 10,
+  }
 
-  let today = moment([new Date().getFullYear(),new Date().getMonth(),new Date().getDay()])
-  console.log(today)
-  
+
   return (
-
     <CountDownContainer>
-    <p>{Date.now()}</p>
-    {targetList.map(date => ( <Timer date={date} /> ))}
+      {targetList.map(date => (
+        <Timer
+          date={date}
+          interval={interval}
+          time={msInInterval[interval]}
+        /> ))}
+
+      <div>
+        <button onClick={() => setinterval('sec')}>sec</button>
+        <button onClick={() => setinterval('min')} >min</button>
+        <button onClick={() => setinterval('hour')} >hour</button>
+        <button onClick={() => setinterval('day')} > day </button>
+      </div>
+      <div>
+        <button onClick={() => setinterval('week')}>week</button>
+        <button onClick={() => setinterval('month')} >month</button>
+        <button onClick={() => setinterval('year')} >year</button>
+        <button onClick={() => setinterval('timeLeft')} > % left </button>
+      </div>
     </CountDownContainer>
   )
 }
