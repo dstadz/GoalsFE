@@ -4,19 +4,19 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { goalListState, targetDates } from '../../utils/store'
 
 
-const Timer = ({ date, interval, time }) => {
+const Timer = ({ date, interval, time, goal  }) => {
   const [y,m,d] = [date.slice(0,4), date.slice(5,7) - 1, date.slice(8)]
   const now = new Date();
   const then = new Date(y,m,d)
   const diff = Math.round((then - now) / time) ; // difference in ms
 
-  return ( <p> { diff } {interval}s until </p> )
+  return ( <p> { diff } {interval}s until {goal}</p> )
 }
 
 
 const CountDowns = () => {
   const [interval, setinterval] = useState('sec')
-  const targetList =  useRecoilValue(targetDates)
+  const goalList =  useRecoilValue(goalListState)
 
   const msInInterval = {
     sec: 1000,
@@ -32,11 +32,12 @@ const CountDowns = () => {
 
   return (
     <CountDownContainer>
-      {targetList.map(date => (
+      {goalList.map(goal => (
         <Timer
-          date={date}
+          date={goal.target_date}
           interval={interval}
           time={msInInterval[interval]}
+          goal={goal.goal}
         /> ))}
 
       <div>
