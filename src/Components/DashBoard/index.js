@@ -7,7 +7,7 @@ import AddGoalForm from '../Forms/AddGoalForm'
 import { ActionCenter, AddNewBTN } from '../../styles'
 import { activeMonthState } from '../../utils/store'
 
-const Header = () => {
+const DashBoard = () => {
   const [open, setOpen] = useState(false)
   const [month, setMonth] = useRecoilState(activeMonthState);
 
@@ -32,4 +32,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default DashBoard
