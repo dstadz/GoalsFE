@@ -14,7 +14,7 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 const AddGoalForm = (props) => {
-  const { open,setOpen } = props
+  const { open, setOpen } = props
   const { id } = useRecoilValue(userState)
   const [newGoal, setnewGoal] = useState('')
   const [targetDate, setTargetDate] = useState(today)
