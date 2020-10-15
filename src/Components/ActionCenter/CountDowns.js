@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CountDownContainer } from '../../styles'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { goalListState, targetDates } from '../../utils/store'
+import { useRecoilValue } from 'recoil'
+import { goalListState } from '../../utils/store'
 
 
 const Timer = ({ date, interval, time, goal  }) => {
@@ -18,16 +18,14 @@ const CountDowns = () => {
   const [interval, setinterval] = useState('sec')
   const goalList =  useRecoilValue(goalListState)
 
-  const msInInterval = {
-    sec: 1000,
-    min: 1000 * 60,
-    hour: 1000 * 60 * 60,
-    day: 1000 * 60 * 60 * 24,
-    week: 1000 * 60 * 60 * 24 * 7,
-    month: 1000 * 60 * 60 * 24 * 30,
-    year: 1000 * 60 * 60 * 24 * 365,
-    decade: 1000 * 60 * 60 * 24 * 365 * 10,
-  }
+  let msInInterval = { sec: 1000 }
+  msInInterval['min'] = msInInterval.sec * 60
+  msInInterval['hour'] = msInInterval.min * 60
+  msInInterval['day'] = msInInterval.hour * 24
+  msInInterval['week'] = msInInterval.day * 7
+  msInInterval['month'] = msInInterval.day * 30
+  msInInterval['year'] = msInInterval.day * 365
+  msInInterval['dacade'] = msInInterval.year * 10
 
 
   return (

@@ -43,10 +43,10 @@ const GoalCard = ({props}) => {
 
       case 'edit':
         return <EditGoalForm
-        id={id}
-        goal={goal}
-        setForm={setForm}
-        target_date={target_date}
+          id={id}
+          goal={goal}
+          setForm={setForm}
+          target_date={target_date}
         />
 
       case 'delete':
@@ -60,7 +60,6 @@ const GoalCard = ({props}) => {
         return <ul>
           { habitList.map((h,i) => <HabitSlot props={h} key={i} goal_id={id}/> )}
         </ul>
-        ;
     }
   }
 
