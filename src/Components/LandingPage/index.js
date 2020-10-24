@@ -6,9 +6,10 @@ import SignInUp from '../Forms/SignInUp'
 
 import {
   LandingPageContainer,
-  Nav,
+  Header,
   Hero,
   ReviewBox,
+  FakeReview,
   Section,
   LetsDoThisBTN,
 } from './styles'
@@ -43,19 +44,28 @@ const LandingPage = () => {
   const time = timeList[0]
   return (
     <LandingPageContainer>
-      <Nav>
-        <p>LOGO <a
-          href="https://danielstadler.com/"
-          target='_blank'
-          rel="noopener noreferrer"
-          >daniel</a> </p>
-        <ul>
-          <li>Features</li>
-          <li>Premium</li>
-          <li>Resources</li>
-        </ul>
-        <button onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in/up</button>
-      </Nav>
+        <Header>
+          <nav>
+            <div>
+              <span>
+                <a
+                  href="https://danielstadler.com/"
+                  target='_blank'
+                  rel="noopener noreferrer"
+                >Goal Getter</a>
+              </span>
+              <ul>
+                <li> <a>Features</a> </li>
+                <li> <a>Premium</a> </li>
+                <li> <a>Resources</a> </li>
+              </ul>
+            </div>
+            <ul>
+              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
+              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
+            </ul>
+          </nav>
+        </Header>
 
       { modalUp && <SignInUp closeModal={setModalUp}/>}
 
@@ -74,7 +84,9 @@ const LandingPage = () => {
       <ReviewBox>
         <h2> 100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM? </h2>
         <ul>
-          {fakeReviews.map(r => ( <li key={r.reviewer}>{r.reviewer} {r.rating} {r.comment} </li>))}
+          {fakeReviews.map(r => ( <FakeReview>
+            
+            {r.reviewer}{r.reviewer} {r.rating} {r.comment} </FakeReview>))}
         </ul>
       </ReviewBox>
 

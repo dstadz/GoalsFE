@@ -5,43 +5,83 @@ export const LandingPageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items:center;
-
-  img{
-    width:15em;
-  }
 `
+export const Header = styled.header`
+  background-color: rgba(255,255,255, 0.9); /* Black w/opacity/see-through */
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+    nav {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      align-items: center;
+      flex: 1;
+      padding: .1em 2em;
+      div{
 
-export const Nav = styled.nav`
-  background: green;
-  display:flex;
-  justify-content: space-between;
-  width:95%;
-  margin: .1rem;
-  padding: .1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-  ul{
-    width:90%;
-    display:flex;
-    justify-content:space-around;
-    li{
-      margin:auto;
-      list-style:none;
+        span {
+          font-size: 2vh;
+          a {
+          }
+        }
+      }
+        ul {
+          display: flex;
+          padding: 0;
+          li {
+            height:100%;
+            margin:auto;
+            list-style:none;
+            cursor: pointer;
+            margin: 0 1em;
+            a {
+              color: #333
+            }
+
+          }
+          li:hover {
+            border-bottom: 3px solid red;
+          }
+        }
     }
   }
-
 `
 
 export const Hero = styled.div`
   background: white;
-
+  padding-top: 5vh;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items:center;
-
   margin: 1rem;
+  width: 50%;
 
-  width: 75%;
+  img{
+    width:50vw;
+  }
+
+  h1 {
+    font-size: 5rem;
+    text-align: center;
+  };
+
+  h2 {
+    font-size: 3rem;
+    margin:0;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+
+  }
 
 `
 
@@ -59,6 +99,10 @@ export const ReviewBox =styled.section`
   ul{
     display: flex;
   }
+`
+export const FakeReview = styled.li`
+display: flex:
+flex-direction: column;
 `
 
 export const Section = styled.section`
@@ -103,9 +147,9 @@ export const Section = styled.section`
 `
 
 export const LetsDoThisBTN = styled.button`
-  background: red;
-  :before{ content:"Lets Do This" }
-
+  background: blue;
+  :before{ content:"Lets Do This"; }
+  font-size: 2rem;
   border-radius: .5rem;
   border: none;
   padding: .5rem 1rem;

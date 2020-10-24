@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { NavBarContainer } from '../../styles'
 
 const NavBar = () => {
+  const [points, setPoints] = useState(0)
   return (
-    <nav>
-      <span>
-      Goal Getter
-      </span>
+    <NavBarContainer>
+    <div>
+      <h3> Goal Getter </h3>
+    </div>
       <div>
         <span> UserName </span>
-        <span> Points </span>
-        <button> dropdown </button>
-        <button> notification Bell </button>
+        <span> {points} </span>
+        <button> ^ </button>
+        <button> Bell </button>
       </div>
-    </nav>
+    </NavBarContainer>
   )
 }
 
