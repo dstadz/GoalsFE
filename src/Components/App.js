@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil'
-import Header from './ActionCenter/'
+import DashBoard from './DashBoard/'
 import TimeLine from './TimeLine/'
+import NavBar from './NavBar/'
 import GoalTable from './GoalTable'
 import LandingPage from './LandingPage/'
 import { userState } from '../utils/store'
@@ -14,8 +15,9 @@ const App = ()  => {
 
   return (
     <AppBody>
-      <TimeLine/>
-      <Header />
+      <NavBar />
+      <TimeLine />
+      <DashBoard />
       <GoalTable />
     </AppBody>
   );

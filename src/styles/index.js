@@ -79,7 +79,9 @@ export const MonthBox = styled.div`
 
 export const ActionCenter = styled.div`
   display:flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center
   ${'' /* div {
     display:flex;
     justify-content: space-around;
@@ -139,6 +141,14 @@ export const HabitSlotContainer = styled.li`
 `
 
 export const CountDownContainer = styled.ul`
+
   ${borderLine}
 
+`
+
+export const NavBarContainer = styled.nav`
+  background: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 `
