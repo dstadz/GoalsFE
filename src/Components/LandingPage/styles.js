@@ -7,11 +7,12 @@ export const LandingPageContainer = styled.div`
   align-items:center;
 `
 export const Header = styled.header`
-  background-color: rgba(255,255,255, 0.9); /* Black w/opacity/see-through */
+  background-color: rgba(255,255,255, 0.94); /* Black w/opacity/see-through */
   top: 0;
   left: 0;
   right: 0;
   position: fixed;
+  ${'' /* filter: blur(5px); */}
     nav {
       display: flex;
       justify-content: space-around;
@@ -64,11 +65,12 @@ export const Hero = styled.div`
   width: 50%;
 
   img{
-    width:50vw;
+    width: 100vw;
+    @media(min-width:1023px){width: 75vw;}
+    @media(min-width:1439px){width: 50vw;}
   }
-
   h1 {
-    font-size: 5rem;
+    font-size: 4em;
     text-align: center;
   };
 
@@ -86,7 +88,7 @@ export const Hero = styled.div`
 `
 
 export const ReviewBox =styled.section`
-  background: yellow;
+  background: orange;
   width:100%;
 
   display:flex;
@@ -98,14 +100,64 @@ export const ReviewBox =styled.section`
 
   ul{
     display: flex;
+    width:66%;
+    justify-content: space-around;
+
+
+    @media(max-width:375px){
+      flex-direction: column;
+      width: 100%
+      }
+    ${'' /* @media(min-width:1439px){width: 50vw;} */}
+
   }
 `
 export const FakeReview = styled.li`
-display: flex:
-flex-direction: column;
+
+@media(max-width:375px){
+  justify-content: center;
+}
+  list-style:none;
+  ${'' /* display: flex;
+  flex-direction: column;
+  width: 15vw; */}
+  h3{}
+  span{}
+  h4{width: 100%}
 `
 
 export const Section = styled.section`
+
+  background: white;
+  padding-top: 5vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin: 1rem;
+  width: 50%;
+
+  img{
+    width: 100vw;
+    @media(min-width:1023px){width: 75vw;}
+    @media(min-width:1439px){width: 50vw;}
+  }
+  h1 {
+    font-size: 4em;
+    text-align: center;
+  };
+
+  h2 {
+    font-size: 3rem;
+    margin:0;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+
+  }
+
   background: white;
 
   display:flex;
@@ -148,8 +200,10 @@ export const Section = styled.section`
 
 export const LetsDoThisBTN = styled.button`
   background: blue;
-  :before{ content:"Lets Do This"; }
-  font-size: 2rem;
+  color:white;
+  font-weight: 400;
+  :before{ content:"Lets Get Going"; }
+  font-size: 1.5rem;
   border-radius: .5rem;
   border: none;
   padding: .5rem 1rem;

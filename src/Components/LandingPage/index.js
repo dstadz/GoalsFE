@@ -26,9 +26,9 @@ const fakeReviews = [{
   rating:'⭐⭐⭐⭐⭐⭐',
   comment:`I couldn't have made my company without having Goals`
 },{
-  reviewer:'🍎 store',
+  reviewer: 'the place where you ',
   rating:'🍎🍎🍎🍎🍎',
-  comment:'4.9 apples, at least 3+ reviews'
+  comment:`featured app \n 4.9 apples, \n at least 3+ reviews`
 },{
   reviewer:'The Splurge',
   rating:'9.9/10',
@@ -44,49 +44,54 @@ const LandingPage = () => {
   const time = timeList[0]
   return (
     <LandingPageContainer>
-        <Header>
-          <nav>
-            <div>
-              <span>
-                <a
-                  href="https://danielstadler.com/"
-                  target='_blank'
-                  rel="noopener noreferrer"
-                >Goal Getter</a>
-              </span>
-              <ul>
-                <li> <a>Features</a> </li>
-                <li> <a>Premium</a> </li>
-                <li> <a>Resources</a> </li>
-              </ul>
-            </div>
+      <Header>
+        <nav>
+          <div>
+            <span>
+              <a
+                href="https://danielstadler.com/"
+                target='_blank'
+                rel="noopener noreferrer"
+              >Goal Getter</a>
+            </span>
             <ul>
-              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
-              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
+              <li> <a>Features</a> </li>
+              <li> <a>Premium</a> </li>
+              <li> <a>Resources</a> </li>
             </ul>
-          </nav>
-        </Header>
+          </div>
+          <ul>
+            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
+            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
+          </ul>
+        </nav>
+      </Header>
 
       { modalUp && <SignInUp closeModal={setModalUp}/>}
 
-      <Hero>
-        <h1>Accomplish all your goals in life</h1>
+
+      <Section>
+        <h1>Accomplish everything with Goal Getter</h1>
         <LetsDoThisBTN onClick={()=> setModalUp(modalUp => !modalUp)}/>
         <img src={randomArt} alt={'random art'}/>
 
-        <h2> Work towards becoming the ideal You </h2>
+        <h2> Become the ideal you </h2>
         <p> You'll be lucky if you get <span>{time}</span> </p>
         <p> Gain perspective and awareness by getting all your aspirations and dreams out of your head and onto your goal list (no matter where you are or what device you use). </p>
         <span> Browse Goals features </span>
         <span> See Goals in action </span>
-      </Hero>
+      </Section>
 
       <ReviewBox>
-        <h2> 100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM? </h2>
+        {/* <h2> 100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM? </h2> */}
         <ul>
-          {fakeReviews.map(r => ( <FakeReview>
-            
-            {r.reviewer}{r.reviewer} {r.rating} {r.comment} </FakeReview>))}
+          {fakeReviews.map(r => (
+            <FakeReview>
+              <h3> {r.reviewer} </h3>
+              <span> {r.rating} </span>
+              <h4> {r.comment} </h4>
+            </FakeReview>
+            ))}
         </ul>
       </ReviewBox>
 
