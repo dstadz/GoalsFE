@@ -7,53 +7,88 @@ export const LandingPageContainer = styled.div`
   align-items:center;
 `
 export const Header = styled.header`
-  background-color: rgba(255,255,255, 0.9); /* Black w/opacity/see-through */
+  background-color: rgba(255,255,255, 0.94);
   top: 0;
   left: 0;
   right: 0;
   position: fixed;
-    nav {
-      display: flex;
-      justify-content: space-around;
-      position: relative;
-      align-items: center;
-      flex: 1;
-      padding: .1em 2em;
-      div{
+  nav {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: .1em 2em;
+    ul {
+      padding: 0;
+      ${'' /* width: 100%; */}
+      list-style:none;
 
-        display: flex;
-        align-items: center;
+      justify-content: space-between;
+
+      @media (min-width:769px) { display:flex }
+      @media (max-width:768px) {
+        display: ${({ open }) => open ? 'flex' : 'none'};
+        flex-direction:column;
         justify-content: space-between;
-
-        span {
-          font-size: 2vh;
-          a {
-          }
-        }
+        align-items: center
       }
-        ul {
-          display: flex;
-          padding: 0;
-          li {
-            height:100%;
-            margin:auto;
-            list-style:none;
-            cursor: pointer;
-            margin: 0 1em;
-            a {
-              color: #333
-            }
-
-          }
-          li:hover {
-            border-bottom: 3px solid red;
-          }
-        }
+      .spacer {
+        before:' ';
+        width: 50vw;
+        @media (max-width:768px) { display:none; }
+      }
+      li {
+        @media (max-width:768px) { font-size: 2em; }
+        padding: 1em;
+        height:100%;
+        ${'' /* margin:auto; */}
+        cursor: pointer;
+        a { color: #333 }
+      }
+      li:hover {
+        background: #ddd;
+        border-bottom: 3px solid red;
+        display: ${({ open }) => open ? 'flex' : 'none'};
+      }
     }
+  }
+}
+`
+
+export const StyledBurger = styled.button`
+  @media (min-width:769px) { display:none }
+  margin: 1rem;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  &:focus { outline: none }
+
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: ${({ open }) => open ? 'red' : 'black' };
+    border-radius: 1rem;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    :first-child { transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'} }
+    :nth-child(2) {
+      opacity: ${({ open }) => open ? '0' : '1'};
+      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+    }
+    :nth-child(3) { transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'} }
   }
 `
 
-export const Hero = styled.div`
+export const Hero = styled.section`
   background: white;
   padding-top: 5vh;
   display:flex;
@@ -61,14 +96,15 @@ export const Hero = styled.div`
   justify-content: center;
   align-items:center;
   margin: 1rem;
-  width: 50%;
+  width: 100%;
 
   img{
-    width:50vw;
+    width: 100vw;
+    @media(min-width:1023px){width: 75vw;}
+    @media(min-width:1439px){width: 50vw;}
   }
-
   h1 {
-    font-size: 5rem;
+    font-size: 4em;
     text-align: center;
   };
 
@@ -86,7 +122,7 @@ export const Hero = styled.div`
 `
 
 export const ReviewBox =styled.section`
-  background: yellow;
+  background: orange;
   width:100%;
 
   display:flex;
@@ -98,36 +134,75 @@ export const ReviewBox =styled.section`
 
   ul{
     display: flex;
+    width:66%;
+    justify-content: space-around;
+
+
+    @media(max-width:375px){
+      flex-direction: column;
+      width: 100%
+      }
+    ${'' /* @media(min-width:1439px){width: 50vw;} */}
+
   }
 `
 export const FakeReview = styled.li`
-display: flex:
-flex-direction: column;
+
+  @media(max-width:375px){
+    width: 100vw;
+  }
+  ${'' /* @media(min-width:1023px){
+    width: 75vw;
+  } */}
+
+@media(max-width:375px){
+  justify-content: center;
+}
+  list-style:none;
+  ${'' /* display: flex;
+  flex-direction: column;
+  width: 15vw; */}
+  h3{}
+  span{}
+  h4{width: 100%}
 `
 
 export const Section = styled.section`
-  background: white;
-
+  background: green;
   display:flex;
-  flex-wrap:wrap;
+  flex-direction: column;
   justify-content: center;
   align-items:center;
-
   margin: 1rem;
-
-  width: 940px;
-
-  @media(max-width: 900px){
-    width:75%
-  }
-  div{
-    width:500px;
-  }
+  width: 50%;
 
   img{
-    background:blue;
-    height:200px;
-    width:400px;
+    width: 45%;
+    max-width: 495px;
+    max-height: 470px;
+    background:red;
+
+    @media(min-width:1023px){width: 75vw;}
+    @media(min-width:1439px){width: 50vw;}
+  }}
+
+  h1 {
+    font-size: 4em;
+    text-align: center;
+  };
+
+  h2 {
+    font-size: 3rem;
+    margin:0;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+  @media(max-width: 900px){ width:75% }
+  div{
+    width:500px;
   }
 
   ol{
@@ -148,8 +223,10 @@ export const Section = styled.section`
 
 export const LetsDoThisBTN = styled.button`
   background: blue;
-  :before{ content:"Lets Do This"; }
-  font-size: 2rem;
+  color:white;
+  font-weight: 400;
+  :before{ content:"Lets Get Going"; }
+  font-size: 1.5rem;
   border-radius: .5rem;
   border: none;
   padding: .5rem 1rem;
