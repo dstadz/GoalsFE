@@ -15,15 +15,13 @@ export const Header = styled.header`
   nav {
     display: flex;
     position: relative;
+    justify-content: center;
     align-items: center;
     padding: .1em 2em;
     ul {
       padding: 0;
-      ${'' /* width: 100%; */}
       list-style:none;
-
       justify-content: space-between;
-
       @media (min-width:769px) { display:flex }
       @media (max-width:768px) {
         display: ${({ open }) => open ? 'flex' : 'none'};
@@ -31,23 +29,37 @@ export const Header = styled.header`
         justify-content: space-between;
         align-items: center
       }
+
+      li {
+        padding: 1em;
+        height:100%;
+        justify-content: center;
+        cursor: pointer;
+        text-align: center;
+        a {
+          margin: auto;
+          color: #333
+        }
+        @media (max-width:768px) {
+          width: 100%;
+          font-size: 2em;
+          }
+        :hover {
+          background: #ddd;
+          border-bottom: 3px solid red;
+        }
+      }
+
       .spacer {
         before:' ';
         width: 50vw;
         @media (max-width:768px) { display:none; }
-      }
-      li {
-        @media (max-width:768px) { font-size: 2em; }
-        padding: 1em;
-        height:100%;
-        ${'' /* margin:auto; */}
-        cursor: pointer;
-        a { color: #333 }
-      }
-      li:hover {
-        background: #ddd;
-        border-bottom: 3px solid red;
-        display: ${({ open }) => open ? 'flex' : 'none'};
+        @media (max-width:1023px) { width: 33vw }
+        :hover{
+          background: none;
+          border: none;
+          cursor: auto;
+        }
       }
     }
   }
@@ -88,7 +100,46 @@ export const StyledBurger = styled.button`
   }
 `
 
-export const Hero = styled.section`
+export const Section = styled.section`
+  display:flex;
+  @media(max-width:600px) { flex-direction: column}
+  justify-content: space-around;
+  align-items:center;
+  margin: 1rem;
+  width: 50%;
+  @media(max-width: 958px) { width:100% }
+
+  div{ text-align: center; }
+
+  img{
+    max-width: 375px;
+    max-height: 470px;
+    @media(min-width:1023px){width: 75vw;}
+    @media(min-width:1439px){width: 50vw;}
+  }
+
+  h2 { font-size: 2rem;  }
+
+  p { font-size: 1rem; }
+  @media(max-width: 900px){ width:75% }
+
+
+  ol{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+    @media(max-width:766px){ flex-direction:column; }
+    li{ margin: 0 auto; }
+  }
+
+  @media(max-width:425px){
+    h1{ font-size: 3em;}
+    h2{ font-size: 2em;}
+  }
+`
+
+export const Hero = styled(Section)`
   background: white;
   padding-top: 5vh;
   display:flex;
@@ -98,43 +149,48 @@ export const Hero = styled.section`
   margin: 1rem;
   width: 100%;
 
+  * {
+      text-align: center;
+      ${'' /* margin: 0; */}
+    }
+
+  h1 { font-size: 4em; }
+  h2 { font-size: 3em; }
+  span { font-size: 2em; }
+  p {
+    width: 50%;
+    @media(max-width: 767px) {
+      width: 100%
+    }
+  }
+
+
   img{
     width: 100vw;
     @media(min-width:1023px){width: 75vw;}
     @media(min-width:1439px){width: 50vw;}
   }
-  h1 {
-    font-size: 4em;
-    text-align: center;
-  };
 
-  h2 {
-    font-size: 3rem;
-    margin:0;
-  }
 
-  p {
-    margin: 0;
-    text-align: center;
 
-  }
 
+  
 `
 
 export const ReviewBox =styled.section`
-  background: orange;
+  background: linear-gradient(172deg, rgba(255,184,0,1) 0%, rgba(249,255,0,1) 100%);
   width:100%;
 
   display:flex;
-  flex-direction: column;
-  justify-content: center;
+  ${'' /* flex-direction: column; */}
+  justify-content: space-around;
   align-items:center;
 
   margin: 1rem 0;
 
   ul{
     display: flex;
-    width:66%;
+    @media(min-width:1000px) {width:66%};
     justify-content: space-around;
 
 
@@ -147,78 +203,23 @@ export const ReviewBox =styled.section`
   }
 `
 export const FakeReview = styled.li`
+  list-style:none;
 
   @media(max-width:375px){
     width: 100vw;
+    text-align: center;
   }
-  ${'' /* @media(min-width:1023px){
-    width: 75vw;
-  } */}
+  * {
+    max-width: 300px;
+  }
 
-@media(max-width:375px){
+@media(max-width:767px){
   justify-content: center;
 }
-  list-style:none;
-  ${'' /* display: flex;
-  flex-direction: column;
-  width: 15vw; */}
+
   h3{}
   span{}
   h4{width: 100%}
-`
-
-export const Section = styled.section`
-  background: green;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
-  margin: 1rem;
-  width: 50%;
-
-  img{
-    width: 45%;
-    max-width: 495px;
-    max-height: 470px;
-    background:red;
-
-    @media(min-width:1023px){width: 75vw;}
-    @media(min-width:1439px){width: 50vw;}
-  }}
-
-  h1 {
-    font-size: 4em;
-    text-align: center;
-  };
-
-  h2 {
-    font-size: 3rem;
-    margin:0;
-  }
-
-  p {
-    margin: 0;
-    text-align: center;
-  }
-  @media(max-width: 900px){ width:75% }
-  div{
-    width:500px;
-  }
-
-  ol{
-    width:100%;
-    display:flex;
-    flex-direction: row;
-
-    @media(max-width:766px){
-      flex-direction:column;
-    }
-
-    li{
-      margin: 0 auto;
-      list-style: none;
-    }
-  }
 `
 
 export const LetsDoThisBTN = styled.button`
