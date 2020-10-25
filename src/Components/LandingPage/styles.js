@@ -101,40 +101,26 @@ export const StyledBurger = styled.button`
 `
 
 export const Section = styled.section`
-  background: green;
   display:flex;
-  ${'' /* flex-direction: column; */}
-  justify-content: center;
+  @media(max-width:600px) { flex-direction: column}
+  justify-content: space-around;
   align-items:center;
   margin: 1rem;
   width: 50%;
-  @media(max-width: 958px) {
-    width:100%
-  }
+  @media(max-width: 958px) { width:100% }
 
-  div{
-    background: purple;
-    text-align: center;
-    width:500px;
-  }
+  div{ text-align: center; }
 
   img{
-    width: 45%;
-    max-width: 495px;
+    max-width: 375px;
     max-height: 470px;
-    background:red;
     @media(min-width:1023px){width: 75vw;}
     @media(min-width:1439px){width: 50vw;}
-  }}
-
-  h2 {
-    font-size: 2rem;
-    margin:0;
   }
 
-  p {
-    margin: 0;
-  }
+  h2 { font-size: 2rem;  }
+
+  p { font-size: 1rem; }
   @media(max-width: 900px){ width:75% }
 
 
@@ -142,21 +128,14 @@ export const Section = styled.section`
     width:100%;
     display:flex;
     flex-direction: row;
-
-    @media(max-width:766px){
-      flex-direction:column;
-    }
-
-    li{
-      margin: 0 auto;
-      list-style: none;
-    }
+    list-style: none;
+    @media(max-width:766px){ flex-direction:column; }
+    li{ margin: 0 auto; }
   }
 
   @media(max-width:425px){
     h1{ font-size: 3em;}
     h2{ font-size: 2em;}
-
   }
 `
 
@@ -171,22 +150,19 @@ export const Hero = styled(Section)`
   width: 100%;
 
   * {
-    text-align: center;
-  }
+      text-align: center;
+      ${'' /* margin: 0; */}
+    }
 
-  h1 {
-    font-size: 4em;
-  };
-
-  h2 {
-    font-size: 3em;
-    margin:0;
-  }
-
+  h1 { font-size: 4em; }
+  h2 { font-size: 3em; }
+  span { font-size: 2em; }
   p {
     width: 50%;
-    margin: 0;
+    @media(max-width: 767px) {
+      width: 100%
     }
+  }
 
 
   img{
@@ -202,19 +178,19 @@ export const Hero = styled(Section)`
 `
 
 export const ReviewBox =styled.section`
-  background: orange;
+  background: linear-gradient(172deg, rgba(255,184,0,1) 0%, rgba(249,255,0,1) 100%);
   width:100%;
 
   display:flex;
-  flex-direction: column;
-  justify-content: center;
+  ${'' /* flex-direction: column; */}
+  justify-content: space-around;
   align-items:center;
 
   margin: 1rem 0;
 
   ul{
     display: flex;
-    width:66%;
+    @media(min-width:1000px) {width:66%};
     justify-content: space-around;
 
 
@@ -227,21 +203,20 @@ export const ReviewBox =styled.section`
   }
 `
 export const FakeReview = styled.li`
+  list-style:none;
 
   @media(max-width:375px){
     width: 100vw;
+    text-align: center;
   }
-  ${'' /* @media(min-width:1023px){
-    width: 75vw;
-  } */}
+  * {
+    max-width: 300px;
+  }
 
-@media(max-width:375px){
+@media(max-width:767px){
   justify-content: center;
 }
-  list-style:none;
-  ${'' /* display: flex;
-  flex-direction: column;
-  width: 15vw; */}
+
   h3{}
   span{}
   h4{width: 100%}
