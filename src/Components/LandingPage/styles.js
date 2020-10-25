@@ -12,49 +12,52 @@ export const Header = styled.header`
   left: 0;
   right: 0;
   position: fixed;
-    nav {
-      display: flex;
-      justify-content: space-around;
-      position: relative;
-      align-items: center;
-      flex: 1;
-      padding: .1em 2em;
-      div{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        span{
-          display: flex;
-          flex-derection: row;
-          justify-content: space-between;
-          a { font-size: 2vh; }
-        }
-      }
-      ul {
-        @media (max-width:769px) { display:flex }
+  nav {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: .1em 2em;
+    ul {
+      padding: 0;
+      ${'' /* width: 100%; */}
+      list-style:none;
 
-        display:flex;
-        padding: 0;
-        li {
-          padding: 1em;
-          height:100%;
-          margin:auto;
-          list-style:none;
-          cursor: pointer;
-          a { color: #333 }
-        }
-        li:hover {
-          background: #ddd;
-          border-bottom: 3px solid red;
-        }
+      justify-content: space-between;
+
+      @media (min-width:769px) { display:flex }
+      @media (max-width:768px) {
+        display: ${({ open }) => open ? 'flex' : 'none'};
+        flex-direction:column;
+        justify-content: space-between;
+        align-items: center
+      }
+      .spacer {
+        before:' ';
+        width: 50vw;
+        @media (max-width:768px) { display:none; }
+      }
+      li {
+        @media (max-width:768px) { font-size: 2em; }
+        padding: 1em;
+        height:100%;
+        ${'' /* margin:auto; */}
+        cursor: pointer;
+        a { color: #333 }
+      }
+      li:hover {
+        background: #ddd;
+        border-bottom: 3px solid red;
+        display: ${({ open }) => open ? 'flex' : 'none'};
       }
     }
   }
+}
 `
 
 export const StyledBurger = styled.button`
   @media (min-width:769px) { display:none }
-  margin: 1rem 0 1rem auto;
+  margin: 1rem;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -85,7 +88,7 @@ export const StyledBurger = styled.button`
   }
 `
 
-export const Hero = styled.div`
+export const Hero = styled.section`
   background: white;
   padding-top: 5vh;
   display:flex;
@@ -93,7 +96,7 @@ export const Hero = styled.div`
   justify-content: center;
   align-items:center;
   margin: 1rem;
-  width: 50%;
+  width: 100%;
 
   img{
     width: 100vw;
@@ -165,9 +168,7 @@ export const FakeReview = styled.li`
 `
 
 export const Section = styled.section`
-
-  background: white;
-  padding-top: 5vh;
+  background: green;
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -176,10 +177,15 @@ export const Section = styled.section`
   width: 50%;
 
   img{
-    width: 100vw;
+    width: 45%;
+    max-width: 495px;
+    max-height: 470px;
+    background:red;
+
     @media(min-width:1023px){width: 75vw;}
     @media(min-width:1439px){width: 50vw;}
-  }
+  }}
+
   h1 {
     font-size: 4em;
     text-align: center;
@@ -193,31 +199,10 @@ export const Section = styled.section`
   p {
     margin: 0;
     text-align: center;
-
   }
-
-  background: white;
-
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items:center;
-
-  margin: 1rem;
-
-  width: 940px;
-
-  @media(max-width: 900px){
-    width:75%
-  }
+  @media(max-width: 900px){ width:75% }
   div{
     width:500px;
-  }
-
-  img{
-    background:blue;
-    height:200px;
-    width:400px;
   }
 
   ol{

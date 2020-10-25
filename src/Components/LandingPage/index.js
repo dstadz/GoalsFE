@@ -47,30 +47,26 @@ const LandingPage = () => {
   return (
     <LandingPageContainer>
       <Header open={open} setOpen={setOpen}>
+        <StyledBurger open={open} onClick={() => setOpen(!open)}>
+          <div /> <div /> <div />
+        </StyledBurger>
         <nav>
-          <div>
-            <span>
+          <ul>
+            <li>
               <a
                 href="https://danielstadler.com/"
                 target='_blank'
                 rel="noopener noreferrer"
               >Goal Getter</a>
-            </span>
-            <ul>
-              <li> <a>Features</a> </li>
-              <li> <a>Premium</a> </li>
-              <li> <a>Resources</a> </li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
-              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
-            </ul>
-          </div>
-          <StyledBurger open={open} onClick={() => setOpen(!open)}>
-            <div /> <div /> <div />
-          </StyledBurger>
+            </li>
+            <li> <a>Features</a> </li>
+            <li> <a>Premium</a> </li>
+            <li> <a>Resources</a> </li>
+            <li className='spacer'></li>
+            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
+            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
+          </ul>
+
         </nav>
       </Header>
 
@@ -90,7 +86,6 @@ const LandingPage = () => {
       </Hero>
 
       <ReviewBox>
-        {/* <h2> 100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM? </h2> */}
         <ul>
           {fakeReviews.map(r => (
             <FakeReview>
