@@ -7,6 +7,8 @@ import SignInUp from '../Forms/SignInUp'
 import {
   LandingPageContainer,
   Header,
+  MobileHeader,
+  StyledBurger,
   Hero,
   ReviewBox,
   FakeReview,
@@ -38,13 +40,13 @@ const fakeReviews = [{
 const peopleList = ['creatives','developers','students','small businesses','entreprenuers','freelancers']
 // todoist.com
 const LandingPage = () => {
-  // const [time, setTime] = useState(timeList[0])
   const [modalUp, setModalUp] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const time = timeList[0]
   return (
     <LandingPageContainer>
-      <Header>
+      <Header open={open} setOpen={setOpen}>
         <nav>
           <div>
             <span>
@@ -60,17 +62,22 @@ const LandingPage = () => {
               <li> <a>Resources</a> </li>
             </ul>
           </div>
-          <ul>
-            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
-            <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
-          </ul>
+          <div>
+            <ul>
+              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
+              <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
+            </ul>
+          </div>
+          <StyledBurger open={open} onClick={() => setOpen(!open)}>
+            <div /> <div /> <div />
+          </StyledBurger>
         </nav>
       </Header>
 
       { modalUp && <SignInUp closeModal={setModalUp}/>}
 
 
-      <Section>
+      <Hero>
         <h1>Accomplish everything with Goal Getter</h1>
         <LetsDoThisBTN onClick={()=> setModalUp(modalUp => !modalUp)}/>
         <img src={randomArt} alt={'random art'}/>
@@ -80,7 +87,7 @@ const LandingPage = () => {
         <p> Gain perspective and awareness by getting all your aspirations and dreams out of your head and onto your goal list (no matter where you are or what device you use). </p>
         <span> Browse Goals features </span>
         <span> See Goals in action </span>
-      </Section>
+      </Hero>
 
       <ReviewBox>
         {/* <h2> 100 BILLION HUMANS HAVE HAD GOALS BEFORE. WILL YOU JOIN THE FEW THAT HAVE ACHIEVED THEM? </h2> */}

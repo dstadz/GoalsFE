@@ -7,12 +7,11 @@ export const LandingPageContainer = styled.div`
   align-items:center;
 `
 export const Header = styled.header`
-  background-color: rgba(255,255,255, 0.94); /* Black w/opacity/see-through */
+  background-color: rgba(255,255,255, 0.94);
   top: 0;
   left: 0;
   right: 0;
   position: fixed;
-  ${'' /* filter: blur(5px); */}
     nav {
       display: flex;
       justify-content: space-around;
@@ -21,36 +20,68 @@ export const Header = styled.header`
       flex: 1;
       padding: .1em 2em;
       div{
-
         display: flex;
         align-items: center;
         justify-content: space-between;
-
-        span {
-          font-size: 2vh;
-          a {
-          }
+        span{
+          display: flex;
+          flex-derection: row;
+          justify-content: space-between;
+          a { font-size: 2vh; }
         }
       }
-        ul {
-          display: flex;
-          padding: 0;
-          li {
-            height:100%;
-            margin:auto;
-            list-style:none;
-            cursor: pointer;
-            margin: 0 1em;
-            a {
-              color: #333
-            }
+      ul {
+        @media (max-width:769px) { display:flex }
 
-          }
-          li:hover {
-            border-bottom: 3px solid red;
-          }
+        display:flex;
+        padding: 0;
+        li {
+          padding: 1em;
+          height:100%;
+          margin:auto;
+          list-style:none;
+          cursor: pointer;
+          a { color: #333 }
         }
+        li:hover {
+          background: #ddd;
+          border-bottom: 3px solid red;
+        }
+      }
     }
+  }
+`
+
+export const StyledBurger = styled.button`
+  @media (min-width:769px) { display:none }
+  margin: 1rem 0 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  &:focus { outline: none }
+
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: ${({ open }) => open ? 'red' : 'black' };
+    border-radius: 1rem;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    :first-child { transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'} }
+    :nth-child(2) {
+      opacity: ${({ open }) => open ? '0' : '1'};
+      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+    }
+    :nth-child(3) { transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'} }
   }
 `
 
@@ -113,6 +144,13 @@ export const ReviewBox =styled.section`
   }
 `
 export const FakeReview = styled.li`
+
+  @media(max-width:375px){
+    width: 100vw;
+  }
+  ${'' /* @media(min-width:1023px){
+    width: 75vw;
+  } */}
 
 @media(max-width:375px){
   justify-content: center;
