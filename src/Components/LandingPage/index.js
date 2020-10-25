@@ -111,10 +111,8 @@ const LandingPage = () => {
           <p> "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goals" </p>
         </div>
         <img src={testimonialPic} alt='testiminial'/>
-        <ol>
-          {peopleList.map((p,i) => (<li key={i}> { p } </li>))}
-        </ol>
       </Section>
+      <ol> {peopleList.map((p,i) => (<li key={i}> { p } </li>))} </ol>
 
       <Section>{/*3- */}
         <div>
