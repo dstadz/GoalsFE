@@ -27,11 +27,11 @@ export const LifeContainer = styled.ol`
   flex-direction: row;
   justify-content: center;
   padding: 0;
-
-  li{
+  list-style: none;
+`
+export const YearCol = styled.li`
     display:flex;
     flex-direction:column;
-  }
 ${'' /*
   li:nth-child(-n+18) div { background: yellow; }
   li:nth-child(n+18):nth-child(-n+35) div { background: red; }
@@ -39,7 +39,7 @@ ${'' /*
 `
 
 export const MonthBox = styled.div`
-  ${borderLine}
+  border: ${({ age }) => `2px solid hsla(225,${100 - age}%, 50%,1)`};
 
   width: ${round};
   height: ${round};

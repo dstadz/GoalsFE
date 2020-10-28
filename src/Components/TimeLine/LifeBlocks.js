@@ -1,5 +1,5 @@
 import React from 'react'
-import { MonthBox, LifeContainer } from '../../styles'
+import { MonthBox, YearCol, LifeContainer } from '../../styles'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { activeMonthState } from '../../utils/store'
 
@@ -46,6 +46,7 @@ const Month = ({month, year}) => {
 
   return(
     <MonthBox
+      age={year - birthYear}
       style={color()}
       onClick={()=>{ setActiveMonth(new Date(year, month, 1)) }}
     >

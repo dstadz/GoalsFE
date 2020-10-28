@@ -18,11 +18,9 @@ const CountDowns = () => {
   const [interval, setinterval] = useState('day')
   const goalList =  useRecoilValue(goalListState)
   const { birthday } =  useRecoilValue(userState)
-  console.log('birthday', typeof(birthday))
 
   const y = parseInt(birthday.slice(0,4)) + 100
   const dDay = `${y}-${birthday.slice(5,10)}`
-  console.log('dDay', dDay)
 
   let msInInterval = { sec: 1000 }
   msInInterval['min'] = msInInterval.sec * 60
