@@ -78,4 +78,5 @@ const LifeBlocks = () => {
   )
 }
 
-export default LifeBlocks
+const MemoizedLifeBlocks = React.memo(LifeBlocks);
+export default MemoizedLifeBlocks

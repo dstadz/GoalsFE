@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CountDownContainer } from '../../styles'
 import { useRecoilValue } from 'recoil'
-import { goalListState } from '../../utils/store'
+import { userState, goalListState } from '../../utils/store'
 
 
 const Timer = ({ date, interval, time, goal  }) => {
@@ -15,8 +15,14 @@ const Timer = ({ date, interval, time, goal  }) => {
 
 
 const CountDowns = () => {
-  const [interval, setinterval] = useState('sec')
+  const [interval, setinterval] = useState('day')
   const goalList =  useRecoilValue(goalListState)
+  const { birthday } =  useRecoilValue(userState)
+  console.log('birthday', typeof(birthday))
+
+  const y = parseInt(birthday.slice(0,4)) + 100
+  const dDay = `${y}-${birthday.slice(5,10)}`
+  console.log('dDay', dDay)
 
   let msInInterval = { sec: 1000 }
   msInInterval['min'] = msInInterval.sec * 60
@@ -30,25 +36,33 @@ const CountDowns = () => {
 
   return (
     <CountDownContainer>
-      {goalList.map(goal => (
+      <h4> CountDowns </h4>
+      <ul> {goalList.map(goal => (
         <Timer
           date={goal.target_date}
           interval={interval}
           time={msInInterval[interval]}
           goal={goal.goal}
         /> ))}
+        <Timer /* 100th birthday  */
+          date={dDay}
+          interval={interval}
+          time={msInInterval[interval]}
+          goal={'your centennial '}
+        />
+      </ul>
 
       <div>
         <button onClick={() => setinterval('sec')}>sec</button>
         <button onClick={() => setinterval('min')} >min</button>
         <button onClick={() => setinterval('hour')} >hour</button>
         <button onClick={() => setinterval('day')} > day </button>
-      </div>
-      <div>
+      {/* </div>
+      <div> */}
         <button onClick={() => setinterval('week')}>week</button>
         <button onClick={() => setinterval('month')} >month</button>
         <button onClick={() => setinterval('year')} >year</button>
-        <button onClick={() => setinterval('timeLeft')} > % left </button>
+        {/* <button onClick={() => setinterval('timeLeft')} > % left </button> */}
       </div>
     </CountDownContainer>
   )
