@@ -79,13 +79,16 @@ export const MonthBox = styled.div`
 
 export const ActionCenter = styled.div`
   display:flex;
-  flex-direction: column;
   justify-content: space-around;
-  align-items: center
-  ${'' /* div {
-    display:flex;
+  align-items: center;
+
+  .actions {
+    align-self: start;
+    background: yellow;
+    ${'' /* display:flex;
+    felx-direction: column; */}
     justify-content: space-around;
-  } */}
+  }
 
 
 `
@@ -114,7 +117,7 @@ export const GoalForm = styled.form`
 export const GoalCardContainer = styled.div`
   ${borderLine}
   border-radius: ${round};
-  background: #cce;
+  ${'' /* background: #cce; */}
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -122,32 +125,36 @@ export const GoalCardContainer = styled.div`
   margin:${round};
   width: 240px;
 
-  h4{
-    display: inline;
-  }
-
-  ul{
-    padding-left: 0
-  }
+  h4{display: inline;}
+  ul{padding-left: 0}
 
 `
 
 export const HabitSlotContainer = styled.li`
   ${borderLine}
-
   background: orange;
   list-style:none;
   margin: ${round};
 `
 
-export const CountDownContainer = styled.ul`
-
+export const CountDownContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  height: 265px;
+  width: 350px;
   ${borderLine}
+  justify-content:space-between;
+  align-items:center;
+
+  div {
+    background: green;
+    align-items: center
+  }
 
 `
 
 export const NavBarContainer = styled.nav`
-  background: blue;
+background: linear-gradient(172deg, rgba(25,0,255,1) 0%, rgba(0,112,255,1) 100%);
   display: flex;
   justify-content: space-between;
   align-items: center
