@@ -59,13 +59,6 @@ const Month = ({month, year}) => {
 }
 
 
-const Year = ({ year }) => { return( <li>
-  {months.map((_, i) => (
-    <Month key={i} month={i} year={year} />
-  ))}
-</li> )}
-
-
 const LifeBlocks = () => {
   const { birthday }  = useRecoilValue(userState)
   const bday = new Date(birthday)
@@ -73,8 +66,14 @@ const LifeBlocks = () => {
   const birthMonth = bday.getMonth()
 
   return (
-    <LifeContainer birthMonth={birthMonth}>
-      {life.map( y => ( <Year key={y}  year={y + birthYear}/> ))}
+    <LifeContainer>
+      {life.map(y => (
+        <YearCol key={y}>
+          {months.map((_, m) => (
+            <Month key={m} month={m} year={y+birthYear} />
+          ))}
+        </YearCol>
+      ))}
     </LifeContainer>
   )
 }

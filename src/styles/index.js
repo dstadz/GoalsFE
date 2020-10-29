@@ -9,12 +9,6 @@ export const AppBody = styled.div`
   section{ background: red; }
 `
 
-export const Top = styled.div`
-  background: silver;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
 export const Table = styled.div`
   ${borderLine}
   display: flex;
@@ -22,31 +16,32 @@ export const Table = styled.div`
   flex-wrap: wrap;
 `
 
+export const Top = styled.div`
+  background: silver;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const LifeContainer = styled.ol`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   padding: 0;
   list-style: none;
 `
 export const YearCol = styled.li`
-    display:flex;
-    flex-direction:column;
-${'' /*
-  li:nth-child(-n+18) div { background: yellow; }
-  li:nth-child(n+18):nth-child(-n+35) div { background: red; }
-  li:nth-child(n+51) div { background: grey; } */}
+  display:flex;
+  flex-direction:column;
 `
-
+const curve = x => ((1-(x/100)**2)**.5)*100
 export const MonthBox = styled.div`
-  border: ${({ age }) => `2px solid hsla(225,${100 - age}%, 50%,1)`};
+  border: ${({ age }) => `2px solid hsla(225,${curve(age)}%, 50%,1)`};
 
   width: ${round};
   height: ${round};
-  margin: 1px;
+  margin: 2px;
   border-radius: ${round};
-
-
   position: relative;
   display: inline-block;
   :hover{ background:grey; }
@@ -89,8 +84,6 @@ export const ActionCenter = styled.div`
     felx-direction: column; */}
     justify-content: space-around;
   }
-
-
 `
 
 export const AddNewBTN = styled.button`
