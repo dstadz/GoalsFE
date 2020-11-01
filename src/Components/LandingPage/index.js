@@ -25,7 +25,7 @@ const timeList = ['100 years','1200 months','5200 weeks','36500 days']
 const fakeReviews = [{
   reviewer:'Googol',
   rating:'⭐⭐⭐⭐⭐⭐',
-  comment:`I couldn't have made my company without having Goals`
+  comment:`I couldn't have made my company without Goal Getter`
 },{
   reviewer: 'that place where you get all the apps',
   rating:'🍎🍎🍎🍎🍎',
@@ -99,7 +99,7 @@ const LandingPage = () => {
       <Section>{/*1- */}
         <div>
           <p> Goals has helped me and </p>
-          <h2> a bunch of other people do finish a lot of goals </h2>
+          <h2> a bunch of other people get things done</h2>
           {/* <h6> nile, fakebook, wetwerk mickey </h6> */}
         </div>
         <img src={hill} alt={'testimonial'}/>
@@ -108,14 +108,14 @@ const LandingPage = () => {
       <Section>{/*2- */}
         <img src={multitasking} alt='testiminial'/>
         <div>
-          <p> "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goals" </p>
+          <p> "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goal Getter" </p>
         </div>
       </Section>
       {/* <ol> {peopleList.map((p,i) => (<li key={i}> { p } </li>))} </ol> */}
 
       <Section>{/*4- */}
         <div>
-          <h2> Get your life together with Goals</h2>
+          <h2> Get your life together with Goal Getter</h2>
           <LetsDoThisBTN onClick={()=> setModalUp(!modalUp)}/>
         </div>
         <img src={sunset} alt='final'/>
