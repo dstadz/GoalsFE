@@ -9,8 +9,9 @@ export const LandingPageContainer = styled.div`
 export const Header = styled.header`
   background-color: rgba(255,255,255, 0.94);
   top: 0;
-  left: 0;
-  right: 0;
+  ${'' /* left: 0;
+  right: 0; */}
+  width: 100%;
   position: fixed;
   nav {
     display: flex;
@@ -31,11 +32,13 @@ export const Header = styled.header`
       }
 
       li {
+        background: green;
         padding: 1em;
         height:100%;
         justify-content: center;
         cursor: pointer;
         text-align: center;
+        white-space:nowrap;
         a {
           margin: auto;
           color: #333
@@ -52,9 +55,9 @@ export const Header = styled.header`
 
       .spacer {
         before:' ';
-        width: 50vw;
+        width: 45vw;
         @media (max-width:768px) { display:none; }
-        @media (max-width:1023px) { width: 33vw }
+        @media (max-width:1023px) { width: 25vw }
         :hover{
           background: none;
           border: none;
