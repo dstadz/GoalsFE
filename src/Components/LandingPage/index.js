@@ -25,15 +25,15 @@ const timeList = ['100 years','1200 months','5200 weeks','36500 days']
 const fakeReviews = [{
   reviewer:'Googol',
   rating:'⭐⭐⭐⭐⭐⭐',
-  comment:`I couldn't have made my company without Goal Getter`
+  comment:`Editor’s Choice \n 4.8 stars, >7 reviews`
 },{
-  reviewer: 'that place where you get all the apps',
+  reviewer: 'that store with all the apps',
   rating:'🍎🍎🍎🍎🍎',
-  comment:`featured app \n 4.9 apples, \n at least 3+ reviews`
+  comment:`Featured app \n 4.9 apples, at least 3 reviews`
 },{
   reviewer:'The Splurge',
   rating:'9.9/10',
-  comment:`"The best existential get-your-life-together app we've seen all week`
+  comment:`"The best existential get-your-life-together app we've seen all week"`
 },
 ]
 const peopleList = ['creatives','developers','students','small businesses','entreprenuers','freelancers']
@@ -71,15 +71,19 @@ const LandingPage = () => {
 
       { modalUp && <SignInUp closeModal={setModalUp}/>}
 
-
       <Hero>
-        <h1>Accomplish everything with Goal Getter</h1>
+        <h1>Accomplish everything <br/> with Goal Getter</h1>
         <LetsDoThisBTN onClick={()=> setModalUp(modalUp => !modalUp)}/>
         <img src={rickTrip} alt={'random art'}/>
 
         <h2> Become the ideal you </h2>
-        <p> You'll be lucky if you get {time} to do everything you want to do </p>
-        <p> Gain perspective and awareness by getting all your aspirations and dreams out of your head and onto your goal list (no matter where you are or what device you use). </p>
+        <p>
+          You'll be lucky if you get {time} to do everything you want to do
+          <br/>
+          Gain perspective and awareness by getting all your aspirations
+          <br/>
+          out of your head and onto your goal list
+        </p>
         {/* <span> Browse Goals features </span>
         <span> See Goals in action </span> */}
       </Hero>
@@ -92,14 +96,24 @@ const LandingPage = () => {
               <span> {r.rating} </span>
               <h4> {r.comment} </h4>
             </FakeReview>
-            ))}
+          ))}
         </ul>
       </ReviewBox>
 
       <Section>{/*1- */}
         <div>
-          <p> Goals has helped me and </p>
-          <h2> a bunch of other people get things done</h2>
+          <p>
+            Goal Getter has helped me
+            <br/>
+            and a bunch of other people accomplish
+          </p>
+          <h2>
+            a huge amount of tasks
+            <br/>
+            in a crazy amount of goals
+            <br/>
+            they had for themselves
+          </h2>
           {/* <h6> nile, fakebook, wetwerk mickey </h6> */}
         </div>
         <img src={hill} alt={'testimonial'}/>
@@ -108,7 +122,13 @@ const LandingPage = () => {
       <Section>{/*2- */}
         <img src={multitasking} alt='testiminial'/>
         <div>
-          <p> "I was literally a barely functional person who struggled to work towards any form of self improvement or betterment until I started using Goal Getter" </p>
+          <p>
+            "I was literally a barely functional person who struggled
+            <br/>
+            to work towards any form of self improvement or betterment
+            <br/>
+            until I started using Goal Getter"
+          </p>
         </div>
       </Section>
       {/* <ol> {peopleList.map((p,i) => (<li key={i}> { p } </li>))} </ol> */}
