@@ -1,0 +1,7 @@
+.wip {
+  background: purple;
+  /* :hover{
+    :before{
+      content: "Sorry, this component is a Work In Progress"
+    } */
+  }
