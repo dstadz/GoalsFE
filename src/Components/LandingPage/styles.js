@@ -68,8 +68,7 @@ export const Header = styled.header`
 
 export const StyledBurger = styled.button`
   @media (min-width:769px) { display:none }
-  margin: 1rem;
-  margin-left: auto;
+  margin: 1rem 2rem 1rem auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -79,7 +78,7 @@ export const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  ${'' /* z-index: 10; */}
   &:focus { outline: none }
 
 
@@ -104,18 +103,21 @@ export const Section = styled.section`
   display:flex;
   justify-content: space-around;
   align-items:center;
-  ${'' /*
-  @media(max-width:600px) { flex-direction: column}
   margin: 1rem;
   width: 50%;
-  @media(max-width: 958px) { width:100% } */}
+
+  @media(max-width:600px) {
+    flex-direction: column;
+  }
+  @media(max-width: 958px) {
+    width:100%
+  }
 
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   max-width: 1120px;
-  padding: 5rem 1rem;
-
+  padding: 2.5rem 1rem;
 
   div{ text-align: left; }
 

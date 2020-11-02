@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-
-
 import Footer from './Footer'
 import SignInUp from '../Forms/SignInUp'
 
@@ -65,7 +63,6 @@ const LandingPage = () => {
             <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign up </span> </li>
             <li> <span onClick={()=> setModalUp(modalUp => !modalUp)}> Sign in </span> </li>
           </ul>
-
         </nav>
       </Header>
 
@@ -141,10 +138,7 @@ const LandingPage = () => {
         <img src={sunset} alt='final'/>
       </Section>
 
-
-
-
-      <Footer/>
+      {/* <Footer/> */}
     </LandingPageContainer>
   )
 }
