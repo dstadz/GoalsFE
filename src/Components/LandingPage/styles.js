@@ -46,7 +46,7 @@ export const Header = styled.header`
           }
         :hover {
           background: #ddd;
-          border-bottom: 3px solid red;
+          border-bottom: 3px solid blue;
         }
       }
 
@@ -68,8 +68,7 @@ export const Header = styled.header`
 
 export const StyledBurger = styled.button`
   @media (min-width:769px) { display:none }
-  margin: 1rem;
-  margin-left: auto;
+  margin: 1rem 2rem 1rem auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -79,7 +78,7 @@ export const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  ${'' /* z-index: 10; */}
   &:focus { outline: none }
 
 
@@ -102,14 +101,25 @@ export const StyledBurger = styled.button`
 
 export const Section = styled.section`
   display:flex;
-  @media(max-width:600px) { flex-direction: column}
   justify-content: space-around;
   align-items:center;
   margin: 1rem;
   width: 50%;
-  @media(max-width: 958px) { width:100% }
 
-  div{ text-align: center; }
+  @media(max-width:600px) {
+    flex-direction: column;
+  }
+  @media(max-width: 958px) {
+    width:100%
+  }
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1120px;
+  padding: 2.5rem 1rem;
+
+  div{ text-align: left; }
 
   img{
     max-width: 375px;
@@ -120,7 +130,11 @@ export const Section = styled.section`
 
   h2 { font-size: 2rem;  }
 
-  p { font-size: 1rem; }
+  p {
+    font-size: 1.4rem;
+    line-height: 1.35;
+    margin-right: 1rem;
+  }
   @media(max-width: 900px){ width:75% }
 
 
@@ -155,9 +169,15 @@ export const Hero = styled(Section)`
     }
 
   h1 { font-size: 4em; }
-  h2 { font-size: 3em; }
+
+  h2 {
+    font-size: 3em;
+    margin: 0
+  }
   span { font-size: 2em; }
   p {
+    margin:0;
+
     width: 50%;
     @media(max-width: 767px) {
       width: 100%
@@ -166,7 +186,8 @@ export const Hero = styled(Section)`
 
 
   img{
-    width: 100vw;
+    width: 90%;
+    max-width: 1256px;
     @media(min-width:1023px){width: 75vw;}
     @media(min-width:1439px){width: 50vw;}
   }
@@ -190,8 +211,8 @@ export const ReviewBox =styled.section`
 
   ul{
     display: flex;
-    @media(min-width:1000px) {width:66%};
     justify-content: space-around;
+    @media(min-width:1000px) {width:66%};
 
 
     @media(max-width:375px){
@@ -204,6 +225,8 @@ export const ReviewBox =styled.section`
 `
 export const FakeReview = styled.li`
   list-style:none;
+  white-space: pre-wrap;
+
 
   @media(max-width:375px){
     width: 100vw;
