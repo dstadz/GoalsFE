@@ -32,7 +32,6 @@ export const Header = styled.header`
       }
 
       li {
-        background: green;
         padding: 1em;
         height:100%;
         justify-content: center;
