@@ -1,12 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
-const round = '10px';
+const round = "10px";
 const borderLine = `border: 2px solid black;`;
 
 export const AppBody = styled.div`
   justify-content: space-between;
-
-  section{ background: red; }
+  }
 `
 
 export const Table = styled.div`
@@ -52,7 +51,7 @@ export const MonthBox = styled.div`
     color: blue;
     text-align: center;
     border-radius: ${round};
-    ${'' /* width: 120px; */}
+    ${"" /* width: 120px; */}
     position: absolute;
     top: 15px;
     right:-50px;
@@ -80,14 +79,14 @@ export const ActionCenter = styled.div`
   .actions {
     align-self: start;
     background: yellow;
-    ${'' /* display:flex;
+    ${"" /* display:flex;
     felx-direction: column; */}
     justify-content: space-around;
   }
 `
 
 export const AddNewBTN = styled.button`
-  ${'' /* width: 200px; */}
+  ${"" /* width: 200px; */}
   height: 20px;
   background: cyan;
   border-radius: 1em;
@@ -110,7 +109,7 @@ export const GoalForm = styled.form`
 export const GoalCardContainer = styled.div`
   ${borderLine}
   border-radius: ${round};
-  ${'' /* background: #cce; */}
+  ${"" /* background: #cce; */}
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
