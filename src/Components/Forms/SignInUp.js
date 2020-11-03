@@ -69,7 +69,7 @@ const SignInUp = ({closeModal}) => {
     </SignInUpModal>
 
     :<SignInUpModal>
-      <h3 className='wip'>
+      <h3>
         {signIn ?"Log In" : "Sign Up"} <button onClick={() => closeModal(false)} >X</button>
       </h3>
 
@@ -126,16 +126,16 @@ const SignInUp = ({closeModal}) => {
         <br />
 
         <ButtonBar>
-          <li> Google </li>
-          <li> FaceBook </li>
-          <li> Apple </li>
+          <li className='wip'> Google </li>
+          <li className='wip'> FaceBook </li>
+          <li className='wip'> Apple </li>
         </ButtonBar>
 
         <input type="submit" value={signIn ? "Log In" : "Lets get started!"} />
         <br/>
         <input
           type="submit"
-          value="recruiter? Click here!"
+          value="Are you a recruiter? Click here!"
           onClick={() => recruiterSignIn()} />
       </form>
 
