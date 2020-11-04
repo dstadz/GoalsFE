@@ -4,8 +4,11 @@ const round = "10px";
 const borderLine = `border: 2px solid black;`;
 
 export const AppBody = styled.div`
-  justify-content: space-between;
-  }
+  ${'' /* display:flex; */}
+  ${'' /* background: linear-gradient(-45deg, rgba(100,100,255,1) 0%, rgba(50,50,200,1) 100%); */}
+  ${'' /* flex-direction:column; */}
+  justify-content: space-around;
+  align-items:center;
 `
 
 export const Table = styled.div`
@@ -13,6 +16,7 @@ export const Table = styled.div`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  ${'' /* width: 80%; */}
 `
 
 export const Top = styled.div`
@@ -138,15 +142,18 @@ export const CountDownContainer = styled.div`
   justify-content:space-between;
   align-items:center;
 
-  div {
-    background: green;
-    align-items: center
+  h4{
+    margin:.5rem;
+  }
+
+  ul {
+    margin: 0;
   }
 
 `
 
 export const NavBarContainer = styled.nav`
-background: linear-gradient(172deg, rgba(25,0,255,1) 0%, rgba(0,112,255,1) 100%);
+  background: linear-gradient(172deg, rgba(25,0,255,1) 0%, rgba(0,112,255,1) 100%);
   display: flex;
   justify-content: space-between;
   align-items: center

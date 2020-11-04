@@ -46,7 +46,7 @@ const CountDowns = () => {
           date={dDay}
           interval={interval}
           time={msInInterval[interval]}
-          goal={'your centennial '}
+          goal={'your centennial'}
         />
       </ul>
 
@@ -60,7 +60,6 @@ const CountDowns = () => {
         <button onClick={() => setinterval('week')}>week</button>
         <button onClick={() => setinterval('month')} >month</button>
         <button onClick={() => setinterval('year')} >year</button>
-        {/* <button onClick={() => setinterval('timeLeft')} > % left </button> */}
       </div>
     </CountDownContainer>
   )
