@@ -19,7 +19,7 @@ const App = ()  => {
       <TimeLine />
       <DashBoard />
       <GoalTable />
-      <GoalTable />
+      {/* <GoalTable /> */}
     </AppBody>
   );
 }

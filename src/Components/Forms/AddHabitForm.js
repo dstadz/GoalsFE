@@ -19,30 +19,32 @@ const AddHabitForm = ({setForm, goal_id, habitList, setHabitList}) => {
 
   return (
     <GoalForm onSubmit={handleSubmit(onSubmit)}>
-      <h5>New Habit <button onClick={() => setForm('')}> X </button> </h5>
+      <h5>
+        New Habit <button onClick={() => setForm('')}> X </button>
+      </h5>
 
-        <input type="text"
-          placeholder="New Habit"
-          name="habit"
-          ref={register({required: true, maxLength: 80})}
-        />
+      <input type="text"
+        placeholder="New Habit"
+        name="habit"
+        ref={register({required: true, maxLength: 80})}
+      />
 
-        <br />
+      <br />
 
-        <label> Frequency:</label>
-        <input type='number'
-          style={{width:"50px"}}
-          name="amount"
-          ref={register({required: true})}
-        />
+      <label> Frequency:</label>
+      <input type='number'
+        style={{width:"50px"}}
+        name="amount"
+        ref={register({required: true})}
+      />
 
-        <select name="freq" ref={register}>
-          {times.map(t => ( <option key={t} value={t}>{t}</option> ))}
-        </select>
+      <select name="freq" ref={register}>
+        {times.map(t => ( <option key={t} value={t}>{t}</option> ))}
+      </select>
 
-        <br />
+      <br />
 
-        <input type="submit" />
+      <input type="submit" />
     </GoalForm>
   )
 }

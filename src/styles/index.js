@@ -79,7 +79,6 @@ export const ActionCenter = styled.div`
 
   .actions {
     align-self: start;
-    background: yellow;
     ${'' /* display:flex;
     felx-direction: column; */}
     justify-content: space-around;
@@ -140,8 +139,15 @@ export const CountDownContainer = styled.div`
   align-items:center;
 
   div {
-    background: green;
     align-items: center
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
   }
 
 `

@@ -16,17 +16,35 @@ const override = css`
   border-color: red;
 `;
 
+function formatDate(date) {
+  let d = new Date(date),
+  month = '' + (d.getMonth() + 1),
+  day = '' + d.getDate(),
+  year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
 
 const GoalTable = () => {
   const user = useRecoilValue(userState)
   const [goalList, setGoalList] = useRecoilState(goalListState)
   const [loading, setLoading] = useState(true)
 
+  const now = Date.now()
+  console.log(now)
+
   const getGoals = async() => {
     await axios.get(`${ process.env.REACT_APP_BE }/goals/all/${ user.id }`)
     .then(res => {
-      setGoalList(res.data.sort((a,b) => (a.target_date > b.target_date) ? 1 : -1))
+      console.log(res.data)
+      setGoalList(res.data
+        .filter(g => g.target_date > formatDate(now))
+        .sort((a,b) => (a.target_date > b.target_date) ? 1 : -1))
       setLoading(false)
+      console.log(goalList)
     }) // sort by date
     .catch(err => { console.log(err) })
   }
